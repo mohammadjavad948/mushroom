@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Text, View} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
 
@@ -7,9 +8,7 @@ export default function NavBar(){
 
     return (
         <View style={navbarStyle.container}>
-            <Text>1</Text>
-            <Text>2</Text>
-            <Text>3</Text>
+            <Icon name="add" size={25}/>
         </View>
     )
 }
