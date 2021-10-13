@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import {mainStyle} from "./styles/Main";
 import NavBar from "./components/Navbar/Navbar";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,6 +25,7 @@ const App = () => {
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View style={mainStyle.main}>
+        <Dashboard />
         <NavBar />
       </View>
     </SafeAreaView>
