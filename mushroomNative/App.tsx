@@ -17,6 +17,7 @@ import {
 import {mainStyle} from "./styles/Main";
 import NavBar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
+import { NativeRouter, Route, Link } from "react-router-native";
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
