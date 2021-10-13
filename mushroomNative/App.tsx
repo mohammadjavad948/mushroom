@@ -19,6 +19,7 @@ import NavBar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { NativeRouter, Route } from "react-router-native";
 import { Provider as PaperProvider } from 'react-native-paper';
+import AddWork from "./components/AddWork/AddWork";
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -33,6 +34,11 @@ const App = () => {
                       exact={true}
                   >
                       <Dashboard />
+                  </Route>
+                  <Route
+                      path="/work/add"
+                  >
+                      <AddWork />
                   </Route>
                   <NavBar />
               </View>
