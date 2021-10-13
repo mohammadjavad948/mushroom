@@ -9,6 +9,7 @@ interface Props{
     children: any
     route: string
     exact?: boolean
+    click: any
 }
 
 export default function NavbarItem(props: Props){
@@ -44,7 +45,7 @@ export default function NavbarItem(props: Props){
             },
             navbarStyle.item,
         ]}>
-            <TouchableOpacity onPress={() => console.log('press')}>
+            <TouchableOpacity onPress={props.click}>
                 {props.children}
             </TouchableOpacity>
         </a.View>
