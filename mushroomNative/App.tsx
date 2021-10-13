@@ -25,10 +25,16 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <View style={mainStyle.main}>
-        <Dashboard />
-        <NavBar />
-      </View>
+      <NativeRouter>
+          <View style={mainStyle.main}>
+              <Route
+                  path="/"
+                  exact={true}
+                  component={<Dashboard />}
+              />
+              <NavBar />
+          </View>
+      </NativeRouter>
     </SafeAreaView>
   );
 };
