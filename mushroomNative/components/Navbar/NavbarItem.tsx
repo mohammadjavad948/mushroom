@@ -1,9 +1,9 @@
 import React from "react";
-import {View} from "react-native";
+import {TouchableHighlight, TouchableOpacity, View} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
 
 interface Props{
-    icon: any
+    children: any
     isActive: boolean
 }
 
@@ -11,7 +11,9 @@ export default function NavbarItem(props: Props){
 
     return (
         <View style={navbarStyle.item}>
-            {props.icon}
+            <TouchableOpacity onPress={() => console.log('press')}>
+                {props.children}
+            </TouchableOpacity>
         </View>
     )
 }
