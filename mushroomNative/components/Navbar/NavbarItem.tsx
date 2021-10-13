@@ -1,6 +1,7 @@
 import React from "react";
 import {TouchableOpacity, View} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
+import {a, useSpring} from '@react-spring/native';
 
 interface Props{
     children: any
@@ -10,10 +11,10 @@ interface Props{
 export default function NavbarItem(props: Props){
 
     return (
-        <View style={navbarStyle.item}>
+        <a.View style={navbarStyle.item}>
             <TouchableOpacity onPress={() => console.log('press')}>
                 {props.children}
             </TouchableOpacity>
-        </View>
+        </a.View>
     )
 }
