@@ -7,7 +7,7 @@ export default function AddWork(){
 
     return (
         <ScrollView style={addWorkStyle.container}>
-            <View>
+            <View style={addWorkStyle.view}>
 
             </View>
         </ScrollView>
