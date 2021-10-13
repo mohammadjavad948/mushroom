@@ -29,25 +29,27 @@ const App = () => {
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
           <NativeRouter>
-              <View style={mainStyle.main}>
-                  <Route
-                      path="/"
-                      exact={true}
-                  >
-                      <Dashboard />
-                  </Route>
-                  <Route
-                      path="/work/add"
-                  >
-                      <AddWork />
-                  </Route>
-                  <Route
-                      path="/profile"
-                  >
-                      <Profile />
-                  </Route>
-                  <NavBar />
-              </View>
+              <PaperProvider>
+                  <View style={mainStyle.main}>
+                      <Route
+                          path="/"
+                          exact={true}
+                      >
+                          <Dashboard />
+                      </Route>
+                      <Route
+                          path="/work/add"
+                      >
+                          <AddWork />
+                      </Route>
+                      <Route
+                          path="/profile"
+                      >
+                          <Profile />
+                      </Route>
+                      <NavBar />
+                  </View>
+              </PaperProvider>
           </NativeRouter>
     </SafeAreaView>
   );
