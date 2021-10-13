@@ -45,7 +45,10 @@ export default function NavbarItem(props: Props){
             },
             navbarStyle.item,
         ]}>
-            <TouchableOpacity onPress={props.click}>
+            <TouchableOpacity
+                onPress={props.click}
+                style={navbarStyle.touch}
+            >
                 {props.children}
             </TouchableOpacity>
         </a.View>
