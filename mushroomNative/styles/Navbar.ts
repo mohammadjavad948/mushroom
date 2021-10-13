@@ -8,5 +8,8 @@ export const navbarStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-evenly',
         backgroundColor: '#3b3b3b',
+    },
+    item: {
+        padding: 8
     }
 })
