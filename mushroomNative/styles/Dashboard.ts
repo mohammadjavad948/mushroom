@@ -13,5 +13,8 @@ export const dashboardStyle = StyleSheet.create({
         width: '90%',
         borderRadius: 10,
         padding: 10
+    },
+    itemTitle: {
+        fontSize: 15
     }
 })
