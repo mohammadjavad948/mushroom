@@ -1,27 +1,38 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Text, View} from "react-native";
+import {View} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
 import NavbarItem from "./NavbarItem";
+import {useHistory} from 'react-router-native';
 
 export default function NavBar(){
+
+    const history = useHistory()
 
     function click(){
         console.log('click!')
     }
 
+    function dashboard(){
+        history.push('/')
+    }
+
+    function addWork(){
+        history.push('/')
+    }
+
     return (
         <View style={navbarStyle.container}>
             <NavbarItem
-                click={click}
+                click={dashboard}
                 route={'/'}
                 exact={true}
             >
                 <Icon name="dashboard" size={25}/>
             </NavbarItem>
             <NavbarItem
-                click={click}
-                route={'/add'}
+                click={addWork}
+                route={'/work/add'}
             >
                 <Icon name="add" size={25}/>
             </NavbarItem>
