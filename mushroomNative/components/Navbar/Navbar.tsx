@@ -21,6 +21,10 @@ export default function NavBar(){
         history.push('/work/add')
     }
 
+    function profile(){
+        history.push('/profile')
+    }
+
     return (
         <View style={navbarStyle.container}>
             <NavbarItem
@@ -43,8 +47,8 @@ export default function NavBar(){
                 <Icon name="layers" size={25}/>
             </NavbarItem>
             <NavbarItem
-                click={click}
-                route={'/info'}
+                click={profile}
+                route={'/profile'}
             >
                 <Icon name="person" size={25}/>
             </NavbarItem>

@@ -20,6 +20,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import { NativeRouter, Route } from "react-router-native";
 import { Provider as PaperProvider } from 'react-native-paper';
 import AddWork from "./components/AddWork/AddWork";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -39,6 +40,11 @@ const App = () => {
                       path="/work/add"
                   >
                       <AddWork />
+                  </Route>
+                  <Route
+                      path="/profile"
+                  >
+                      <Profile />
                   </Route>
                   <NavBar />
               </View>
