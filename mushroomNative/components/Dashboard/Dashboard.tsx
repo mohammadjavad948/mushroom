@@ -8,13 +8,13 @@ const data = [
         id: 1,
         title: 'kshfsf',
         description: 'skefskjfhjksf',
-        color: '#000000'
+        color: '#229797'
     },
     {
         id: 2,
         title: 'kshfsf',
         description: 'skefskjfhjksf',
-        color: '#ff9191'
+        color: '#fc0000'
     }
 ]
 
