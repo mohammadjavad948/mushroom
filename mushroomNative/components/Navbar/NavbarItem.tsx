@@ -1,14 +1,17 @@
 import React, {useEffect} from "react";
-import {TouchableOpacity, View} from "react-native";
+import {TouchableOpacity} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
 import {a, useSpring} from '@react-spring/native';
+import {useLocation} from 'react-router-native';
 
 interface Props{
     children: any
-    isActive: boolean
+    route: string
 }
 
 export default function NavbarItem(props: Props){
+
+    const location = useLocation();
 
     const [animation, api] = useSpring(() => ({
         backgroundColor: '#3b3b3b',
@@ -17,10 +20,12 @@ export default function NavbarItem(props: Props){
 
     useEffect(() => {
         api.start({
-            backgroundColor: props.isActive ? 'purple' : '#3b3b3b',
-            y: props.isActive ? -15 : 0
+            backgroundColor: location.pathname.startsWith(props.route)
+                ? 'purple' : '#3b3b3b',
+            y: location.pathname.startsWith(props.route)
+                ? -15 : 0
         })
-    }, [props.isActive])
+    }, [location.pathname]);
 
     return (
         <a.View style={[
