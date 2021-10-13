@@ -12,7 +12,7 @@ import React from 'react';
 import {
   SafeAreaView,
   StatusBar,
-  useColorScheme,
+  useColorScheme, View,
 } from 'react-native';
 
 const App = () => {
@@ -21,7 +21,9 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <View>
 
+      </View>
     </SafeAreaView>
   );
 };
