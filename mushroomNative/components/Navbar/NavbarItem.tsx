@@ -28,7 +28,7 @@ export default function NavbarItem(props: Props){
         })
 
         api.start({
-            backgroundColor: match ? 'purple' : '#3b3b3b',
+            backgroundColor: match ? '#f83cf3' : '#3b3b3b',
             y: match ? -15 : 0
         })
     }, [location.pathname]);
