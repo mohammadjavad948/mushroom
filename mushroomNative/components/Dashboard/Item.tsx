@@ -14,8 +14,24 @@ export default function DashboardItem({item}: any){
                     backgroundColor: item.color
                 }
             ]}>
-                <Text style={dashboardStyle.itemTitle}>{item.title}</Text>
-                <Text>{item.description}</Text>
+                <Text style={[
+                    dashboardStyle.itemTitle,
+                    {
+                        color: item.textColor
+                    }
+                ]}>
+                    {item.title}
+                </Text>
+                <Text
+                    style={[
+                        {
+                            color: item.textColor,
+                            opacity: 0.7
+                        }
+                    ]}
+                >
+                    {item.description}
+                </Text>
             </View>
         </View>
     )

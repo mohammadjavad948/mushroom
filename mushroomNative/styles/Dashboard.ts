@@ -16,6 +16,5 @@ export const dashboardStyle = StyleSheet.create({
     },
     itemTitle: {
         fontSize: 15,
-        color: 'white'
     }
 })
