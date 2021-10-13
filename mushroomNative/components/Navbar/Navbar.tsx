@@ -9,16 +9,16 @@ export default function NavBar(){
 
     return (
         <View style={navbarStyle.container}>
-            <NavbarItem route={'/'}>
+            <NavbarItem route={'/'} exact={true}>
                 <Icon name="dashboard" size={25}/>
             </NavbarItem>
-            <NavbarItem route={'/'}>
+            <NavbarItem route={'/add'}>
                 <Icon name="add" size={25}/>
             </NavbarItem>
-            <NavbarItem route={'/'}>
+            <NavbarItem route={'/subject'}>
                 <Icon name="layers" size={25}/>
             </NavbarItem>
-            <NavbarItem route={'/'}>
+            <NavbarItem route={'/info'}>
                 <Icon name="person" size={25}/>
             </NavbarItem>
         </View>

@@ -3,10 +3,12 @@ import {TouchableOpacity} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
 import {a, useSpring} from '@react-spring/native';
 import {useLocation} from 'react-router-native';
+import { matchPath } from "react-router";
 
 interface Props{
     children: any
     route: string
+    exact?: boolean
 }
 
 export default function NavbarItem(props: Props){
@@ -19,11 +21,14 @@ export default function NavbarItem(props: Props){
     }));
 
     useEffect(() => {
+        const match = matchPath(location.pathname, {
+            path: props.route,
+            exact: props.exact,
+        })
+
         api.start({
-            backgroundColor: location.pathname.startsWith(props.route)
-                ? 'purple' : '#3b3b3b',
-            y: location.pathname.startsWith(props.route)
-                ? -15 : 0
+            backgroundColor: match ? 'purple' : '#3b3b3b',
+            y: match ? -15 : 0
         })
     }, [location.pathname]);
 
