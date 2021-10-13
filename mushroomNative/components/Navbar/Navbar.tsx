@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from "react-native";
-import {navbarStyle} from "../styles/Navbar";
+import {navbarStyle} from "../../styles/Navbar";
 
 export default function NavBar(){
 

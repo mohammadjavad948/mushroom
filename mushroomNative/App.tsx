@@ -15,7 +15,7 @@ import {
   useColorScheme, View,
 } from 'react-native';
 import {mainStyle} from "./styles/Main";
-import NavBar from "./components/Navbar";
+import NavBar from "./components/Navbar/Navbar";
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
