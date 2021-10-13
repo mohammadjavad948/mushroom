@@ -10,7 +10,7 @@ export const dashboardStyle = StyleSheet.create({
       padding: 5
     },
     item: {
-        width: '90%',
+        width: '95%',
         borderRadius: 10,
         padding: 10
     },
