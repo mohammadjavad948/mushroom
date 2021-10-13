@@ -26,7 +26,6 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <PaperProvider>
           <NativeRouter>
               <View style={mainStyle.main}>
                   <Route
@@ -38,7 +37,6 @@ const App = () => {
                   <NavBar />
               </View>
           </NativeRouter>
-        </PaperProvider>
     </SafeAreaView>
   );
 };
