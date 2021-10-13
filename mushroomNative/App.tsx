@@ -10,7 +10,6 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
   StatusBar,
   useColorScheme, View,
 } from 'react-native';
@@ -26,10 +25,9 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaView>
+    <PaperProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
           <NativeRouter>
-              <PaperProvider>
                   <View style={mainStyle.main}>
                       <Route
                           path="/"
@@ -49,9 +47,8 @@ const App = () => {
                       </Route>
                       <NavBar />
                   </View>
-              </PaperProvider>
           </NativeRouter>
-    </SafeAreaView>
+    </PaperProvider>
   );
 };
 
