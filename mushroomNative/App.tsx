@@ -14,6 +14,7 @@ import {
   StatusBar,
   useColorScheme, View,
 } from 'react-native';
+import {mainStyle} from "./styles/Main";
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -21,7 +22,7 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <View>
+      <View style={mainStyle.main}>
 
       </View>
     </SafeAreaView>
