@@ -8,7 +8,10 @@ export default function NavBar(){
 
     return (
         <View style={navbarStyle.container}>
+            <Icon name="dashboard" size={25}/>
             <Icon name="add" size={25}/>
+            <Icon name="layers" size={25}/>
+            <Icon name="person" size={25}/>
         </View>
     )
 }
