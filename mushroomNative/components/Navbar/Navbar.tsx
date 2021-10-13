@@ -18,7 +18,7 @@ export default function NavBar(){
     }
 
     function addWork(){
-        history.push('/')
+        history.push('/work/add')
     }
 
     return (
