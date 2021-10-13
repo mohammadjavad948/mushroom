@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {TouchableOpacity} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
-import {a, useSpring} from '@react-spring/native';
+import {a, useSpring, config} from '@react-spring/native';
 import {useLocation} from 'react-router-native';
 import { matchPath } from "react-router";
 
@@ -18,7 +18,8 @@ export default function NavbarItem(props: Props){
 
     const [animation, api] = useSpring(() => ({
         backgroundColor: '#3b3b3b',
-        y: 0
+        y: 0,
+        config: config.gentle
     }));
 
     useEffect(() => {
@@ -29,7 +30,7 @@ export default function NavbarItem(props: Props){
 
         api.start({
             backgroundColor: match ? '#f83cf3' : '#3b3b3b',
-            y: match ? -15 : 0
+            y: match ? -20 : 0
         })
     }, [location.pathname]);
 
