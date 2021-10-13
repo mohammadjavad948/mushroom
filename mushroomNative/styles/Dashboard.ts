@@ -12,9 +12,13 @@ export const dashboardStyle = StyleSheet.create({
     item: {
         width: '95%',
         borderRadius: 10,
-        padding: 10
+        padding: 15
     },
     itemTitle: {
         fontSize: 15,
+    },
+    daysLeft: {
+        fontSize: 10,
+        opacity: 0.6
     }
 })
