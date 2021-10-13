@@ -17,7 +17,8 @@ import {
 import {mainStyle} from "./styles/Main";
 import NavBar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
-import { NativeRouter, Route, Link } from "react-router-native";
+import { NativeRouter, Route } from "react-router-native";
+import { Provider as PaperProvider } from 'react-native-paper';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,17 +26,19 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NativeRouter>
-          <View style={mainStyle.main}>
-              <Route
-                  path="/"
-                  exact={true}
-              >
-                  <Dashboard />
-              </Route>
-              <NavBar />
-          </View>
-      </NativeRouter>
+        <PaperProvider>
+          <NativeRouter>
+              <View style={mainStyle.main}>
+                  <Route
+                      path="/"
+                      exact={true}
+                  >
+                      <Dashboard />
+                  </Route>
+                  <NavBar />
+              </View>
+          </NativeRouter>
+        </PaperProvider>
     </SafeAreaView>
   );
 };
