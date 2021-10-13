@@ -1,5 +1,5 @@
 import React from "react";
-import {FlatList, ScrollView} from "react-native";
+import {FlatList, ScrollView, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import DashboardItem from "./Item";
 
@@ -19,12 +19,12 @@ export default function Dashboard(){
     }
 
     return (
-        <ScrollView style={dashboardStyle.container}>
+        <View style={dashboardStyle.container}>
             <FlatList
                 data={data}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
             />
-        </ScrollView>
+        </View>
     )
 }
