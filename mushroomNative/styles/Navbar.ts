@@ -4,6 +4,6 @@ export const navbarStyle = StyleSheet.create({
     container: {
         width: '100%',
         height: 70,
-        backgroundColor: 'red',
+        backgroundColor: '#3b3b3b',
     }
 })
