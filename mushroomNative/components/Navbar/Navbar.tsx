@@ -12,7 +12,7 @@ export default function NavBar(){
             <NavbarItem isActive={false}>
                 <Icon name="dashboard" size={25}/>
             </NavbarItem>
-            <NavbarItem isActive={false}>
+            <NavbarItem isActive={true}>
                 <Icon name="add" size={25}/>
             </NavbarItem>
             <NavbarItem isActive={false}>

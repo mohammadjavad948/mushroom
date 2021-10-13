@@ -10,8 +10,17 @@ interface Props{
 
 export default function NavbarItem(props: Props){
 
+    const animation = useSpring(() => ({
+        from: {
+            backgroundColor: 'purple'
+        },
+        to: {
+            backgroundColor: 'white',
+        }
+    }))
+
     return (
-        <a.View style={navbarStyle.item}>
+        <a.View style={[navbarStyle.item, animation]}>
             <TouchableOpacity onPress={() => console.log('press')}>
                 {props.children}
             </TouchableOpacity>
