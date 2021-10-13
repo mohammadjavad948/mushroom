@@ -30,8 +30,9 @@ const App = () => {
               <Route
                   path="/"
                   exact={true}
-                  component={<Dashboard />}
-              />
+              >
+                  <Dashboard />
+              </Route>
               <NavBar />
           </View>
       </NativeRouter>

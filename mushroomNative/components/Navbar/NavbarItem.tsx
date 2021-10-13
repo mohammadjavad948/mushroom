@@ -16,7 +16,7 @@ export default function NavbarItem(props: Props){
     const [animation, api] = useSpring(() => ({
         backgroundColor: '#3b3b3b',
         y: 0
-    }))
+    }));
 
     useEffect(() => {
         api.start({
