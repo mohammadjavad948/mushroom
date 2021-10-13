@@ -1,5 +1,5 @@
 import React from "react";
-import {TouchableHighlight, TouchableOpacity, View} from "react-native";
+import {TouchableOpacity, View} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
 
 interface Props{
