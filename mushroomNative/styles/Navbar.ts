@@ -10,7 +10,7 @@ export const navbarStyle = StyleSheet.create({
         backgroundColor: '#3b3b3b',
     },
     item: {
-        padding: 13,
-        borderRadius: 50
+        padding: 15,
+        borderRadius: 50,
     }
 })
