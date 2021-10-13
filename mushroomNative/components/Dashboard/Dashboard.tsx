@@ -1,5 +1,5 @@
 import React from "react";
-import {FlatList, ScrollView, View} from "react-native";
+import {FlatList, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import DashboardItem from "./Item";
 
@@ -9,6 +9,12 @@ const data = [
         title: 'kshfsf',
         description: 'skefskjfhjksf',
         color: 'yellow'
+    },
+    {
+        id: 2,
+        title: 'kshfsf',
+        description: 'skefskjfhjksf',
+        color: 'red'
     }
 ]
 

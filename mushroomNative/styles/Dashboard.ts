@@ -7,7 +7,7 @@ export const dashboardStyle = StyleSheet.create({
     list: {
       width: '100%',
       alignItems: 'center',
-      padding: 10
+      padding: 5
     },
     item: {
         width: '90%',
