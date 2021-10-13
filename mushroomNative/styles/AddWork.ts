@@ -8,5 +8,8 @@ export const addWorkStyle = StyleSheet.create({
         width: '100%',
         padding: 15,
         alignItems: 'center'
+    },
+    input: {
+        width: '95%'
     }
 })

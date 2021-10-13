@@ -8,7 +8,11 @@ export default function AddWork(){
     return (
         <ScrollView style={addWorkStyle.container}>
             <View style={addWorkStyle.view}>
-
+                <TextInput
+                    style={addWorkStyle.input}
+                    label={"Title"}
+                    mode={"outlined"}
+                />
             </View>
         </ScrollView>
     )
