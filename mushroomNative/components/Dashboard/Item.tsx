@@ -32,6 +32,16 @@ export default function DashboardItem({item}: any){
                 >
                     {item.description}
                 </Text>
+                <Text
+                    style={[
+                        dashboardStyle.daysLeft,
+                        {
+                            color: item.textColor,
+                        }
+                    ]}
+                >
+                    3 days left
+                </Text>
             </View>
         </View>
     )
