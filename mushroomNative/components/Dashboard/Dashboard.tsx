@@ -1,6 +1,7 @@
 import React from "react";
 import {FlatList, ScrollView} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
+import DashboardItem from "./Item";
 
 const data = [
     {
@@ -13,8 +14,8 @@ const data = [
 
 export default function Dashboard(){
 
-    function renderItem({item}: any){
-
+    function renderItem(data: any){
+        return <DashboardItem {...data} />
     }
 
     return (
