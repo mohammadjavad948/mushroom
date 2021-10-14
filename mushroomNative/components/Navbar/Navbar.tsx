@@ -36,6 +36,12 @@ export default function NavBar(){
             </NavbarItem>
             <NavbarItem
                 click={addWork}
+                route={'/search'}
+            >
+                <Icon name="search" size={25}/>
+            </NavbarItem>
+            <NavbarItem
+                click={addWork}
                 route={'/work/add'}
             >
                 <Icon name="add" size={25}/>
