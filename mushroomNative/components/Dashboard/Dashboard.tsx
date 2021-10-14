@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {FlatList, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import DashboardItem from "./Item";
@@ -48,6 +48,8 @@ const data = [
 
 export default function Dashboard(){
 
+    const [isRefreshing, setIsRefreshing] = useState(false);
+
     function renderItem(data: any){
         if (data.item.type === 'splitter'){
             return (
@@ -60,12 +62,22 @@ export default function Dashboard(){
         return <DashboardItem {...data} />
     }
 
+    function refresh(){
+        setIsRefreshing(true)
+
+        setTimeout(() => {
+            setIsRefreshing(false)
+        }, 5000);
+    }
+
     return (
         <View style={dashboardStyle.container}>
             <FlatList
                 data={data}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
+                onRefresh={refresh}
+                refreshing={isRefreshing}
             />
         </View>
     )
