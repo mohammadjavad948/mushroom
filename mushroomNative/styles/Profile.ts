@@ -7,7 +7,6 @@ export const profileStyle = StyleSheet.create({
     title: {
       fontSize: 18,
       fontWeight: "300",
-      color: 'white'
     },
     view: {
         padding: 15,

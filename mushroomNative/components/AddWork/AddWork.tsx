@@ -1,5 +1,6 @@
 import React from "react";
-import {ScrollView, View, Text} from "react-native";
+import {ScrollView, View} from "react-native";
+import {Text} from 'react-native-paper';
 import {addWorkStyle} from "../../styles/AddWork";
 import {TextInput} from "react-native-paper";
 import {Picker} from '@react-native-picker/picker';

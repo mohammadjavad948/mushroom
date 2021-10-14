@@ -1,5 +1,6 @@
 import React from "react";
-import {ScrollView, Text, View} from "react-native";
+import {ScrollView, View} from "react-native";
+import {Text} from 'react-native-paper';
 import {profileStyle} from "../../styles/Profile";
 
 export default function Profile(){
