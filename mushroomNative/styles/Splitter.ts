@@ -13,5 +13,8 @@ export const splitterStyle = StyleSheet.create({
         backgroundColor: '#bfbfbf',
         width: '100%',
         marginLeft: 10
+    },
+    text: {
+        marginLeft: 10
     }
 })

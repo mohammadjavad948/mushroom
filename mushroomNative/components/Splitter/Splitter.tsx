@@ -2,11 +2,17 @@ import React from "react";
 import {Text, View} from "react-native";
 import {splitterStyle} from "../../styles/Splitter";
 
-export default function Splitter(props: {children: any}){
+interface Props{
+    children: any
+    beforeText?: any
+}
+
+export default function Splitter(props: Props){
 
     return (
         <View style={splitterStyle.main}>
-            <Text>
+            {props.beforeText}
+            <Text style={splitterStyle.text}>
                 {props.children}
             </Text>
             <View style={splitterStyle.dash} />
