@@ -25,6 +25,7 @@ model User {
 
 model WorkGroup {
     id Int @id @default(autoincrement())
+
     creator User @relation(fields: [creatorId], references: [id], onDelete: Cascade)
     creatorId Int
 
