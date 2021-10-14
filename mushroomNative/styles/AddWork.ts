@@ -14,6 +14,7 @@ export const addWorkStyle = StyleSheet.create({
         alignItems: 'center'
     },
     input: {
-        width: '95%'
+        width: '95%',
+        marginBottom: 10
     }
 })

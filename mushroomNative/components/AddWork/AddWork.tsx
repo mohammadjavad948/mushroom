@@ -16,6 +16,13 @@ export default function AddWork(){
                     label={"Title"}
                     mode={"outlined"}
                 />
+                <TextInput
+                    style={addWorkStyle.input}
+                    label={"Description"}
+                    mode={"outlined"}
+                    multiline={true}
+                    numberOfLines={5}
+                />
             </View>
         </ScrollView>
     )
