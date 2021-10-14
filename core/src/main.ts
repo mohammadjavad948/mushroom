@@ -4,7 +4,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import {VersioningType} from "@nestjs/common";
+import {ValidationPipe, VersioningType} from "@nestjs/common";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
@@ -13,6 +13,8 @@ async function bootstrap() {
     type: VersioningType.URI,
     defaultVersion: '1'
   });
+
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(3000);
 }
