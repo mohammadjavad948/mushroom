@@ -9,8 +9,8 @@ export default function NavBar(){
 
     const history = useHistory()
 
-    function click(){
-        console.log('click!')
+    function workGroup(){
+        history.push('/workgroup')
     }
 
     function dashboard(){
@@ -41,8 +41,8 @@ export default function NavBar(){
                 <Icon name="add" size={25}/>
             </NavbarItem>
             <NavbarItem
-                click={click}
-                route={'/subject'}
+                click={workGroup}
+                route={'/workgroup'}
             >
                 <Icon name="layers" size={25}/>
             </NavbarItem>
