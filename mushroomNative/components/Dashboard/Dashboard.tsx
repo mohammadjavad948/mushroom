@@ -10,14 +10,14 @@ const data = [
         id: 1,
         title: 'kshfsf',
         description: 'skefskjfhjksf',
-        color: '#229797',
+        color: '#01fafa',
         textColor: 'black'
     },
     {
         id: 2,
         title: 'kshfsf',
         description: 'skefskjfhjksf',
-        color: '#fc0000',
+        color: '#00fca4',
         textColor: 'black'
     },
     {
@@ -29,7 +29,7 @@ const data = [
         id: 4,
         title: 'ad;oajsdio',
         description: 'ncxvhbxbvx',
-        color: '#ffda03',
+        color: '#6cff03',
         textColor: 'black'
     },
     {
@@ -41,7 +41,7 @@ const data = [
         id: 6,
         title: 'weriuwwqoeiwq',
         description: 'skefskjfhjksf',
-        color: '#6bfd00',
+        color: '#00a4fd',
         textColor: 'black'
     }
 ]
