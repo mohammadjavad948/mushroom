@@ -20,6 +20,7 @@ import { NativeRouter, Route } from "react-router-native";
 import { Provider as PaperProvider } from 'react-native-paper';
 import AddWork from "./components/AddWork/AddWork";
 import Profile from "./components/Profile/Profile";
+import WorkGroup from "./components/WorkGroup/WorkGroup";
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -39,6 +40,11 @@ const App = () => {
                           path="/work/add"
                       >
                           <AddWork />
+                      </Route>
+                      <Route
+                          path="/workgroup"
+                      >
+                          <WorkGroup />
                       </Route>
                       <Route
                           path="/profile"
