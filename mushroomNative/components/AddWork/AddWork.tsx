@@ -2,6 +2,7 @@ import React from "react";
 import {ScrollView, View, Text} from "react-native";
 import {addWorkStyle} from "../../styles/AddWork";
 import {TextInput} from "react-native-paper";
+import {Picker} from '@react-native-picker/picker';
 
 export default function AddWork(){
 
@@ -23,6 +24,14 @@ export default function AddWork(){
                     multiline={true}
                     numberOfLines={7}
                 />
+                <Picker
+                    selectedValue={''}
+                    onValueChange={(itemValue, itemIndex) =>
+                        console.log(itemValue)
+                    }>
+                    <Picker.Item label="Java" value="java" />
+                    <Picker.Item label="JavaScript" value="js" />
+                </Picker>
             </View>
         </ScrollView>
     )
