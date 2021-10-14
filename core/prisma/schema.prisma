@@ -26,6 +26,9 @@ model WorkGroup {
     creator User @relation(fields: [creatorId], references: [id], onDelete: Cascade)
     creatorId Int
 
+    name String
+    color String
+
     isVerified Boolean @default(false)
     isPrivate Boolean
 
