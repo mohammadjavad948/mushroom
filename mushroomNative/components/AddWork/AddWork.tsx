@@ -25,7 +25,7 @@ export default function AddWork(){
                     numberOfLines={7}
                 />
                 <Picker
-                    style={addWorkStyle.input}
+                    style={[addWorkStyle.input]}
                     selectedValue={'js'}
                     onValueChange={(itemValue, itemIndex) =>
                         console.log(itemValue)
