@@ -34,6 +34,11 @@ const data = [
     },
     {
         id: 5,
+        type: 'splitter',
+        title: '2020/03/03'
+    },
+    {
+        id: 6,
         title: 'weriuwwqoeiwq',
         description: 'skefskjfhjksf',
         color: '#6bfd00',
