@@ -8,6 +8,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
 }
 
 model User {
@@ -16,4 +17,18 @@ model User {
     password String
     createdAt DateTime @default(now())
     isVerified Boolean @default(false)
+
+    workGroups WorkGroup[]
+}
+
+model WorkGroup {
+    id Int @id @default(autoincrement())
+    creator User @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+    creatorId Int
+
+    isVerified Boolean @default(false)
+    isPrivate Boolean
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
