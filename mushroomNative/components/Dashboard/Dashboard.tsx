@@ -2,6 +2,7 @@ import React from "react";
 import {FlatList, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import DashboardItem from "./Item";
+import Splitter from "../Splitter/Splitter";
 
 const data = [
     {
@@ -20,13 +21,18 @@ const data = [
     },
     {
         id: 3,
+        type: 'splitter',
+        title: '2020/02/03'
+    },
+    {
+        id: 4,
         title: 'ad;oajsdio',
         description: 'ncxvhbxbvx',
         color: '#ffda03',
         textColor: 'black'
     },
     {
-        id: 4,
+        id: 5,
         title: 'weriuwwqoeiwq',
         description: 'skefskjfhjksf',
         color: '#6bfd00',
@@ -37,6 +43,14 @@ const data = [
 export default function Dashboard(){
 
     function renderItem(data: any){
+        if (data.item.type === 'splitter'){
+            return (
+                <Splitter>
+                    {data.item.title}
+                </Splitter>
+            )
+        }
+
         return <DashboardItem {...data} />
     }
 
