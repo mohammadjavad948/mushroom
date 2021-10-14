@@ -21,7 +21,7 @@ export default function AddWork(){
                     label={"Description"}
                     mode={"outlined"}
                     multiline={true}
-                    numberOfLines={5}
+                    numberOfLines={7}
                 />
             </View>
         </ScrollView>
