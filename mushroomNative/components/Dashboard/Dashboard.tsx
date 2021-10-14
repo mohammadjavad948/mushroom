@@ -3,6 +3,7 @@ import {FlatList, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import DashboardItem from "./Item";
 import Splitter from "../Splitter/Splitter";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const data = [
     {
@@ -45,7 +46,7 @@ export default function Dashboard(){
     function renderItem(data: any){
         if (data.item.type === 'splitter'){
             return (
-                <Splitter>
+                <Splitter beforeText={<Icon name="event" size={18} />}>
                     {data.item.title}
                 </Splitter>
             )
