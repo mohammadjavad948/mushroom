@@ -16,5 +16,5 @@ export const profileStyle = StyleSheet.create({
     username: {
         fontSize: 15,
         marginTop: 10
-    }
+    },
 })
