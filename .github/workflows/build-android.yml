@@ -19,7 +19,9 @@ jobs:
         with:
           draft: true
           prerelease: false
+          tag_name: "v1.0.0"
           release_name: "draft"
+          body: "draft"
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: upload artifact
