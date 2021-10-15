@@ -1,8 +1,9 @@
-import {Controller, Get, Post, Body, Patch, Param, Delete, UseGuards} from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req} from '@nestjs/common';
 import { WorkGroupService } from './work-group.service';
 import { CreateWorkGroupDto } from './dto/create-work-group.dto';
 import { UpdateWorkGroupDto } from './dto/update-work-group.dto';
 import {HttpAuthGuard} from "../auth/http-auth.guard";
+import {Request} from "../types/request";
 
 @UseGuards(HttpAuthGuard)
 @Controller('work-group')
@@ -10,8 +11,8 @@ export class WorkGroupController {
   constructor(private readonly workGroupService: WorkGroupService) {}
 
   @Post()
-  create(@Body() createWorkGroupDto: CreateWorkGroupDto) {
-    return this.workGroupService.create(createWorkGroupDto);
+  create(@Body() createWorkGroupDto: CreateWorkGroupDto, @Req() req: Request) {
+    return this.workGroupService.create(createWorkGroupDto, req.userId);
   }
 
   @Get()

@@ -7,7 +7,7 @@ import {DatabaseService} from "../database/database.service";
 export class WorkGroupService {
   constructor(private database: DatabaseService) {}
 
-  create(createWorkGroupDto: CreateWorkGroupDto) {
+  create(createWorkGroupDto: CreateWorkGroupDto, userId: number) {
     return 'This action adds a new workGroup';
   }
 
