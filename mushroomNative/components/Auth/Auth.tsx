@@ -31,6 +31,7 @@ export default function Auth(){
             />
             <Button
                 mode="contained"
+                style={{marginTop: 10}}
             >
                 Login
             </Button>
