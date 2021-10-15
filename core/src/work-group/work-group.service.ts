@@ -28,7 +28,7 @@ export class WorkGroupService {
     })
   }
 
-  findOne(id: number) {
+  async findOne(id: number, userId: number) {
     return `This action returns a #${id} workGroup`;
   }
 
@@ -38,5 +38,23 @@ export class WorkGroupService {
 
   remove(id: number) {
     return `This action removes a #${id} workGroup`;
+  }
+
+  async canViewGroup(userId: number, groupId: number){
+    const sub = await this.database.subscription.count({
+      where: {
+        userId,
+        groupId
+      }
+    });
+
+    const group = await this.database.workGroup.count({
+      where: {
+        id: groupId,
+        creatorId: userId,
+      }
+    });
+
+    return sub > 0 || group > 0
   }
 }

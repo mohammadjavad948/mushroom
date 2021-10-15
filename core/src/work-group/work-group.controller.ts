@@ -21,8 +21,8 @@ export class WorkGroupController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.workGroupService.findOne(+id);
+  findOne(@Param('id') id: string, @Req() req: Request) {
+    return this.workGroupService.findOne(+id, req.userId);
   }
 
   @Patch(':id')
