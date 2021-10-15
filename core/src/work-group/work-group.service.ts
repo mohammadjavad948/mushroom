@@ -34,6 +34,7 @@ export class WorkGroupService {
     if (!can) {
       throw new HttpException('nope', 403);
     }
+
     return this.database.workGroup.findUnique({
       where: {
         id: id,
