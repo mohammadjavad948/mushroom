@@ -1,5 +1,5 @@
 import React from "react";
-import {TouchableOpacity} from "react-native";
+import {TouchableOpacity, View} from "react-native";
 import {workGroupStyle} from "../../styles/WorkGroup";
 import {Text} from "react-native-paper";
 
@@ -8,6 +8,7 @@ interface Props{
     icon?: any
     click?: any
     color?: string
+    actions: any
 }
 
 export default function GroupItem(props: Props){
@@ -22,6 +23,14 @@ export default function GroupItem(props: Props){
         >
             {props.icon}
             <Text style={{marginLeft: props.icon ? 10 : 0}}>{props.children}</Text>
+            <View
+                style={{
+                    position: 'absolute',
+                    right: 10
+                }}
+            >
+                <Text>hmm</Text>
+            </View>
         </TouchableOpacity>
     )
 }
