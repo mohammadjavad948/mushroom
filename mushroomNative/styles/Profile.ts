@@ -25,4 +25,9 @@ export const profileStyle = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10
     },
+    date: {
+        fontSize: 10,
+        opacity: 0.8,
+        marginLeft: 10
+    }
 })
