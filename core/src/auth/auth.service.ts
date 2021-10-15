@@ -22,7 +22,9 @@ export class AuthService {
 
         await this.checkPassword(password, user.password);
 
-        return this.generateToken({id: user.id});
+        return {
+            token: this.generateToken({id: user.id})
+        }
     }
 
     async checkPassword(password: string, hashedPassword: string){
