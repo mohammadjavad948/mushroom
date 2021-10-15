@@ -4,10 +4,12 @@ import {ActivityIndicator, Button, Text} from 'react-native-paper';
 import {profileStyle} from "../../styles/Profile";
 import {useQuery} from "react-query";
 import {info} from "../../api/auth";
+import {useAuthStore} from "../../stores/authStore";
 
 export default function Profile(){
 
     const {data, isLoading} = useQuery('userInfo', info)
+    const {logout} = useAuthStore();
 
     return (
         <ScrollView style={profileStyle.container}>
@@ -33,6 +35,7 @@ export default function Profile(){
                                 mode={"contained"}
                                 uppercase={false}
                                 style={profileStyle.logout}
+                                onPress={logout}
                             >
                                 logout
                             </Button>
