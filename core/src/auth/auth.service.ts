@@ -3,7 +3,7 @@ import {DatabaseService} from "../database/database.service";
 import {sign, verify} from "jsonwebtoken";
 import {ConfigService} from "@nestjs/config";
 import {TokenPayloadI} from "../types/token";
-import {compare} from "bcrypt";
+import {compare, hash} from "bcrypt";
 
 @Injectable()
 export class AuthService {
@@ -25,6 +25,27 @@ export class AuthService {
         return {
             token: this.generateToken({id: user.id})
         }
+    }
+
+    async signUp(username: string, password: string){
+        const user = await this.database.user.findFirst({
+            where: {
+                username: username,
+            },
+        });
+
+        if (user){
+            throw new HttpException('username exists', 403);
+        }
+
+        const hashed = await hash(password, 10);
+
+        return this.database.user.create({
+            data: {
+                username: username,
+                password: hashed,
+            }
+        });
     }
 
     async checkPassword(password: string, hashedPassword: string){
