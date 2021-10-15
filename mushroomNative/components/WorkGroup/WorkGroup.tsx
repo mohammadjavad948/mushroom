@@ -34,8 +34,12 @@ export default function WorkGroup(){
                     Add
                 </GroupItem>
 
-                <GroupItem color={"#05baf1"}>
+                <GroupItem icon={<Icon name="lock" size={25} />} color={"#05baf1"}>
                     Cloud
+                </GroupItem>
+
+                <GroupItem icon={<Icon name="public" size={25} />} color={"#8f05f1"}>
+                    Public
                 </GroupItem>
 
                 <Splitter>
