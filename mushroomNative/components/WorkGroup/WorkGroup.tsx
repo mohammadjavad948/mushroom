@@ -7,7 +7,11 @@ export default function WorkGroup(){
 
     return (
         <ScrollView style={workGroupStyle.container}>
-            <View>
+            <View
+                style={{
+                    alignItems: 'center',
+                }}
+            >
                 <Splitter>
                     Offline Groups
                 </Splitter>
