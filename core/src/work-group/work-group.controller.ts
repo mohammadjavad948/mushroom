@@ -31,7 +31,7 @@ export class WorkGroupController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.workGroupService.remove(+id);
+  remove(@Param('id') id: string, @Req() req: Request) {
+    return this.workGroupService.remove(+id, req.userId);
   }
 }

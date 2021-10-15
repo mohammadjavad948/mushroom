@@ -65,7 +65,12 @@ export class WorkGroupService {
     })
   }
 
-  async remove(id: number) {
+  async remove(id: number, userId: number) {
+    const can = await this.canManageGroup(userId, id);
+
+    if (!can) {
+      throw new HttpException('nope', 403);
+    }
     return `This action removes a #${id} workGroup`;
   }
 
