@@ -19,7 +19,13 @@ export class WorkGroupService {
   }
 
   findAll(userId: number) {
-    return `This action returns all workGroup`;
+    return this.database.workGroup.findMany({
+      where: {
+        creator: {
+          id: userId
+        }
+      }
+    })
   }
 
   findOne(id: number) {
