@@ -8,6 +8,7 @@ jobs:
     needs: install-and-test
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
       - uses: actions/checkout@v2
       - name: Install yarn dependencies
         run: cd mushroomNative && yarn install
