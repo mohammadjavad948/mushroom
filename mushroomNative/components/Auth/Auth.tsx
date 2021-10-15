@@ -28,6 +28,8 @@ export default function Auth(){
                 style={authStyle.input}
                 label={"password"}
                 mode={"outlined"}
+                type={"password"}
+                secureTextEntry={true}
             />
             <Button
                 mode="contained"
