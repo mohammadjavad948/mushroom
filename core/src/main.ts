@@ -7,7 +7,7 @@ import {
 import {ValidationPipe, VersioningType} from "@nestjs/common";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
 
   app.enableVersioning({
     type: VersioningType.URI,
