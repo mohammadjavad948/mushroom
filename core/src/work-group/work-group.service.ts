@@ -71,7 +71,12 @@ export class WorkGroupService {
     if (!can) {
       throw new HttpException('nope', 403);
     }
-    return `This action removes a #${id} workGroup`;
+
+    return this.database.workGroup.delete({
+      where: {
+        id: id,
+      }
+    })
   }
 
   async canManageGroup(userId: number, groupId: number){
