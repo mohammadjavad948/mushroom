@@ -46,11 +46,11 @@ export class WorkGroupService {
   }
 
 
-  update(id: number, updateWorkGroupDto: UpdateWorkGroupDto) {
+  async update(id: number, updateWorkGroupDto: UpdateWorkGroupDto) {
     return `This action updates a #${id} workGroup`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} workGroup`;
   }
 
