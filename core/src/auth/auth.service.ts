@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {HttpException, Injectable} from '@nestjs/common';
 import {DatabaseService} from "../database/database.service";
 import {sign, verify} from "jsonwebtoken";
 import {ConfigService} from "@nestjs/config";
@@ -15,10 +15,22 @@ export class AuthService {
                 username: username,
             },
         });
+
+        if (!user){
+            throw new HttpException('username or password not correct', 404);
+        }
+
+        await this.checkPassword(password, user.password);
+
+        return this.generateToken({id: user.id});
     }
 
-    checkPassword(password: string, hashedPassword: string){
-        return compare(password, hashedPassword);
+    async checkPassword(password: string, hashedPassword: string){
+        try {
+            return await compare(password, hashedPassword)
+        } catch (e){
+            throw new HttpException('username or password not correct', 404);
+        }
     }
 
     generateToken(payload: TokenPayloadI){
