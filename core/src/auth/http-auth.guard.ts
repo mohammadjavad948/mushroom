@@ -10,6 +10,19 @@ export class HttpAuthGuard implements CanActivate {
   ): Promise<boolean> {
     const token = context.switchToHttp().getRequest().headers?.auth;
 
-    const payload = await this.auth.checkToken(token);
+    try {
+      const payload = await this.auth.checkToken(token);
+
+      const user = await this.database.user.findUnique({
+        where: {
+          id: payload.id,
+        }
+      });
+
+      return true;
+
+    } catch (e) {
+      return false
+    }
   }
 }
