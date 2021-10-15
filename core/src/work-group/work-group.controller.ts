@@ -26,8 +26,8 @@ export class WorkGroupController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWorkGroupDto: UpdateWorkGroupDto) {
-    return this.workGroupService.update(+id, updateWorkGroupDto);
+  update(@Param('id') id: string, @Body() updateWorkGroupDto: UpdateWorkGroupDto, @Req() req: Request) {
+    return this.workGroupService.update(+id, updateWorkGroupDto, req.userId);
   }
 
   @Delete(':id')
