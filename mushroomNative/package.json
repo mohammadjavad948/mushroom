@@ -21,7 +21,8 @@
     "react-native-vector-icons": "^8.1.0",
     "react-router-native": "^5.2.1",
     "react-spring": "^9.3.0",
-    "zustand": "^3.5.13"
+    "zustand": "^3.5.13",
+    "zustand-persist": "^0.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

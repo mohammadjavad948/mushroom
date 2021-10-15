@@ -17,6 +17,7 @@ export default function Auth(){
         try {
             const data = await login(value);
 
+            console.log('logged in')
             setToken(data.data.token)
         } catch (e) {
             setLoading(false)

@@ -23,15 +23,6 @@ export const useAuthStore = create<TokenI>(persist(
     },
     {
         name: "auth-storage",
-        getStorage: () => storage
+        getStorage: () => AsyncStorage
     }
 ));
-
-const storage: StateStorage = {
-    getItem: async (name: string): Promise<string | null> => {
-        return await AsyncStorage.getItem(name) || null
-    },
-    setItem: async (name: string, value: string): Promise<void> => {
-        await AsyncStorage.setItem(name, value)
-    }
-}
