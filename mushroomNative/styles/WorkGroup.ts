@@ -13,6 +13,6 @@ export const workGroupStyle = StyleSheet.create({
         borderColor: "white",
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 5
+        marginTop: 10
     }
 })

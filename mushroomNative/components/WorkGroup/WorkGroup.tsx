@@ -22,6 +22,10 @@ export default function WorkGroup(){
                     Add
                 </GroupItem>
 
+                <GroupItem>
+                    Homie
+                </GroupItem>
+
                 <Splitter>
                     Account Groups
                 </Splitter>
@@ -30,13 +34,18 @@ export default function WorkGroup(){
                     Add
                 </GroupItem>
 
+                <GroupItem>
+                    Cloud
+                </GroupItem>
+
                 <Splitter>
                     Joined Groups
                 </Splitter>
 
-                <GroupItem icon={<Icon name="add" size={25} />}>
-                    Add
+                <GroupItem>
+                    Subscribed
                 </GroupItem>
+
             </View>
         </ScrollView>
     )
