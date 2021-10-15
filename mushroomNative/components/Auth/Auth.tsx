@@ -72,6 +72,8 @@ export default function Auth(){
                         mode="contained"
                         style={{marginTop: 10}}
                         onPress={handleSubmit}
+                        loading={loading}
+                        disabled={loading}
                     >
                         Login
                     </Button>
