@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {HttpException, Injectable} from '@nestjs/common';
 import { CreateWorkGroupDto } from './dto/create-work-group.dto';
 import { UpdateWorkGroupDto } from './dto/update-work-group.dto';
 import {DatabaseService} from "../database/database.service";
@@ -29,8 +29,21 @@ export class WorkGroupService {
   }
 
   async findOne(id: number, userId: number) {
-    return `This action returns a #${id} workGroup`;
+    const can = await this.canViewGroup(userId, id);
+
+    if (!can) {
+      throw new HttpException('nope', 403);
+    }
+    return this.database.workGroup.findUnique({
+      where: {
+        id: id,
+      },
+      include: {
+        works: true
+      }
+    });
   }
+
 
   update(id: number, updateWorkGroupDto: UpdateWorkGroupDto) {
     return `This action updates a #${id} workGroup`;
