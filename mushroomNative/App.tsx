@@ -18,6 +18,9 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import Main from "./components/Main/Main";
 import {useAuthStore} from "./stores/authStore";
 import Auth from "./components/Auth/Auth";
+import {QueryClient, QueryClientProvider} from "react-query";
+
+const queryClient = new QueryClient()
 
 const App = () => {
   const {token} = useAuthStore();
@@ -25,12 +28,14 @@ const App = () => {
 
   return (
     <PaperProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <QueryClientProvider client={queryClient}>
           <NativeRouter>
               <BackButton>
                   {token === "" ? <Auth /> : <Main />}
               </BackButton>
           </NativeRouter>
+        </QueryClientProvider>
     </PaperProvider>
   );
 };
