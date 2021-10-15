@@ -7,13 +7,17 @@ interface Props{
     children: any
     icon?: any
     click?: any
+    color?: string
 }
 
 export default function GroupItem(props: Props){
 
     return (
         <TouchableOpacity
-            style={workGroupStyle.item}
+            style={[
+                workGroupStyle.item,
+                {borderColor: props.color || 'white'}
+            ]}
             onPress={props.click}
         >
             {props.icon}

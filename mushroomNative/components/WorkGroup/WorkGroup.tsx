@@ -22,7 +22,7 @@ export default function WorkGroup(){
                     Add
                 </GroupItem>
 
-                <GroupItem>
+                <GroupItem color={"yellow"}>
                     Homie
                 </GroupItem>
 
@@ -34,7 +34,7 @@ export default function WorkGroup(){
                     Add
                 </GroupItem>
 
-                <GroupItem>
+                <GroupItem color={"#05baf1"}>
                     Cloud
                 </GroupItem>
 
@@ -42,7 +42,7 @@ export default function WorkGroup(){
                     Joined Groups
                 </Splitter>
 
-                <GroupItem>
+                <GroupItem color={"red"}>
                     Subscribed
                 </GroupItem>
 
