@@ -7,8 +7,8 @@ import {AuthService} from './auth.service';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Get('hmm')
-  hmm(){
+  @Get('login')
+  lodin(){
     return 'hmm'
   }
 }
