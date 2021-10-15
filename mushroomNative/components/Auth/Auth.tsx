@@ -5,13 +5,17 @@ import {Button, Text, TextInput} from "react-native-paper";
 import {authStyle} from "../../styles/Auth";
 import {Formik} from 'formik';
 import {login} from "../../api/auth";
+import {useAuthStore} from "../../stores/authStore";
 
 export default function Auth(){
+
+    const {setToken} = useAuthStore()
 
     async function submit(value: any) {
         try {
             const data = await login(value);
-            console.log(data.data)
+
+            setToken(data.data.token)
         } catch (e) {
             console.log(e)
         }
