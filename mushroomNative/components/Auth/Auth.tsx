@@ -3,6 +3,7 @@ import {View} from "react-native";
 import {mainStyle} from "../../styles/Main";
 import {Button, Text, TextInput} from "react-native-paper";
 import {authStyle} from "../../styles/Auth";
+import {Formik} from 'formik';
 
 export default function Auth(){
 
