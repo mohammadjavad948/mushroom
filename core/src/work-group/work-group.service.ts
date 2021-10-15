@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWorkGroupDto } from './dto/create-work-group.dto';
 import { UpdateWorkGroupDto } from './dto/update-work-group.dto';
+import {DatabaseService} from "../database/database.service";
 
 @Injectable()
 export class WorkGroupService {
+  constructor(private database: DatabaseService) {}
+
   create(createWorkGroupDto: CreateWorkGroupDto) {
     return 'This action adds a new workGroup';
   }
