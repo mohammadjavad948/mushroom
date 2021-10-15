@@ -1,12 +1,12 @@
 import React from "react";
-import {View} from "react-native";
+import {ScrollView, View} from "react-native";
 import {workGroupStyle} from "../../styles/WorkGroup";
 import Splitter from "../Splitter/Splitter";
 
 export default function WorkGroup(){
 
     return (
-        <View style={workGroupStyle.container}>
+        <ScrollView style={workGroupStyle.container}>
             <Splitter>
                 Offline Groups
             </Splitter>
@@ -18,6 +18,6 @@ export default function WorkGroup(){
             <Splitter>
                 Joined Groups
             </Splitter>
-        </View>
+        </ScrollView>
     )
 }
