@@ -16,8 +16,11 @@ import {
 import {BackButton, NativeRouter} from "react-router-native";
 import { Provider as PaperProvider } from 'react-native-paper';
 import Main from "./components/Main/Main";
+import {useAuthStore} from "./stores/authStore";
+import Auth from "./components/Auth/Auth";
 
 const App = () => {
+  const {token} = useAuthStore();
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
@@ -25,7 +28,7 @@ const App = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
           <NativeRouter>
               <BackButton>
-                  <Main />
+                  {token === "" ? <Auth /> : <Main />}
               </BackButton>
           </NativeRouter>
     </PaperProvider>
