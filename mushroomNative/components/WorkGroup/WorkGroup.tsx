@@ -26,9 +26,17 @@ export default function WorkGroup(){
                     Account Groups
                 </Splitter>
 
+                <GroupItem icon={<Icon name="add" size={25} />}>
+                    Add
+                </GroupItem>
+
                 <Splitter>
                     Joined Groups
                 </Splitter>
+
+                <GroupItem icon={<Icon name="add" size={25} />}>
+                    Add
+                </GroupItem>
             </View>
         </ScrollView>
     )
