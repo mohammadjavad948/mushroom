@@ -7,11 +7,21 @@ import WorkGroup from "../WorkGroup/WorkGroup";
 import Profile from "../Profile/Profile";
 import NavBar from "../Navbar/Navbar";
 import {View} from "react-native";
+import {useSpring, a} from "@react-spring/native";
 
 export default function Main(){
 
+    const animation = useSpring(() => ({
+        from: {
+            opacity: 0,
+        },
+        to: {
+            opacity: 1
+        }
+    }))
+
     return (
-        <View style={mainStyle.main}>
+        <a.View style={[mainStyle.main, ...animation]}>
             <Route
                 path="/"
                 exact={true}
@@ -34,6 +44,6 @@ export default function Main(){
                 <Profile />
             </Route>
             <NavBar />
-        </View>
+        </a.View>
     )
 }
