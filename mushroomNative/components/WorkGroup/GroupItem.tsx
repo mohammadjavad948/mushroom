@@ -6,7 +6,7 @@ import {Text} from "react-native-paper";
 interface Props{
     children: any
     icon?: any
-    click: any
+    click?: any
 }
 
 export default function GroupItem(props: Props){
