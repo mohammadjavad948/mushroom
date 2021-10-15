@@ -10,6 +10,8 @@ export const workGroupStyle = StyleSheet.create({
         borderRadius: 10,
         borderStyle: "solid",
         borderWidth: 1,
-        borderColor: "white"
+        borderColor: "white",
+        flexDirection: "row",
+        alignItems: "center"
     }
 })

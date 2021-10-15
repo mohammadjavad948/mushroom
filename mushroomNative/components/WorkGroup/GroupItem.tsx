@@ -13,7 +13,7 @@ export default function GroupItem(props: Props){
     return (
         <View style={workGroupStyle.item}>
             {props.icon}
-            <Text>{props.children}</Text>
+            <Text style={{marginLeft: 10}}>{props.children}</Text>
         </View>
     )
 }

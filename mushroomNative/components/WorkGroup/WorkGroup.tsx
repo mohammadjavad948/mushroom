@@ -3,6 +3,7 @@ import {ScrollView, View} from "react-native";
 import {workGroupStyle} from "../../styles/WorkGroup";
 import Splitter from "../Splitter/Splitter";
 import GroupItem from "./GroupItem";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function WorkGroup(){
 
@@ -17,7 +18,7 @@ export default function WorkGroup(){
                     Offline Groups
                 </Splitter>
 
-                <GroupItem>
+                <GroupItem icon={<Icon name="add" size={25} />}>
                     Add
                 </GroupItem>
 
