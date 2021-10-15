@@ -12,6 +12,7 @@ export const workGroupStyle = StyleSheet.create({
         borderWidth: 1,
         borderColor: "white",
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        marginTop: 5
     }
 })
