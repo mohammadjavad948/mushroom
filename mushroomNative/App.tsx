@@ -16,7 +16,7 @@ import {
 import {mainStyle} from "./styles/Main";
 import NavBar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
-import { NativeRouter, Route } from "react-router-native";
+import {BackButton, NativeRouter, Route} from "react-router-native";
 import { Provider as PaperProvider } from 'react-native-paper';
 import AddWork from "./components/AddWork/AddWork";
 import Profile from "./components/Profile/Profile";
@@ -29,6 +29,7 @@ const App = () => {
     <PaperProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
           <NativeRouter>
+              <BackButton>
                   <View style={mainStyle.main}>
                       <Route
                           path="/"
@@ -53,6 +54,7 @@ const App = () => {
                       </Route>
                       <NavBar />
                   </View>
+              </BackButton>
           </NativeRouter>
     </PaperProvider>
   );
