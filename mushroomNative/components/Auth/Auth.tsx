@@ -4,13 +4,23 @@ import {mainStyle} from "../../styles/Main";
 import {Button, Text, TextInput} from "react-native-paper";
 import {authStyle} from "../../styles/Auth";
 import {Formik} from 'formik';
+import {login} from "../../api/auth";
 
 export default function Auth(){
+
+    async function submit(value: any) {
+        try {
+            const data = await login(value);
+            console.log(data.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     return (
         <Formik
             initialValues={{ username: '', password: '' }}
-            onSubmit={values => console.log(values)}
+            onSubmit={submit}
         >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <View
