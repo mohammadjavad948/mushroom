@@ -46,7 +46,13 @@ export class WorkGroupService {
   }
 
 
-  async update(id: number, updateWorkGroupDto: UpdateWorkGroupDto) {
+  async update(id: number, updateWorkGroupDto: UpdateWorkGroupDto, userId: number) {
+    const can = await this.canManageGroup(userId, id);
+
+    if (!can) {
+      throw new HttpException('nope', 403);
+    }
+
     return `This action updates a #${id} workGroup`;
   }
 
