@@ -16,6 +16,9 @@ export const profileStyle = StyleSheet.create({
     infoContainer: {
         flexDirection: "row",
     },
+    actions: {
+      alignItems: "flex-start"
+    },
     image: {
       width: 80,
       height: 80,
@@ -29,5 +32,10 @@ export const profileStyle = StyleSheet.create({
         fontSize: 10,
         opacity: 0.8,
         marginLeft: 10
+    },
+    logout: {
+        backgroundColor: 'red',
+        marginLeft: 10,
+        marginTop: 10
     }
 })

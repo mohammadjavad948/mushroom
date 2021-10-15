@@ -1,6 +1,6 @@
 import React from "react";
 import {Image, ScrollView, View} from "react-native";
-import {ActivityIndicator, Text} from 'react-native-paper';
+import {ActivityIndicator, Button, Text} from 'react-native-paper';
 import {profileStyle} from "../../styles/Profile";
 import {useQuery} from "react-query";
 import {info} from "../../api/auth";
@@ -19,7 +19,7 @@ export default function Profile(){
                             source={require('./image.png')}
                             style={profileStyle.image}
                         />
-                        <View>
+                        <View style={profileStyle.actions}>
                             <Text style={profileStyle.username}>
                                 {data?.data.username}
                                 #{data?.data.id}
@@ -28,6 +28,14 @@ export default function Profile(){
                             <Text style={profileStyle.date}>
                                 Created At {new Date(data?.data.createdAt).toDateString()}
                             </Text>
+                            <Button
+                                compact={true}
+                                mode={"contained"}
+                                uppercase={false}
+                                style={profileStyle.logout}
+                            >
+                                logout
+                            </Button>
                         </View>
                     </View>
                 )}
