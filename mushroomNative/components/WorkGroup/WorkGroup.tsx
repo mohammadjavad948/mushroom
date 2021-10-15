@@ -7,17 +7,19 @@ export default function WorkGroup(){
 
     return (
         <ScrollView style={workGroupStyle.container}>
-            <Splitter>
-                Offline Groups
-            </Splitter>
+            <View>
+                <Splitter>
+                    Offline Groups
+                </Splitter>
 
-            <Splitter>
-                Account Groups
-            </Splitter>
+                <Splitter>
+                    Account Groups
+                </Splitter>
 
-            <Splitter>
-                Joined Groups
-            </Splitter>
+                <Splitter>
+                    Joined Groups
+                </Splitter>
+            </View>
         </ScrollView>
     )
 }
