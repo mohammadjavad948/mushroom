@@ -53,7 +53,16 @@ export class WorkGroupService {
       throw new HttpException('nope', 403);
     }
 
-    return `This action updates a #${id} workGroup`;
+    return this.database.workGroup.update({
+      where: {
+        id: id,
+      },
+      data: {
+        color: updateWorkGroupDto.color,
+        isPrivate: updateWorkGroupDto.isPrivate,
+        name: updateWorkGroupDto.name
+      }
+    })
   }
 
   async remove(id: number) {
