@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {DatabaseService} from "../database/database.service";
-import {verify} from "jsonwebtoken";
+import {sign, verify} from "jsonwebtoken";
 import {ConfigService} from "@nestjs/config";
 import {TokenPayloadI} from "../types/token";
 
@@ -13,7 +13,7 @@ export class AuthService {
     }
 
     generateToken(payload: TokenPayloadI){
-
+        return sign(payload, this.config.get('SECRET'))
     }
 
     checkToken(token: string): Promise<TokenPayloadI>{
