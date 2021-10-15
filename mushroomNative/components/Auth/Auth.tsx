@@ -24,6 +24,11 @@ export default function Auth(){
                 label={"username"}
                 mode={"outlined"}
             />
+            <TextInput
+                style={authStyle.input}
+                label={"password"}
+                mode={"outlined"}
+            />
         </View>
     )
 }

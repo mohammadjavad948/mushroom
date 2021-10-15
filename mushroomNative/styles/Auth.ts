@@ -8,6 +8,7 @@ export const authStyle = StyleSheet.create({
     },
     input: {
         width: '90%',
-        maxWidth: 300
+        maxWidth: 300,
+        marginBottom: 10
     }
 })
