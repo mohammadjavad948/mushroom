@@ -7,13 +7,21 @@ export const profileStyle = StyleSheet.create({
     title: {
       fontSize: 18,
       fontWeight: "300",
+      marginBottom: 20
     },
     view: {
         padding: 15,
         width: '100%'
     },
+    infoContainer: {
+        flexDirection: "row",
+    },
+    image: {
+      width: 80,
+      height: 80,
+    },
     username: {
         fontSize: 15,
-        marginTop: 10
+        marginLeft: 10
     },
 })
