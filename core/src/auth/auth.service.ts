@@ -63,7 +63,7 @@ export class AuthService {
     checkToken(token: string): Promise<TokenPayloadI>{
         return new Promise<TokenPayloadI>((resolve, reject) => {
             try {
-                const user = verify(token, this.config.get('SECRET'))
+                const user = verify(token, this.config.get('SECRET')) as TokenPayloadI
 
                 resolve(user);
             } catch (e){
