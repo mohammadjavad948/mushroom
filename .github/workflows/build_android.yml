@@ -12,11 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install yarn dependencies
-        run: |
-          cd mushroomNative && yarn install
+        run: cd mushroomNative && yarn install
       - name: Build Android Release
-        run: |
-          cd mushroomNative/android && chmod +x ./gradlew && ./gradlew assembleRelease
+        run: cd mushroomNative/android && chmod +x ./gradlew && ./gradlew assembleRelease
       - name: Create Release
         uses: actions/create-release@v1
         id: create_release
