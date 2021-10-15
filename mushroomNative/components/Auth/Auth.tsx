@@ -6,6 +6,7 @@ import {authStyle} from "../../styles/Auth";
 import {Formik} from 'formik';
 import {login} from "../../api/auth";
 import {useAuthStore} from "../../stores/authStore";
+import {a, useSpring} from '@react-spring/native';
 
 export default function Auth(){
 
@@ -21,19 +22,29 @@ export default function Auth(){
         }
     }
 
+    const animation = useSpring(() => ({
+        from: {
+            opacity: 0,
+        },
+        to: {
+            opacity: 1
+        }
+    }))
+
     return (
         <Formik
             initialValues={{ username: '', password: '' }}
             onSubmit={submit}
         >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
-                <View
+                <a.View
                     style={[
                         mainStyle.main,
                         {
                             alignItems: 'center',
                             justifyContent: 'center'
-                        }
+                        },
+                        ...animation
                     ]}
                 >
                     <Text style={authStyle.text}>
@@ -62,7 +73,7 @@ export default function Auth(){
                     >
                         Login
                     </Button>
-                </View>
+                </a.View>
             )}
         </Formik>
     )
