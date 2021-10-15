@@ -1,5 +1,4 @@
-import React from "react";
-import {View} from "react-native";
+import React, {useState} from "react";
 import {mainStyle} from "../../styles/Main";
 import {Button, Text, TextInput} from "react-native-paper";
 import {authStyle} from "../../styles/Auth";
@@ -10,15 +9,17 @@ import {a, useSpring} from '@react-spring/native';
 
 export default function Auth(){
 
+    const [loading, setLoading] = useState(false);
     const {setToken} = useAuthStore()
 
     async function submit(value: any) {
+        setLoading(true)
         try {
             const data = await login(value);
 
             setToken(data.data.token)
         } catch (e) {
-            console.log(e)
+            setLoading(false)
         }
     }
 
