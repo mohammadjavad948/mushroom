@@ -1,12 +1,17 @@
 import React from "react";
 import {View} from "react-native";
 import {workGroupStyle} from "../../styles/WorkGroup";
+import {Text} from "react-native-paper";
 
-export default function GroupItem(){
+interface Props{
+    children: any
+}
+
+export default function GroupItem(props: Props){
 
     return (
         <View style={workGroupStyle.item}>
-
+            <Text>{props.children}</Text>
         </View>
     )
 }
