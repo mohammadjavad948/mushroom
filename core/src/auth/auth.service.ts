@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import {DatabaseService} from "../database/database.service";
 import {verify} from "jsonwebtoken";
 import {ConfigService} from "@nestjs/config";
+import {TokenPayloadI} from "../types/token";
 
 @Injectable()
 export class AuthService {
@@ -11,12 +12,12 @@ export class AuthService {
 
     }
 
-    generateToken(payload: {id: number}){
+    generateToken(payload: TokenPayloadI){
 
     }
 
-    checkToken(token: string): Promise<{id: number}>{
-        return new Promise<{id: number}>((resolve, reject) => {
+    checkToken(token: string): Promise<TokenPayloadI>{
+        return new Promise<TokenPayloadI>((resolve, reject) => {
             try {
                 const user = verify(token, this.config.get('SECRET'))
 
