@@ -22,6 +22,7 @@ export default function Profile(){
                         <View>
                             <Text style={profileStyle.username}>
                                 {data?.data.username}
+                                #{data?.data.id}
                                 {data?.data.isVerified ?  "(verified)" : ""}
                             </Text>
                             <Text style={profileStyle.date}>
