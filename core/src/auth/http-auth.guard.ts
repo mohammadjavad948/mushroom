@@ -9,5 +9,7 @@ export class HttpAuthGuard implements CanActivate {
     context: ExecutionContext,
   ): Promise<boolean> {
     const token = context.switchToHttp().getRequest().headers?.auth;
+
+    const payload = await this.auth.checkToken(token);
   }
 }
