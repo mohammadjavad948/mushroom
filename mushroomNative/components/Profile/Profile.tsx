@@ -12,18 +12,18 @@ export default function Profile(){
     return (
         <ScrollView style={profileStyle.container}>
             <View style={profileStyle.view}>
-                <Text style={profileStyle.title}>Account info</Text>
                 {isLoading && <ActivityIndicator size={25} />}
                 {!isLoading && (
                     <View style={profileStyle.infoContainer}>
                         <Image
-                            source={{
-                                uri: `https://avatars.dicebear.com/api/initials/${data?.data.username || "default"}.svg`
-                            }}
+                            source={require('./image.png')}
                             style={profileStyle.image}
                         />
                         <View>
-                            <Text style={profileStyle.username}>{data?.data.username}</Text>
+                            <Text style={profileStyle.username}>
+                                {data?.data.username}
+                                {data?.data.isVerified ?  "(verified)" : ""}
+                            </Text>
                         </View>
                     </View>
                 )}
