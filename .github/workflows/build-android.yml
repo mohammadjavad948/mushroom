@@ -5,7 +5,6 @@ on:
       - main
 jobs:
   build-android:
-    needs: install-and-test
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
