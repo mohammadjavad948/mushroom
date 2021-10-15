@@ -1,17 +1,23 @@
 import create from "zustand";
-import {StateStorage} from "zustand/middleware";
+import {persist, StateStorage} from "zustand/middleware";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface TokenI{
     token: string
 }
 
-export const useAuthStore = create((set, get) => {
+export const useAuthStore = create<TokenI>(persist(
+    (set, get) => {
 
-    return {
-
+        return {
+            token: ""
+        }
+    },
+    {
+        name: "auth-storage",
+        getStorage: () => storage
     }
-});
+));
 
 const storage: StateStorage = {
     getItem: async (name: string): Promise<string | null> => {
