@@ -18,7 +18,7 @@ export class WorkGroupService {
     })
   }
 
-  findAll() {
+  findAll(userId: number) {
     return `This action returns all workGroup`;
   }
 

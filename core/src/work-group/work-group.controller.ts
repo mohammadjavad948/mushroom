@@ -16,8 +16,8 @@ export class WorkGroupController {
   }
 
   @Get()
-  findAll() {
-    return this.workGroupService.findAll();
+  findAll(@Req() req: Request) {
+    return this.workGroupService.findAll(req.userId);
   }
 
   @Get(':id')
