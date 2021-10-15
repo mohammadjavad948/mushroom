@@ -8,7 +8,14 @@ export class WorkGroupService {
   constructor(private database: DatabaseService) {}
 
   create(createWorkGroupDto: CreateWorkGroupDto, userId: number) {
-    return 'This action adds a new workGroup';
+    return this.database.workGroup.create({
+      data: {
+        color: createWorkGroupDto.color,
+        isPrivate: createWorkGroupDto.isPrivate,
+        name: createWorkGroupDto.name,
+        creatorId: userId,
+      }
+    })
   }
 
   findAll() {
