@@ -16,7 +16,7 @@ export default function CreateWorkGroup(){
     async function submit(value: any){
         setIsLoading(true)
         try {
-            const res = await createWorkGroup(value);
+            await createWorkGroup(value);
             setIsLoading(false);
             client.invalidateQueries('workGroups');
             history.push('/workgroup')
