@@ -26,14 +26,34 @@ export default function GroupItem(props: Props){
         >
             {props.icon}
             <Text style={{marginLeft: props.icon ? 10 : 0}}>{props.children}</Text>
-            <View
-                style={{
-                    position: 'absolute',
-                    right: 10
-                }}
-            >
-                <Text>hmm</Text>
-            </View>
+            {props.actions && <Action action={props.actions} />}
         </TouchableOpacity>
+    )
+}
+
+function Action(props: {action: Props['actions']}){
+
+    return (
+        <View
+            style={{
+                position: 'absolute',
+                right: 10,
+                flexDirection: "row"
+            }}
+        >
+            {props.action?.map((e, i) => {
+                return (
+                    <TouchableOpacity
+                        style={{
+                            padding: 5,
+                        }}
+                        onPress={e.click}
+                        key={i}
+                    >
+                        {e.icon}
+                    </TouchableOpacity>
+                )
+            })}
+        </View>
     )
 }
