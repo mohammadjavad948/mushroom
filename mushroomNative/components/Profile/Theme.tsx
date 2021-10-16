@@ -2,40 +2,49 @@ import React from "react";
 import {profileStyle} from "../../styles/Profile";
 import {TouchableOpacity, View} from "react-native";
 import {Text} from "react-native-paper";
+import {useThemeStore} from "../../stores/themeStore";
 
 export default function Theme(){
+
+    const themes = [
+        {
+            text: 'Dark',
+            theme: 'dark'
+        },
+        {
+            text: 'Light',
+            theme: 'light'
+        },
+        {
+            text: 'Follow System',
+            theme: 'follow'
+        }
+    ]
+
+    const {theme, setTheme, primary} = useThemeStore();
 
     return (
         <View
             style={profileStyle.themes}
         >
-            <TouchableOpacity
-                style={[
-                    profileStyle.theme
-                ]}
-            >
-                <Text>
-                    Dark
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[
-                    profileStyle.theme
-                ]}
-            >
-                <Text>
-                    Light
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[
-                    profileStyle.theme
-                ]}
-            >
-                <Text>
-                    Follow system
-                </Text>
-            </TouchableOpacity>
+            {themes.map((e, i) => {
+                return (
+                    <TouchableOpacity
+                        key={i}
+                        style={[
+                            profileStyle.theme,
+                            {
+                                borderColor: theme === e.theme ? primary : 'white'
+                            }
+                        ]}
+                        onPress={() => setTheme(e.theme as any)}
+                    >
+                        <Text>
+                            {e.text}
+                        </Text>
+                    </TouchableOpacity>
+                )
+            })}
         </View>
     )
 }
