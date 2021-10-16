@@ -18,7 +18,7 @@ export class WorkService {
       data: {
         creatorId: userId,
         description: createWorkDto.description,
-        dueDate: createWorkDto.dueDate,
+        dueDate: new Date(createWorkDto.dueDate).toISOString(),
         groupId: createWorkDto.groupId,
         title: createWorkDto.title,
       }
@@ -52,7 +52,7 @@ export class WorkService {
       },
       data: {
         description: updateWorkDto.description,
-        dueDate: updateWorkDto.dueDate,
+        dueDate: new Date(updateWorkDto.dueDate).toISOString(),
         title: updateWorkDto.title,
       }
     })
