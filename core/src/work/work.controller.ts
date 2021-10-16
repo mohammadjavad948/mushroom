@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Delete, UseGuards} from '@nestjs/common';
 import { WorkService } from './work.service';
 import { CreateWorkDto } from './dto/create-work.dto';
 import { UpdateWorkDto } from './dto/update-work.dto';
+import {HttpAuthGuard} from "../auth/http-auth.guard";
 
+@UseGuards(HttpAuthGuard)
 @Controller('work')
 export class WorkController {
   constructor(private readonly workService: WorkService) {}
