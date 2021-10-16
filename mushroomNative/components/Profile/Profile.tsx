@@ -65,6 +65,37 @@ export default function Profile(){
                     swatches={false}
                     discrete={false}
                 />
+                <View
+                    style={profileStyle.themes}
+                >
+                    <View
+                        style={[
+                            profileStyle.theme
+                        ]}
+                    >
+                        <Text>
+                            Dark
+                        </Text>
+                    </View>
+                    <View
+                        style={[
+                            profileStyle.theme
+                        ]}
+                    >
+                        <Text>
+                            Light
+                        </Text>
+                    </View>
+                    <View
+                        style={[
+                            profileStyle.theme
+                        ]}
+                    >
+                        <Text>
+                            Follow system
+                        </Text>
+                    </View>
+                </View>
             </View>
         </ScrollView>
     )

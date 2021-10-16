@@ -37,5 +37,20 @@ export const profileStyle = StyleSheet.create({
         backgroundColor: 'red',
         marginLeft: 10,
         marginTop: 10
+    },
+    themes: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        marginTop: 20
+    },
+    theme: {
+        padding: 10,
+        width: '95%',
+        borderRadius: 8,
+        borderColor: 'white',
+        borderStyle: "solid",
+        borderWidth: 1,
+        marginTop: 10
     }
 })
