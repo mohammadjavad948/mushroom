@@ -47,6 +47,9 @@ export default function Profile(){
                         </View>
                     </View>
                 )}
+                <Splitter beforeText={<Icon name="brush" size={20} />}>
+                    Theme
+                </Splitter>
             </View>
         </ScrollView>
     )
