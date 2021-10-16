@@ -4,6 +4,7 @@ import {navbarStyle} from "../../styles/Navbar";
 import {a, useSpring, config} from '@react-spring/native';
 import {useLocation} from 'react-router-native';
 import { matchPath } from "react-router";
+import {useThemeStore} from "../../stores/themeStore";
 
 interface Props{
     children: any
@@ -14,6 +15,7 @@ interface Props{
 
 export default function NavbarItem(props: Props){
 
+    const {primary} = useThemeStore();
     const location = useLocation();
 
     const [animation, api] = useSpring(() => ({
@@ -29,7 +31,7 @@ export default function NavbarItem(props: Props){
         })
 
         api.start({
-            backgroundColor: match ? '#f83cf3' : '#3b3b3b',
+            backgroundColor: match ? primary : '#3b3b3b',
             y: match ? -20 : 0
         })
     }, [location.pathname]);
