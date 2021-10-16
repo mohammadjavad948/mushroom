@@ -15,11 +15,11 @@ interface Props{
 
 export default function NavbarItem(props: Props){
 
-    const {primary} = useThemeStore();
+    const {primary, theme} = useThemeStore();
     const location = useLocation();
 
     const [animation, api] = useSpring(() => ({
-        backgroundColor: '#3b3b3b',
+        backgroundColor: theme === 'dark' ? '#3b3b3b' : '#e3e3e3',
         y: 0,
         config: config.gentle
     }));
@@ -31,7 +31,18 @@ export default function NavbarItem(props: Props){
         })
 
         api.start({
-            backgroundColor: match ? primary : '#3b3b3b',
+            backgroundColor: match ? primary : (theme === 'dark' ? '#3b3b3b' : '#e3e3e3')
+        })
+    }, [theme]);
+
+    useEffect(() => {
+        const match = matchPath(location.pathname, {
+            path: props.route,
+            exact: props.exact,
+        })
+
+        api.start({
+            backgroundColor: match ? primary : (theme === 'dark' ? '#3b3b3b' : '#e3e3e3'),
             y: match ? -20 : 0
         })
     }, [location.pathname]);
