@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWorkDto } from './dto/create-work.dto';
 import { UpdateWorkDto } from './dto/update-work.dto';
+import {DatabaseService} from "../database/database.service";
 
 @Injectable()
 export class WorkService {
+  constructor(private database: DatabaseService) {}
   create(createWorkDto: CreateWorkDto) {
     return 'This action adds a new work';
   }
