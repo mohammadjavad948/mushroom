@@ -1,12 +1,14 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {View} from "react-native";
 import {navbarStyle} from "../../styles/Navbar";
 import NavbarItem from "./NavbarItem";
 import {useHistory} from 'react-router-native';
+import Icon from "../Icon/Icon";
+import {useThemeStore} from "../../stores/themeStore";
 
 export default function NavBar(){
 
+    const {theme} = useThemeStore();
     const history = useHistory()
 
     function workGroup(){
@@ -26,7 +28,12 @@ export default function NavBar(){
     }
 
     return (
-        <View style={navbarStyle.container}>
+        <View style={[
+            navbarStyle.container,
+            {
+                backgroundColor: theme === "dark" ? '#3b3b3b' : '#e3e3e3'
+            }
+        ]}>
             <NavbarItem
                 click={dashboard}
                 route={'/'}
