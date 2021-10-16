@@ -1,7 +1,6 @@
 import React from "react";
 import {ScrollView, View} from "react-native";
 import {Button, Text, TextInput} from "react-native-paper";
-import {authStyle} from "../../styles/Auth";
 import {Formik} from "formik";
 import ColorPicker from "react-native-wheel-color-picker";
 
@@ -33,7 +32,7 @@ export default function CreateWorkGroup(){
                         ]}
                     >
                         <TextInput
-                            style={authStyle.input}
+                            style={{width: '90%'}}
                             label={"name"}
                             mode={"outlined"}
                             onChangeText={handleChange('name')}
