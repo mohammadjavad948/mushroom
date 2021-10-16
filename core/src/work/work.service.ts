@@ -12,6 +12,16 @@ export class WorkService {
     if (!can){
       throw new HttpException('nope', 403);
     }
+
+    return this.database.work.create({
+      data: {
+        creatorId: userId,
+        description: createWorkDto.description,
+        dueDate: createWorkDto.dueDate,
+        groupId: createWorkDto.groupId,
+        title: createWorkDto.title,
+      }
+    })
   }
 
   findOne(id: number) {
