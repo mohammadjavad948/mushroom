@@ -8,7 +8,10 @@ interface Props{
     icon?: any
     click?: any
     color?: string
-    actions: any
+    actions?: {
+        icon: any
+        click: any
+    }[]
 }
 
 export default function GroupItem(props: Props){
