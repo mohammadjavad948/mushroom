@@ -7,7 +7,7 @@ import ColorPicker from "react-native-wheel-color-picker";
 export default function CreateWorkGroup(){
 
     function submit(value: any){
-
+        console.log(value)
     }
 
     return (

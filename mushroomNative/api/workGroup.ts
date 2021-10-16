@@ -7,3 +7,10 @@ export function AllWorkGroups(){
         headers: headers()
     })
 }
+
+export function CreateWorkGroup(data){
+
+    return api.post('/work-group', data, {
+        headers: headers()
+    })
+}
