@@ -1,7 +1,6 @@
 import React from "react";
 import {View} from "react-native";
 import {splitterStyle} from "../../styles/Splitter";
-import {useThemeStore} from "../../stores/themeStore";
 import {Text} from "react-native-paper";
 
 interface Props{
@@ -10,8 +9,6 @@ interface Props{
 }
 
 export default function Splitter(props: Props){
-
-    const {theme} = useThemeStore();
 
     return (
         <View style={splitterStyle.main}>
