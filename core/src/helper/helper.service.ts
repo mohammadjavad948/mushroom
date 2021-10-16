@@ -33,4 +33,37 @@ export class HelperService {
 
         return sub > 0 || group > 0
     }
+
+    async canViewWork(userId: number, workId: number) {
+        /*
+         * the following query checks two things:
+         * 1 - check if the user is the owner of the workGroup
+         * OR
+         * 2 - check if the workGroup is public
+         */
+        const count = await this.database.workGroup.count({
+            where: {
+                OR: [
+                    {
+                        creatorId: userId,
+                        works: {
+                            some: {
+                                id: workId
+                            }
+                        }
+                    },
+                    {
+                        isPrivate: false,
+                        works: {
+                            some: {
+                                id: workId
+                            }
+                        }
+                    }
+                ]
+            }
+        });
+
+        return count > 0;
+    }
 }
