@@ -2,10 +2,11 @@ import {HttpException, Injectable} from '@nestjs/common';
 import { CreateWorkGroupDto } from './dto/create-work-group.dto';
 import { UpdateWorkGroupDto } from './dto/update-work-group.dto';
 import {DatabaseService} from "../database/database.service";
+import {HelperService} from "../helper/helper.service";
 
 @Injectable()
 export class WorkGroupService {
-  constructor(private database: DatabaseService) {}
+  constructor(private database: DatabaseService, private helper: HelperService) {}
 
   create(createWorkGroupDto: CreateWorkGroupDto, userId: number) {
     return this.database.workGroup.create({
@@ -29,7 +30,7 @@ export class WorkGroupService {
   }
 
   async findOne(id: number, userId: number) {
-    const can = await this.canViewGroup(userId, id);
+    const can = await this.helper.canViewGroup(userId, id);
 
     if (!can) {
       throw new HttpException('nope', 403);
@@ -47,7 +48,7 @@ export class WorkGroupService {
 
 
   async update(id: number, updateWorkGroupDto: UpdateWorkGroupDto, userId: number) {
-    const can = await this.canManageGroup(userId, id);
+    const can = await this.helper.canManageGroup(userId, id);
 
     if (!can) {
       throw new HttpException('nope', 403);
@@ -66,7 +67,7 @@ export class WorkGroupService {
   }
 
   async remove(id: number, userId: number) {
-    const can = await this.canManageGroup(userId, id);
+    const can = await this.helper.canManageGroup(userId, id);
 
     if (!can) {
       throw new HttpException('nope', 403);
@@ -77,34 +78,5 @@ export class WorkGroupService {
         id: id,
       }
     })
-  }
-
-  async canManageGroup(userId: number, groupId: number){
-    const group = await this.database.workGroup.count({
-      where: {
-        id: groupId,
-        creatorId: userId,
-      }
-    });
-
-    return group > 0
-  }
-
-  async canViewGroup(userId: number, groupId: number){
-    const sub = await this.database.subscription.count({
-      where: {
-        userId,
-        groupId
-      }
-    });
-
-    const group = await this.database.workGroup.count({
-      where: {
-        id: groupId,
-        creatorId: userId,
-      }
-    });
-
-    return sub > 0 || group > 0
   }
 }
