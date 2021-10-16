@@ -14,10 +14,6 @@ export default function Theme(){
         {
             text: 'Light',
             theme: 'light'
-        },
-        {
-            text: 'Follow System',
-            theme: 'follow'
         }
     ]
 
