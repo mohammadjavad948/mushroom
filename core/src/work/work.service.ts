@@ -21,4 +21,15 @@ export class WorkService {
   remove(id: number) {
     return `This action removes a #${id} work`;
   }
+
+  async canManageGroup(userId: number, groupId: number){
+    const group = await this.database.workGroup.count({
+      where: {
+        id: groupId,
+        creatorId: userId,
+      }
+    });
+
+    return group > 0
+  }
 }
