@@ -39,8 +39,23 @@ export class WorkService {
     })
   }
 
-  update(id: number, updateWorkDto: UpdateWorkDto) {
-    return `This action updates a #${id} work`;
+  async update(id: number, updateWorkDto: UpdateWorkDto, userId: number) {
+    const can = await this.helper.canManageWork(userId, id);
+
+    if (!can){
+      throw new HttpException('nope', 403);
+    }
+
+    return this.database.work.update({
+      where: {
+        id: id
+      },
+      data: {
+        description: updateWorkDto.description,
+        dueDate: updateWorkDto.dueDate,
+        title: updateWorkDto.title,
+      }
+    })
   }
 
   remove(id: number) {

@@ -21,8 +21,8 @@ export class WorkController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWorkDto: UpdateWorkDto) {
-    return this.workService.update(+id, updateWorkDto);
+  update(@Param('id') id: string, @Body() updateWorkDto: UpdateWorkDto, @Req() req: Request) {
+    return this.workService.update(+id, updateWorkDto, req.userId);
   }
 
   @Delete(':id')
