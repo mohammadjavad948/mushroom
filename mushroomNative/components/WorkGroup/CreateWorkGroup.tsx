@@ -52,7 +52,8 @@ export default function CreateWorkGroup(){
                             style={{
                                 flexDirection: "row",
                                 marginTop: 10,
-                                marginBottom: 10
+                                marginBottom: 10,
+                                alignItems: 'center'
                             }}
                         >
                             <Text>
