@@ -66,4 +66,19 @@ export class HelperService {
 
         return count > 0;
     }
+
+    async canManageWork(userId: number, workId: number){
+        const count = await this.database.workGroup.count({
+            where: {
+                creatorId: userId,
+                works: {
+                    some: {
+                        id: workId
+                    }
+                }
+            }
+        });
+
+        return count > 0
+    }
 }
