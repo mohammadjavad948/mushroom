@@ -11,7 +11,6 @@
 import React from 'react';
 import {
   StatusBar,
-  useColorScheme,
 } from 'react-native';
 import {BackButton, NativeRouter} from "react-router-native";
 import { Provider as PaperProvider, DefaultTheme, DarkTheme } from 'react-native-paper';
@@ -26,7 +25,6 @@ const queryClient = new QueryClient()
 const App = () => {
   const {theme, primary} = useThemeStore();
   const {token} = useAuthStore();
-  const isDarkMode = useColorScheme() === 'dark';
 
   const darkTheme = {
       ...DarkTheme,
@@ -48,7 +46,7 @@ const App = () => {
 
   return (
     <PaperProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <StatusBar barStyle={theme === 'light' ? 'light-content' : 'dark-content'} />
         <QueryClientProvider client={queryClient}>
           <NativeRouter>
               <BackButton>
