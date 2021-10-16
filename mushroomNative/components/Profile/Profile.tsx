@@ -7,6 +7,7 @@ import {info} from "../../api/auth";
 import {useAuthStore} from "../../stores/authStore";
 import Splitter from "../Splitter/Splitter";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import ColorPicker from "react-native-wheel-color-picker";
 
 export default function Profile(){
 
@@ -50,6 +51,19 @@ export default function Profile(){
                 <Splitter beforeText={<Icon name="brush" size={20} />}>
                     Theme
                 </Splitter>
+                <ColorPicker
+                    color={"#ffffff"}
+                    swatchesOnly={false}
+                    onColorChange={(e) => console.log(e)}
+                    onColorChangeComplete={(e) => console.log(e)}
+                    thumbSize={30}
+                    sliderSize={30}
+                    noSnap={false}
+                    row={false}
+                    swatchesLast={true}
+                    swatches={false}
+                    discrete={false}
+                />
             </View>
         </ScrollView>
     )
