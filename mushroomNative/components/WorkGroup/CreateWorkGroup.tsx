@@ -3,11 +3,17 @@ import {ScrollView, View} from "react-native";
 import {Button, Checkbox, Text, TextInput} from "react-native-paper";
 import {Formik} from "formik";
 import ColorPicker from "react-native-wheel-color-picker";
+import {createWorkGroup} from "../../api/workGroup";
 
 export default function CreateWorkGroup(){
 
-    function submit(value: any){
-        console.log(value)
+    async function submit(value: any){
+        try {
+            const res = await createWorkGroup(value);
+            console.log(res.data);
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
