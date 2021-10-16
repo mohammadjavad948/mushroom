@@ -38,7 +38,7 @@ export class HelperService {
         /*
          * the following query checks two things:
          * 1 - check if the user is the owner of the workGroup
-         * OR
+         * ------------------ OR ---------------------------
          * 2 - check if the workGroup is public
          */
         const count = await this.database.workGroup.count({
