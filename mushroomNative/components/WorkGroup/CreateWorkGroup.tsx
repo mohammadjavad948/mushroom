@@ -1,18 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import {ScrollView, View} from "react-native";
 import {Button, Checkbox, Text, TextInput} from "react-native-paper";
 import {Formik} from "formik";
 import ColorPicker from "react-native-wheel-color-picker";
 import {createWorkGroup} from "../../api/workGroup";
+import {useQueryClient} from "react-query";
+import {useHistory} from "react-router-native";
 
 export default function CreateWorkGroup(){
 
+    const [isLoading, setIsLoading] = useState(false);
+    const client = useQueryClient();
+    const history = useHistory();
+
     async function submit(value: any){
+        setIsLoading(true)
         try {
             const res = await createWorkGroup(value);
-            console.log(res.data);
+            setIsLoading(false);
+            client.invalidateQueries('workGroups');
+            history.push('/workgroup')
         } catch (e) {
-            console.log(e)
+            setIsLoading(false)
         }
     }
 
@@ -93,6 +102,8 @@ export default function CreateWorkGroup(){
                             mode="contained"
                             style={{marginTop: 10}}
                             onPress={handleSubmit}
+                            loading={isLoading}
+                            disabled={isLoading}
                         >
                             save
                         </Button>
