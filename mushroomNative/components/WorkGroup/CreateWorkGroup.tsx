@@ -31,6 +31,15 @@ export default function CreateWorkGroup(){
                             },
                         ]}
                     >
+                        <Text
+                            style={{
+                                fontSize: 15,
+                                marginTop: 10,
+                                marginBottom: 10,
+                            }}
+                        >
+                            Add Work Group
+                        </Text>
                         <TextInput
                             style={{width: '90%'}}
                             label={"name"}
