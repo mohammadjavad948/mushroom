@@ -6,11 +6,11 @@ import {ConfigModule} from "@nestjs/config";
 import { DatabaseModule } from './database/database.module';
 import { WorkGroupModule } from './work-group/work-group.module';
 import { WorkModule } from './work/work.module';
-import { HelperService } from './helper/helper.service';
+import { HelperModule } from './helper/helper.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({isGlobal: true}), AuthModule, DatabaseModule, WorkGroupModule, WorkModule],
+  imports: [ConfigModule.forRoot({isGlobal: true}), AuthModule, DatabaseModule, WorkGroupModule, WorkModule, HelperModule],
   controllers: [AppController],
-  providers: [AppService, HelperService],
+  providers: [AppService],
 })
 export class AppModule {}
