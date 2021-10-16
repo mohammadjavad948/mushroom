@@ -2,12 +2,13 @@ import {HttpException, Injectable} from '@nestjs/common';
 import { CreateWorkDto } from './dto/create-work.dto';
 import { UpdateWorkDto } from './dto/update-work.dto';
 import {DatabaseService} from "../database/database.service";
+import {HelperService} from "../helper/helper.service";
 
 @Injectable()
 export class WorkService {
-  constructor(private database: DatabaseService) {}
+  constructor(private database: DatabaseService, private helper: HelperService) {}
   async create(createWorkDto: CreateWorkDto, userId: number) {
-    const can = await this.canManageGroup(userId, createWorkDto.groupId);
+    const can = await this.helper.canManageGroup(userId, createWorkDto.groupId);
 
     if (!can){
       throw new HttpException('nope', 403);
@@ -34,16 +35,5 @@ export class WorkService {
 
   remove(id: number) {
     return `This action removes a #${id} work`;
-  }
-
-  async canManageGroup(userId: number, groupId: number){
-    const group = await this.database.workGroup.count({
-      where: {
-        id: groupId,
-        creatorId: userId,
-      }
-    });
-
-    return group > 0
   }
 }
