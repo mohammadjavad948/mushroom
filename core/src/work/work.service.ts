@@ -6,7 +6,7 @@ import {DatabaseService} from "../database/database.service";
 @Injectable()
 export class WorkService {
   constructor(private database: DatabaseService) {}
-  create(createWorkDto: CreateWorkDto) {
+  create(createWorkDto: CreateWorkDto, userId: number) {
     return 'This action adds a new work';
   }
 
