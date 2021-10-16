@@ -26,7 +26,7 @@ export class WorkController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.workService.remove(+id);
+  remove(@Param('id') id: string, @Req() req: Request) {
+    return this.workService.remove(+id, req.userId);
   }
 }

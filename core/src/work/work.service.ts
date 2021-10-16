@@ -58,7 +58,17 @@ export class WorkService {
     })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} work`;
+  async remove(id: number, userId: number) {
+    const can = await this.helper.canManageWork(userId, id);
+
+    if (!can){
+      throw new HttpException('nope', 403);
+    }
+
+    return this.database.work.delete({
+      where: {
+        id: id
+      }
+    })
   }
 }
