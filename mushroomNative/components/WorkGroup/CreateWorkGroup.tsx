@@ -53,7 +53,6 @@ export default function CreateWorkGroup(){
                                 color={values.color}
                                 swatchesOnly={false}
                                 onColorChangeComplete={(e: any) => setFieldValue('color', e)}
-                                onColorChange={(e: any) => setFieldValue('color', e)}
                                 thumbSize={30}
                                 sliderSize={30}
                                 noSnap={false}
