@@ -1,6 +1,6 @@
 import React from "react";
 import {ScrollView, View} from "react-native";
-import {Button, Text, TextInput} from "react-native-paper";
+import {Button, Checkbox, Text, TextInput} from "react-native-paper";
 import {Formik} from "formik";
 import ColorPicker from "react-native-wheel-color-picker";
 
@@ -15,7 +15,7 @@ export default function CreateWorkGroup(){
             flex: 1
         }}>
             <Formik
-                initialValues={{ name: '', color: '#ffffff' }}
+                initialValues={{ name: '', color: '#ffffff', isPrivate: true }}
                 onSubmit={submit}
             >
                 {({ handleChange,
@@ -47,6 +47,25 @@ export default function CreateWorkGroup(){
                             onChangeText={handleChange('name')}
                             onBlur={handleBlur('name')}
                         />
+
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                marginTop: 10,
+                                marginBottom: 10
+                            }}
+                        >
+                            <Text>
+                                Is Private
+                            </Text>
+                            <Checkbox
+                                status={values.isPrivate ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setFieldValue('isPrivate', !values.isPrivate);
+                                }}
+                            />
+                        </View>
+
 
                         <View style={{width: '90%'}}>
                             <ColorPicker
