@@ -9,8 +9,11 @@ import NavBar from "../Navbar/Navbar";
 import {View} from "react-native";
 import {useSpring, a} from "@react-spring/native";
 import CreateWorkGroup from "../WorkGroup/CreateWorkGroup";
+import {useThemeStore} from "../../stores/themeStore";
 
 export default function Main(){
+
+    const {theme} = useThemeStore();
 
     const animation = useSpring(() => ({
         from: {
@@ -22,7 +25,13 @@ export default function Main(){
     }))
 
     return (
-        <a.View style={[mainStyle.main, ...animation]}>
+        <a.View style={[
+            mainStyle.main,
+            ...animation,
+            {
+                backgroundColor: theme === 'dark' ? '#2b2b2b' : 'white'
+            }
+        ]}>
             <Route
                 path="/"
                 exact={true}
