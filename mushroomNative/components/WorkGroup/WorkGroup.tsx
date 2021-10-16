@@ -5,8 +5,13 @@ import Splitter from "../Splitter/Splitter";
 import GroupItem from "./GroupItem";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useHistory} from "react-router-native";
+import {useQuery} from "react-query";
+import {allWorkGroups} from "../../api/workGroup";
+import {ActivityIndicator} from "react-native-paper";
 
 export default function WorkGroup(){
+
+    const {isFetching, data} = useQuery(['workGroups'], allWorkGroups)
 
     const history = useHistory();
 
@@ -33,7 +38,7 @@ export default function WorkGroup(){
                     Homie
                 </GroupItem>
 
-                <Splitter>
+                <Splitter beforeText={isFetching && <ActivityIndicator size={15} />}>
                     Account Groups
                 </Splitter>
 
@@ -41,13 +46,17 @@ export default function WorkGroup(){
                     Add
                 </GroupItem>
 
-                <GroupItem icon={<Icon name="lock" size={25} />} color={"#05baf1"}>
-                    Cloud
-                </GroupItem>
-
-                <GroupItem icon={<Icon name="public" size={25} />} color={"#8f05f1"}>
-                    Public
-                </GroupItem>
+                {data?.data.map((e: any, i: number) => {
+                    return (
+                        <GroupItem
+                            icon={<Icon name={e.isPrivate ? "lock" : "public"} size={25} />}
+                            color={e.color}
+                            key={i}
+                        >
+                            {e.name}
+                        </GroupItem>
+                    )
+                })}
 
                 <Splitter>
                     Joined Groups
