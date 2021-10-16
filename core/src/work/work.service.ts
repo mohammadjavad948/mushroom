@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {HttpException, Injectable} from '@nestjs/common';
 import { CreateWorkDto } from './dto/create-work.dto';
 import { UpdateWorkDto } from './dto/update-work.dto';
 import {DatabaseService} from "../database/database.service";
@@ -6,8 +6,12 @@ import {DatabaseService} from "../database/database.service";
 @Injectable()
 export class WorkService {
   constructor(private database: DatabaseService) {}
-  create(createWorkDto: CreateWorkDto, userId: number) {
-    return 'This action adds a new work';
+  async create(createWorkDto: CreateWorkDto, userId: number) {
+    const can = await this.canManageGroup(userId, createWorkDto.groupId);
+
+    if (!can){
+      throw new HttpException('nope', 403);
+    }
   }
 
   findOne(id: number) {
