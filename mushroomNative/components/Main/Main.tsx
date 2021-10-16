@@ -8,6 +8,7 @@ import Profile from "../Profile/Profile";
 import NavBar from "../Navbar/Navbar";
 import {View} from "react-native";
 import {useSpring, a} from "@react-spring/native";
+import CreateWorkGroup from "../WorkGroup/CreateWorkGroup";
 
 export default function Main(){
 
@@ -32,6 +33,11 @@ export default function Main(){
                 path="/work/add"
             >
                 <AddWork />
+            </Route>
+            <Route
+                path="/workgroup/add"
+            >
+                <CreateWorkGroup />
             </Route>
             <Route
                 path="/workgroup"
