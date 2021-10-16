@@ -12,7 +12,9 @@ export default function CreateWorkGroup(){
     }
 
     return (
-        <ScrollView>
+        <ScrollView style={{
+            flex: 1
+        }}>
             <Formik
                 initialValues={{ name: '', color: '#ffffff' }}
                 onSubmit={submit}
