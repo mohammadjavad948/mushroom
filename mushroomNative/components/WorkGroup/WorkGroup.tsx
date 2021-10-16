@@ -57,7 +57,7 @@ export default function WorkGroup(){
                     }
                     ]}
                 >
-                    Subscribed
+                    Subscribed jahjsdfgaskfugf j s f s j f h s j f f h j f f f f
                 </GroupItem>
 
             </View>

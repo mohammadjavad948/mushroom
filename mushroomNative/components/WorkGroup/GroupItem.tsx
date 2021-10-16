@@ -20,7 +20,10 @@ export default function GroupItem(props: Props){
         <TouchableOpacity
             style={[
                 workGroupStyle.item,
-                {borderColor: props.color || 'white'}
+                {
+                    borderColor: props.color || 'white',
+                    paddingRight: props.actions ? props.actions.length * 38 : 0
+                }
             ]}
             onPress={props.click}
         >
