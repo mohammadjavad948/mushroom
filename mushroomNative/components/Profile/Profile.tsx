@@ -6,10 +6,10 @@ import {useQuery} from "react-query";
 import {info} from "../../api/auth";
 import {useAuthStore} from "../../stores/authStore";
 import Splitter from "../Splitter/Splitter";
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import ColorPicker from "react-native-wheel-color-picker";
 import {useThemeStore} from "../../stores/themeStore";
 import Theme from "./Theme";
+import Icon from "../Icon/Icon";
 
 export default function Profile(){
 

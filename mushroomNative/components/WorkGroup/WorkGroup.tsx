@@ -3,11 +3,11 @@ import {ScrollView, View} from "react-native";
 import {workGroupStyle} from "../../styles/WorkGroup";
 import Splitter from "../Splitter/Splitter";
 import GroupItem from "./GroupItem";
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useHistory} from "react-router-native";
 import {useQuery} from "react-query";
 import {allWorkGroups} from "../../api/workGroup";
 import {ActivityIndicator} from "react-native-paper";
+import Icon from "../Icon/Icon";
 
 export default function WorkGroup(){
 
