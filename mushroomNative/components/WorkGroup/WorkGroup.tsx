@@ -62,20 +62,6 @@ export default function WorkGroup(){
                     Joined Groups
                 </Splitter>
 
-                <GroupItem
-                    color={"red"}
-                    actions={[{
-                        icon: <Icon name="close" size={18} />,
-                        click: () => console.log('hmm')
-                    },{
-                        icon: <Icon name="person" size={18} />,
-                        click: () => console.log('hmm')
-                    }
-                    ]}
-                >
-                    Subscribed jahjsdfgaskfugf j s f s j f h s j f f h j f f f f
-                </GroupItem>
-
             </View>
         </ScrollView>
     )
