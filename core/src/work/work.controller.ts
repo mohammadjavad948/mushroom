@@ -12,11 +12,6 @@ export class WorkController {
     return this.workService.create(createWorkDto);
   }
 
-  @Get()
-  findAll() {
-    return this.workService.findAll();
-  }
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.workService.findOne(+id);

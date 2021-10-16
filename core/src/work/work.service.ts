@@ -8,10 +8,6 @@ export class WorkService {
     return 'This action adds a new work';
   }
 
-  findAll() {
-    return `This action returns all work`;
-  }
-
   findOne(id: number) {
     return `This action returns a #${id} work`;
   }
