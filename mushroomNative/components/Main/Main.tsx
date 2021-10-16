@@ -36,11 +36,13 @@ export default function Main(){
             </Route>
             <Route
                 path="/workgroup/add"
+                exact={true}
             >
                 <CreateWorkGroup />
             </Route>
             <Route
                 path="/workgroup"
+                exact={true}
             >
                 <WorkGroup />
             </Route>

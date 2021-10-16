@@ -4,8 +4,15 @@ import {workGroupStyle} from "../../styles/WorkGroup";
 import Splitter from "../Splitter/Splitter";
 import GroupItem from "./GroupItem";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useHistory} from "react-router-native";
 
 export default function WorkGroup(){
+
+    const history = useHistory();
+
+    function accountGroup(){
+        history.push('/workgroup/add');
+    }
 
     return (
         <ScrollView style={workGroupStyle.container}>
@@ -30,7 +37,7 @@ export default function WorkGroup(){
                     Account Groups
                 </Splitter>
 
-                <GroupItem icon={<Icon name="add" size={25} />}>
+                <GroupItem click={accountGroup} icon={<Icon name="add" size={25} />}>
                     Add
                 </GroupItem>
 
