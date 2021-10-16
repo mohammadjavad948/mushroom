@@ -9,6 +9,7 @@ import Splitter from "../Splitter/Splitter";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ColorPicker from "react-native-wheel-color-picker";
 import {useThemeStore} from "../../stores/themeStore";
+import Theme from "./Theme";
 
 export default function Profile(){
 
@@ -65,7 +66,7 @@ export default function Profile(){
                     swatches={false}
                     discrete={false}
                 />
-
+                <Theme />
             </View>
         </ScrollView>
     )
