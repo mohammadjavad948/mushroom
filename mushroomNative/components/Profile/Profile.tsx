@@ -5,6 +5,8 @@ import {profileStyle} from "../../styles/Profile";
 import {useQuery} from "react-query";
 import {info} from "../../api/auth";
 import {useAuthStore} from "../../stores/authStore";
+import Splitter from "../Splitter/Splitter";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function Profile(){
 
@@ -14,6 +16,9 @@ export default function Profile(){
     return (
         <ScrollView style={profileStyle.container}>
             <View style={profileStyle.view}>
+                <Splitter beforeText={<Icon name="person" size={20} />}>
+                    Account
+                </Splitter>
                 {isLoading && <ActivityIndicator size={25} />}
                 {!isLoading && (
                     <View style={profileStyle.infoContainer}>
