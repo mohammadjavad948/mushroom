@@ -8,9 +8,11 @@ import {useAuthStore} from "../../stores/authStore";
 import Splitter from "../Splitter/Splitter";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ColorPicker from "react-native-wheel-color-picker";
+import {useThemeStore} from "../../stores/themeStore";
 
 export default function Profile(){
 
+    const {primary, setPrimary} = useThemeStore();
     const {data, isLoading} = useQuery('userInfo', info)
     const {logout} = useAuthStore();
 
@@ -52,10 +54,9 @@ export default function Profile(){
                     Theme
                 </Splitter>
                 <ColorPicker
-                    color={"#ffffff"}
+                    color={primary}
                     swatchesOnly={false}
-                    onColorChange={(e) => console.log(e)}
-                    onColorChangeComplete={(e) => console.log(e)}
+                    onColorChangeComplete={(e) => setPrimary(e)}
                     thumbSize={30}
                     sliderSize={30}
                     noSnap={false}
