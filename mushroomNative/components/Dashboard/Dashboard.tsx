@@ -3,7 +3,7 @@ import {FlatList, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import DashboardItem from "./Item";
 import Splitter from "../Splitter/Splitter";
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from "../Icon/Icon";
 
 const data = [
     {

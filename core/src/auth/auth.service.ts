@@ -71,4 +71,12 @@ export class AuthService {
             }
         })
     }
+
+    userInfo(userId: number){
+        return this.database.user.findFirst({
+            where: {
+                id: userId,
+            }
+        })
+    }
 }

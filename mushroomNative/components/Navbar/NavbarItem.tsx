@@ -4,6 +4,7 @@ import {navbarStyle} from "../../styles/Navbar";
 import {a, useSpring, config} from '@react-spring/native';
 import {useLocation} from 'react-router-native';
 import { matchPath } from "react-router";
+import {useThemeStore} from "../../stores/themeStore";
 
 interface Props{
     children: any
@@ -14,10 +15,11 @@ interface Props{
 
 export default function NavbarItem(props: Props){
 
+    const {primary, theme} = useThemeStore();
     const location = useLocation();
 
     const [animation, api] = useSpring(() => ({
-        backgroundColor: '#3b3b3b',
+        backgroundColor: theme === 'dark' ? '#3b3b3b' : '#e3e3e3',
         y: 0,
         config: config.gentle
     }));
@@ -29,7 +31,18 @@ export default function NavbarItem(props: Props){
         })
 
         api.start({
-            backgroundColor: match ? '#f83cf3' : '#3b3b3b',
+            backgroundColor: match ? primary : (theme === 'dark' ? '#3b3b3b' : '#e3e3e3')
+        })
+    }, [theme]);
+
+    useEffect(() => {
+        const match = matchPath(location.pathname, {
+            path: props.route,
+            exact: props.exact,
+        })
+
+        api.start({
+            backgroundColor: match ? primary : (theme === 'dark' ? '#3b3b3b' : '#e3e3e3'),
             y: match ? -20 : 0
         })
     }, [location.pathname]);

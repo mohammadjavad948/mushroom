@@ -11,51 +11,49 @@
 import React from 'react';
 import {
   StatusBar,
-  useColorScheme, View,
 } from 'react-native';
-import {mainStyle} from "./styles/Main";
-import NavBar from "./components/Navbar/Navbar";
-import Dashboard from "./components/Dashboard/Dashboard";
-import {BackButton, NativeRouter, Route} from "react-router-native";
-import { Provider as PaperProvider } from 'react-native-paper';
-import AddWork from "./components/AddWork/AddWork";
-import Profile from "./components/Profile/Profile";
-import WorkGroup from "./components/WorkGroup/WorkGroup";
+import {BackButton, NativeRouter} from "react-router-native";
+import { Provider as PaperProvider, DefaultTheme, DarkTheme } from 'react-native-paper';
+import Main from "./components/Main/Main";
+import {useAuthStore} from "./stores/authStore";
+import Auth from "./components/Auth/Auth";
+import {QueryClient, QueryClientProvider} from "react-query";
+import {useThemeStore} from "./stores/themeStore";
+
+const queryClient = new QueryClient()
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const {theme, primary} = useThemeStore();
+  const {token} = useAuthStore();
+
+  const darkTheme = {
+      ...DarkTheme,
+      dark: true,
+      colors: {
+          ...DarkTheme.colors,
+          primary: primary
+      },
+  };
+
+  const lightTheme = {
+        ...DefaultTheme,
+        dark: false,
+        colors: {
+            ...DefaultTheme.colors,
+            primary: primary
+        },
+  };
 
   return (
-    <PaperProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+    <PaperProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+        <StatusBar barStyle={'light-content'} />
+        <QueryClientProvider client={queryClient}>
           <NativeRouter>
               <BackButton>
-                  <View style={mainStyle.main}>
-                      <Route
-                          path="/"
-                          exact={true}
-                      >
-                          <Dashboard />
-                      </Route>
-                      <Route
-                          path="/work/add"
-                      >
-                          <AddWork />
-                      </Route>
-                      <Route
-                          path="/workgroup"
-                      >
-                          <WorkGroup />
-                      </Route>
-                      <Route
-                          path="/profile"
-                      >
-                          <Profile />
-                      </Route>
-                      <NavBar />
-                  </View>
+                  {token === "" ? <Auth /> : <Main />}
               </BackButton>
           </NativeRouter>
+        </QueryClientProvider>
     </PaperProvider>
   );
 };

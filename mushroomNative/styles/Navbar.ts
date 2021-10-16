@@ -7,7 +7,6 @@ export const navbarStyle = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        backgroundColor: '#3b3b3b',
     },
     item: {
         borderRadius: 50,
