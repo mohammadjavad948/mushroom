@@ -6,6 +6,7 @@ interface ThemeI{
     theme: 'dark' | 'light' | 'follow',
     primary: string
     setTheme: (theme: ThemeI['theme']) => void
+    setPrimary: (color: string) => void
 }
 
 export const useThemeStore = create<ThemeI>(persist(
@@ -17,6 +18,9 @@ export const useThemeStore = create<ThemeI>(persist(
             setTheme: theme => {
                 set({theme});
             },
+            setPrimary: (color: string) => {
+                set({primary: color})
+            }
         }
     },
     {
