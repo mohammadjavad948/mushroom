@@ -46,7 +46,7 @@ const App = () => {
 
   return (
     <PaperProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-        <StatusBar barStyle={theme === 'light' ? 'light-content' : 'dark-content'} />
+        <StatusBar barStyle={'light-content'} />
         <QueryClientProvider client={queryClient}>
           <NativeRouter>
               <BackButton>
