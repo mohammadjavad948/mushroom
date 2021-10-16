@@ -25,7 +25,13 @@ export default function GroupItem(props: Props){
             onPress={props.click}
         >
             {props.icon}
-            <Text style={{marginLeft: props.icon ? 10 : 0}}>{props.children}</Text>
+            <Text
+                style={{
+                    marginLeft: props.icon ? 10 : 0,
+                }}
+            >
+                {props.children}
+            </Text>
             {props.actions && <Action action={props.actions} />}
         </TouchableOpacity>
     )

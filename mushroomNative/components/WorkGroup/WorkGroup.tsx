@@ -51,7 +51,11 @@ export default function WorkGroup(){
                     actions={[{
                         icon: <Icon name="close" size={18} />,
                         click: () => console.log('hmm')
-                    }]}
+                    },{
+                        icon: <Icon name="person" size={18} />,
+                        click: () => console.log('hmm')
+                    }
+                    ]}
                 >
                     Subscribed
                 </GroupItem>
