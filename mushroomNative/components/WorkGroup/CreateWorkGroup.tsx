@@ -40,18 +40,20 @@ export default function CreateWorkGroup(){
                             onBlur={handleBlur('name')}
                         />
 
-                        <ColorPicker
-                            color={values.color}
-                            swatchesOnly={false}
-                            onColorChangeComplete={(e: any) => setFieldValue('color', e)}
-                            thumbSize={30}
-                            sliderSize={30}
-                            noSnap={false}
-                            row={false}
-                            swatchesLast={true}
-                            swatches={false}
-                            discrete={false}
-                        />
+                        <View style={{width: '90%'}}>
+                            <ColorPicker
+                                color={values.color}
+                                swatchesOnly={false}
+                                onColorChangeComplete={(e: any) => setFieldValue('color', e)}
+                                thumbSize={30}
+                                sliderSize={30}
+                                noSnap={false}
+                                row={false}
+                                swatchesLast={true}
+                                swatches={false}
+                                discrete={false}
+                            />
+                        </View>
 
                         <Button
                             mode="contained"
