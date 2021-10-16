@@ -25,8 +25,18 @@ export class WorkService {
     })
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} work`;
+  async findOne(id: number, userId: number) {
+    const can = await this.helper.canViewWork(userId, id);
+
+    if (!can){
+      throw new HttpException('nope', 403);
+    }
+
+    return this.database.work.findUnique({
+      where: {
+        id: id,
+      }
+    })
   }
 
   update(id: number, updateWorkDto: UpdateWorkDto) {

@@ -16,8 +16,8 @@ export class WorkController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.workService.findOne(+id);
+  findOne(@Param('id') id: string, @Req() req: Request) {
+    return this.workService.findOne(+id, req.userId);
   }
 
   @Patch(':id')
