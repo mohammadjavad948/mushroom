@@ -18,6 +18,7 @@ export default function AddWork(){
                 dueDate: new Date()
             });
         } catch (e){
+            console.log(e)
             helper.setSubmitting(false);
         }
     }
