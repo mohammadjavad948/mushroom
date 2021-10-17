@@ -8,6 +8,7 @@ import { WorkGroupModule } from './work-group/work-group.module';
 import { WorkModule } from './work/work.module';
 import { HelperModule } from './helper/helper.module';
 import { SubModule } from './sub/sub.module';
+import { SearchModule } from './search/search.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { SubModule } from './sub/sub.module';
     WorkModule,
     HelperModule,
     SubModule,
+    SearchModule,
   ],
   controllers: [AppController],
   providers: [AppService],
