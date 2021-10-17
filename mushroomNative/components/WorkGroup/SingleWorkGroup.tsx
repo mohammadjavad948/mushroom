@@ -146,7 +146,7 @@ function Item({item}: any){
                         dashboardStyle.daysLeft,
                     ]}
                 >
-                    3 days left
+                    {new Date(item.dueDate).toDateString()}
                 </Text>
             </View>
         </View>
