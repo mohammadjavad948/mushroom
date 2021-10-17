@@ -4,8 +4,12 @@ import {Text} from 'react-native-paper';
 import {addWorkStyle} from "../../styles/AddWork";
 import {TextInput} from "react-native-paper";
 import {Picker} from '@react-native-picker/picker';
+import {useQuery} from "react-query";
+import {allWorkGroups} from "../../api/workGroup";
 
 export default function AddWork(){
+
+    const {data} = useQuery(['workGroup'], allWorkGroups)
 
     return (
         <ScrollView style={addWorkStyle.container}>
@@ -31,8 +35,11 @@ export default function AddWork(){
                     onValueChange={(itemValue, itemIndex) =>
                         console.log(itemValue)
                     }>
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
+                    {data?.data.map((e, i) => {
+                        return (
+                            <Picker.Item label={e.name} value={e.id} key={i} />
+                        )
+                    })}
                 </Picker>
             </View>
         </ScrollView>

@@ -1,6 +1,6 @@
 import React from "react";
 import {mainStyle} from "../../styles/Main";
-import {Route} from "react-router-native";
+import {Route, Switch} from "react-router-native";
 import Dashboard from "../Dashboard/Dashboard";
 import AddWork from "../AddWork/AddWork";
 import WorkGroup from "../WorkGroup/WorkGroup";
@@ -34,46 +34,48 @@ export default function Main(){
                 backgroundColor: theme === 'dark' ? '#2b2b2b' : 'white'
             }
         ]}>
-            <Route
-                path="/"
-                exact={true}
-            >
-                <Dashboard />
-            </Route>
-            <Route
-                path="/work/add"
-            >
-                <AddWork />
-            </Route>
-            <Route
-                path="/workgroup/add"
-                exact={true}
-            >
-                <CreateWorkGroup />
-            </Route>
-            <Route
-                path="/workgroup/:id/edit"
-                exact={true}
-            >
-                <EditWorkGroup />
-            </Route>
-            <Route
-                path="/workgroup/:id"
-                exact={true}
-            >
-                <SingleWorkGroup />
-            </Route>
-            <Route
-                path="/workgroup"
-                exact={true}
-            >
-                <WorkGroup />
-            </Route>
-            <Route
-                path="/profile"
-            >
-                <Profile />
-            </Route>
+            <Switch>
+                <Route
+                    path="/"
+                    exact={true}
+                >
+                    <Dashboard />
+                </Route>
+                <Route
+                    path="/work/add"
+                >
+                    <AddWork />
+                </Route>
+                <Route
+                    path="/workgroup/add"
+                    exact={true}
+                >
+                    <CreateWorkGroup />
+                </Route>
+                <Route
+                    path="/workgroup/:id"
+                    exact={true}
+                >
+                    <SingleWorkGroup />
+                </Route>
+                <Route
+                    path="/workgroup/:id/edit"
+                    exact={true}
+                >
+                    <EditWorkGroup />
+                </Route>
+                <Route
+                    path="/workgroup"
+                    exact={true}
+                >
+                    <WorkGroup />
+                </Route>
+                <Route
+                    path="/profile"
+                >
+                    <Profile />
+                </Route>
+            </Switch>
             <NavBar />
         </a.View>
     )
