@@ -25,6 +25,10 @@ export default function SingleWorkGroup(){
         history.push('/work/add')
     }
 
+    async function edit(){
+        history.push(`/workgroup/${data?.data.id}/edit`)
+    }
+
     async function remove(){
         try {
             await removeWorkGroup(data?.data.id);
@@ -63,7 +67,7 @@ export default function SingleWorkGroup(){
                             />
                             <Action
                                 icon={<Icon name={"edit"} size={25}/>}
-                                click={() => console.log('edit')}
+                                click={edit}
                             />
                             <Action
                                 icon={<Icon name={"delete"} color={'red'} size={25}/>}
