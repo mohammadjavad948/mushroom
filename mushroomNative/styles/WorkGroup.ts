@@ -14,5 +14,11 @@ export const workGroupStyle = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         marginTop: 10
+    },
+    icons: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        flexDirection: 'row'
     }
 })

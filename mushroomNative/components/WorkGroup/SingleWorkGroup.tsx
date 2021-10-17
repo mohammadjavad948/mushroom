@@ -1,10 +1,12 @@
 import React from "react";
-import {View} from "react-native";
+import {TouchableOpacity, View} from "react-native";
 import {ActivityIndicator, Text} from "react-native-paper";
 import {useQuery} from "react-query";
 import {useParams} from 'react-router-native';
 import {getWorkGroup} from "../../api/workGroup";
 import {info} from "../../api/auth";
+import {workGroupStyle} from "../../styles/WorkGroup";
+import Icon from "../Icon/Icon";
 
 export default function SingleWorkGroup(){
 
@@ -35,8 +37,37 @@ export default function SingleWorkGroup(){
                     }}
                 >
                     <Text>{data?.data.name}</Text>
+                    <View style={workGroupStyle.icons}>
+                        <Action
+                            icon={<Icon name={"edit"} size={25}/>}
+                            click={() => console.log('edit')}
+                        />
+                        <Action
+                            icon={<Icon name={"delete"} color={'red'} size={25}/>}
+                            click={() => console.log('delete')}
+                        />
+                    </View>
                 </View>
             )}
         </View>
+    )
+}
+
+interface Props{
+    icon: any
+    click: any
+}
+
+function Action(props: Props){
+
+    return (
+        <TouchableOpacity
+            onPress={props.click}
+            style={{
+                padding: 5
+            }}
+        >
+            {props.icon}
+        </TouchableOpacity>
     )
 }
