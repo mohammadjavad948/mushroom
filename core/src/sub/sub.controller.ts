@@ -20,6 +20,6 @@ export class SubController {
 
   @Patch('/unsub/:id')
   async unsub(@Param('id') id: string, @Req() req: Request){
-
+    return this.subService.unsub(req.userId, +id);
   }
 }
