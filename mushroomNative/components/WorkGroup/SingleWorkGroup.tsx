@@ -9,6 +9,8 @@ import {workGroupStyle} from "../../styles/WorkGroup";
 import Icon from "../Icon/Icon";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {removeWork} from "../../api/work";
+// @ts-ignore
+import Markdown from 'react-native-simple-markdown'
 
 export default function SingleWorkGroup(){
 
@@ -141,15 +143,9 @@ function Item({item}: any){
                 ]}>
                     {item.title}
                 </Text>
-                <Text
-                    style={[
-                        {
-                            opacity: 0.7
-                        }
-                    ]}
-                >
+                <Markdown>
                     {item.description}
-                </Text>
+                </Markdown>
                 <Text
                     style={[
                         dashboardStyle.daysLeft,
