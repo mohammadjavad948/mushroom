@@ -10,7 +10,7 @@ export class SubController {
 
   @Get()
   async subs(@Req() req: Request){
-
+    return this.subService.allSubs(req.userId)
   }
 
   @Patch('/:id')
