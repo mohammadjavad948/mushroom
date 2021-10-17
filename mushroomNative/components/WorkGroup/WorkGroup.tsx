@@ -11,12 +11,16 @@ import Icon from "../Icon/Icon";
 
 export default function WorkGroup(){
 
-    const {isFetching, data} = useQuery(['workGroups'], allWorkGroups)
+    const {isFetching, data} = useQuery(['workGroup'], allWorkGroups)
 
     const history = useHistory();
 
     function accountGroup(){
         history.push('/workgroup/add');
+    }
+
+    function groupClick(id: number){
+        history.push('/workgroup/' + id);
     }
 
     return (
@@ -31,11 +35,7 @@ export default function WorkGroup(){
                 </Splitter>
 
                 <GroupItem icon={<Icon name="add" size={25} />}>
-                    Add
-                </GroupItem>
-
-                <GroupItem color={"yellow"}>
-                    Homie
+                    Add (Soon...)
                 </GroupItem>
 
                 <Splitter beforeText={isFetching && <ActivityIndicator size={15} />}>
@@ -51,6 +51,7 @@ export default function WorkGroup(){
                         <GroupItem
                             icon={<Icon name={e.isPrivate ? "lock" : "public"} size={25} />}
                             color={e.color}
+                            click={() => groupClick(e.id)}
                             key={i}
                         >
                             {e.name}

@@ -7,6 +7,6 @@ export default function Icon(props: any){
     const {theme} = useThemeStore();
 
     return (
-        <IC {...props} color={theme === 'dark' ? 'white' : 'black'}/>
+        <IC color={theme === 'dark' ? 'white' : 'black'} {...props}/>
     )
 }

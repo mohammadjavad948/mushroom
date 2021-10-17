@@ -1,40 +1,43 @@
 import React from "react";
-import {ScrollView, View} from "react-native";
-import {Text} from 'react-native-paper';
+import {ScrollView} from "react-native";
 import {addWorkStyle} from "../../styles/AddWork";
-import {TextInput} from "react-native-paper";
-import {Picker} from '@react-native-picker/picker';
+import AddWorkForm from "./AddWorkForm";
+import {FormikHelpers} from "formik";
+import {createWork} from "../../api/work";
+import {useQueryClient} from "react-query";
 
 export default function AddWork(){
 
+    const client = useQueryClient();
+
+    async function submit(value: any, helper: FormikHelpers<any>){
+        try {
+            await createWork(value);
+            helper.setSubmitting(false);
+            helper.setValues({
+                title: "",
+                description: "",
+                groupId: null,
+                dueDate: new Date()
+            });
+            client.invalidateQueries('workGroup')
+        } catch (e){
+            console.log(e)
+            helper.setSubmitting(false);
+        }
+    }
+    
     return (
         <ScrollView style={addWorkStyle.container}>
-            <View style={addWorkStyle.view}>
-                <Text style={addWorkStyle.title}>
-                    Add New Work
-                </Text>
-                <TextInput
-                    style={addWorkStyle.input}
-                    label={"Title"}
-                    mode={"outlined"}
-                />
-                <TextInput
-                    style={addWorkStyle.input}
-                    label={"Description"}
-                    mode={"outlined"}
-                    multiline={true}
-                    numberOfLines={7}
-                />
-                <Picker
-                    style={[addWorkStyle.input]}
-                    selectedValue={'js'}
-                    onValueChange={(itemValue, itemIndex) =>
-                        console.log(itemValue)
-                    }>
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
-                </Picker>
-            </View>
+            <AddWorkForm 
+                submit={submit}
+                init={{
+                    title: "",
+                    description: "",
+                    groupId: null,
+                    dueDate: new Date()
+                }}
+            />
         </ScrollView>
     )
 }

@@ -17,7 +17,7 @@ export default function CreateWorkGroup(){
             await createWorkGroup(value);
 
             helper.setSubmitting(false)
-            client.invalidateQueries('workGroups');
+            client.invalidateQueries('workGroup');
             history.push('/workgroup')
 
         } catch (e) {
