@@ -39,6 +39,7 @@ export default function EditWorkGroup(){
             {isLoading && <ActivityIndicator size={25}/>}
             {!isLoading && (
                 <WorkGroupForm
+                    isEdit={true}
                     submit={submit}
                     init={data?.data}
                 />

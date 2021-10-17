@@ -7,6 +7,7 @@ import ColorPicker from "react-native-wheel-color-picker";
 interface Props{
     submit: any
     init: any
+    isEdit?: boolean
 }
 
 export default function WorkGroupForm(props: Props){
@@ -37,7 +38,7 @@ export default function WorkGroupForm(props: Props){
                             marginBottom: 10,
                         }}
                     >
-                        Add Work Group
+                        {props.isEdit ? 'Edit Work Group' : 'Add Work Group'}
                     </Text>
                     <TextInput
                         style={{width: '90%'}}
