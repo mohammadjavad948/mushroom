@@ -81,4 +81,19 @@ export class HelperService {
 
     return count > 0;
   }
+
+  async isSubbed(userId: number, groupId: number){
+    const count = await this.database.workGroup.count({
+      where: {
+        subscribers: {
+          some: {
+            userId: userId
+          }
+        },
+        id: groupId,
+      }
+    });
+
+    return count > 0
+  }
 }
