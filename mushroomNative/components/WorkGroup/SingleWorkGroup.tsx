@@ -148,6 +148,9 @@ function Item({item}: any){
                 >
                     {new Date(item.dueDate).toDateString()}
                 </Text>
+                <View>
+                    <Icon name="delete" size={20} />
+                </View>
             </View>
         </View>
     )
