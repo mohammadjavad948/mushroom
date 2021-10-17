@@ -3,11 +3,23 @@ import {ScrollView} from "react-native";
 import {addWorkStyle} from "../../styles/AddWork";
 import AddWorkForm from "./AddWorkForm";
 import {FormikHelpers} from "formik";
+import {createWork} from "../../api/work";
 
 export default function AddWork(){
 
-    function submit(value: any, helper: FormikHelpers<any>){
-        console.log(value)
+    async function submit(value: any, helper: FormikHelpers<any>){
+        try {
+            await createWork(value);
+            helper.setSubmitting(false);
+            helper.setValues({
+                title: "",
+                description: "",
+                groupId: null,
+                dueDate: new Date()
+            });
+        } catch (e){
+            helper.setSubmitting(false);
+        }
     }
     
     return (
