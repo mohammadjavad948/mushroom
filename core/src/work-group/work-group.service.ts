@@ -44,7 +44,13 @@ export class WorkGroupService {
         id: id,
       },
       include: {
-        works: true,
+        works: {
+          orderBy: [
+            {
+              dueDate: "asc"
+            }
+          ]
+        }
       },
     });
   }
