@@ -7,6 +7,7 @@ import {Picker} from "@react-native-picker/picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import {useQuery} from "react-query";
 import {allWorkGroups} from "../../api/workGroup";
+import Icon from "../Icon/Icon";
 
 interface Props{
     submit: any
@@ -68,8 +69,19 @@ export default function AddWorkForm(props: Props){
                             )
                         })}
                     </Picker>
-                    <TouchableOpacity onPress={() => setShow(true)}>
-                        <Text>Select Date</Text>
+                    <TouchableOpacity
+                        onPress={() => setShow(true)}
+                        style={{
+                            marginTop: 20,
+                            marginBottom: 20,
+                            flexDirection: "row",
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Icon name={'event'} size={20}/>
+                        <Text style={{marginLeft: 10}}>
+                            Click to Select Date
+                        </Text>
                     </TouchableOpacity>
 
                     {show && (
