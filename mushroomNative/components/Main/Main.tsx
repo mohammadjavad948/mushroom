@@ -11,6 +11,7 @@ import {useSpring, a} from "@react-spring/native";
 import CreateWorkGroup from "../WorkGroup/CreateWorkGroup";
 import {useThemeStore} from "../../stores/themeStore";
 import SingleWorkGroup from "../WorkGroup/SingleWorkGroup";
+import EditWorkGroup from "../WorkGroup/EditWorkGroup";
 
 export default function Main(){
 
@@ -49,6 +50,12 @@ export default function Main(){
                 exact={true}
             >
                 <CreateWorkGroup />
+            </Route>
+            <Route
+                path="/workgroup/:id/edit"
+                exact={true}
+            >
+                <EditWorkGroup />
             </Route>
             <Route
                 path="/workgroup/:id"
