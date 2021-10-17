@@ -31,5 +31,12 @@ export class SubService {
         if (!canView){
             throw new HttpException('nope', 403);
         }
+
+        return this.database.subscription.create({
+            data: {
+                groupId: groupId,
+                userId: userId,
+            }
+        })
     }
 }
