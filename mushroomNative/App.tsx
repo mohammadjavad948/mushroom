@@ -19,6 +19,7 @@ import {useAuthStore} from "./stores/authStore";
 import Auth from "./components/Auth/Auth";
 import {QueryClient, QueryClientProvider} from "react-query";
 import {useThemeStore} from "./stores/themeStore";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const queryClient = new QueryClient()
 
@@ -45,7 +46,12 @@ const App = () => {
   };
 
   return (
-    <PaperProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+    <PaperProvider
+        theme={theme === 'dark' ? darkTheme : lightTheme}
+        settings={{
+            icon: props => <Icon {...props} />,
+        }}
+    >
         <StatusBar barStyle={'light-content'} />
         <QueryClientProvider client={queryClient}>
           <NativeRouter>

@@ -34,7 +34,7 @@ export default function AddWork(){
                 init={{
                     title: "",
                     description: "",
-                    groupId: null,
+                    groupId: 0,
                     dueDate: new Date()
                 }}
             />
