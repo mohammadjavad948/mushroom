@@ -22,47 +22,8 @@ export default function AddWork(){
         setShow(true);
     };
 
-    const {data} = useQuery(['workGroup'], allWorkGroups)
-
     return (
         <ScrollView style={addWorkStyle.container}>
-            <View style={addWorkStyle.view}>
-                <Text style={addWorkStyle.title}>
-                    Add New Work
-                </Text>
-                <TextInput
-                    style={addWorkStyle.input}
-                    label={"Title"}
-                    mode={"outlined"}
-                />
-                <TextInput
-                    style={addWorkStyle.input}
-                    label={"Description"}
-                    mode={"outlined"}
-                    multiline={true}
-                    numberOfLines={7}
-                />
-                <Picker
-                    style={[addWorkStyle.input]}
-                    selectedValue={'js'}
-                    onValueChange={(itemValue, itemIndex) =>
-                        console.log(itemValue)
-                    }>
-                    {data?.data.map((e, i) => {
-                        return (
-                            <Picker.Item label={e.name} value={e.id} key={i} />
-                        )
-                    })}
-                </Picker>
-                <DateTimePicker
-                    testID="dateTimePicker"
-                    value={date}
-                    mode={"date"}
-                    is24Hour={true}
-                    display="default"
-                    onChange={onChange}
-                />
-            </View>
         </ScrollView>
     )
 }
