@@ -149,7 +149,11 @@ function Item({item}: any){
                     {new Date(item.dueDate).toDateString()}
                 </Text>
                 <View>
-                    <Icon name="delete" size={20} />
+                    <TouchableOpacity
+                        style={{padding: 10}}
+                    >
+                        <Icon name="delete" size={20} />
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
