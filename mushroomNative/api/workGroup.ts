@@ -21,3 +21,10 @@ export function createWorkGroup(data){
         headers: headers()
     })
 }
+
+export function removeWorkGroup(id: number){
+
+    return api.delete('/work-group/' + id, {
+        headers: headers()
+    })
+}
