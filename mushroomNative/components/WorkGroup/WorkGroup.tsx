@@ -35,11 +35,7 @@ export default function WorkGroup(){
                 </Splitter>
 
                 <GroupItem icon={<Icon name="add" size={25} />}>
-                    Add
-                </GroupItem>
-
-                <GroupItem color={"yellow"}>
-                    Homie
+                    Add (Soon...)
                 </GroupItem>
 
                 <Splitter beforeText={isFetching && <ActivityIndicator size={15} />}>
