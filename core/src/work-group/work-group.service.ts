@@ -1,12 +1,15 @@
-import {HttpException, Injectable} from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { CreateWorkGroupDto } from './dto/create-work-group.dto';
 import { UpdateWorkGroupDto } from './dto/update-work-group.dto';
-import {DatabaseService} from "../database/database.service";
-import {HelperService} from "../helper/helper.service";
+import { DatabaseService } from '../database/database.service';
+import { HelperService } from '../helper/helper.service';
 
 @Injectable()
 export class WorkGroupService {
-  constructor(private database: DatabaseService, private helper: HelperService) {}
+  constructor(
+    private database: DatabaseService,
+    private helper: HelperService,
+  ) {}
 
   create(createWorkGroupDto: CreateWorkGroupDto, userId: number) {
     return this.database.workGroup.create({
@@ -15,18 +18,18 @@ export class WorkGroupService {
         isPrivate: createWorkGroupDto.isPrivate,
         name: createWorkGroupDto.name,
         creatorId: userId,
-      }
-    })
+      },
+    });
   }
 
   findAll(userId: number) {
     return this.database.workGroup.findMany({
       where: {
         creator: {
-          id: userId
-        }
-      }
-    })
+          id: userId,
+        },
+      },
+    });
   }
 
   async findOne(id: number, userId: number) {
@@ -41,13 +44,16 @@ export class WorkGroupService {
         id: id,
       },
       include: {
-        works: true
-      }
+        works: true,
+      },
     });
   }
 
-
-  async update(id: number, updateWorkGroupDto: UpdateWorkGroupDto, userId: number) {
+  async update(
+    id: number,
+    updateWorkGroupDto: UpdateWorkGroupDto,
+    userId: number,
+  ) {
     const can = await this.helper.canManageGroup(userId, id);
 
     if (!can) {
@@ -61,9 +67,9 @@ export class WorkGroupService {
       data: {
         color: updateWorkGroupDto.color,
         isPrivate: updateWorkGroupDto.isPrivate,
-        name: updateWorkGroupDto.name
-      }
-    })
+        name: updateWorkGroupDto.name,
+      },
+    });
   }
 
   async remove(id: number, userId: number) {
@@ -76,7 +82,7 @@ export class WorkGroupService {
     return this.database.workGroup.delete({
       where: {
         id: id,
-      }
-    })
+      },
+    });
   }
 }

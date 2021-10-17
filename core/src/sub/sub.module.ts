@@ -4,6 +4,6 @@ import { SubController } from './sub.controller';
 
 @Module({
   controllers: [SubController],
-  providers: [SubService]
+  providers: [SubService],
 })
 export class SubModule {}

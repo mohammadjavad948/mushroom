@@ -4,6 +4,6 @@ import { WorkController } from './work.controller';
 
 @Module({
   controllers: [WorkController],
-  providers: [WorkService]
+  providers: [WorkService],
 })
 export class WorkModule {}

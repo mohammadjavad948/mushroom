@@ -4,6 +4,6 @@ import { WorkGroupController } from './work-group.controller';
 
 @Module({
   controllers: [WorkGroupController],
-  providers: [WorkGroupService]
+  providers: [WorkGroupService],
 })
 export class WorkGroupModule {}
