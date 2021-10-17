@@ -21,6 +21,10 @@ export default function SingleWorkGroup(){
         () => getWorkGroup(params.id)
     );
 
+    async function add(){
+        history.push('/work/add')
+    }
+
     async function remove(){
         try {
             await removeWorkGroup(data?.data.id);
