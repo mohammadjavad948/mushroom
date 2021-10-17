@@ -1,5 +1,5 @@
 import React from "react";
-import {TouchableOpacity, View} from "react-native";
+import {FlatList, TouchableOpacity, View} from "react-native";
 import {ActivityIndicator, Text} from "react-native-paper";
 import {useQuery, useQueryClient} from "react-query";
 import {useHistory, useParams} from 'react-router-native';
@@ -7,6 +7,7 @@ import {getWorkGroup, removeWorkGroup} from "../../api/workGroup";
 import {info} from "../../api/auth";
 import {workGroupStyle} from "../../styles/WorkGroup";
 import Icon from "../Icon/Icon";
+import {dashboardStyle} from "../../styles/Dashboard";
 
 export default function SingleWorkGroup(){
 
@@ -39,6 +40,11 @@ export default function SingleWorkGroup(){
         } catch (e) {
 
         }
+    }
+
+    function renderItem(inData: any){
+
+        return <Item {...inData} />
     }
 
     return (
@@ -77,6 +83,18 @@ export default function SingleWorkGroup(){
                     )}
                 </View>
             )}
+            {!isLoading && (
+                <View style={{
+                    width: '100%',
+                    flex: 1
+                }}>
+                    <FlatList
+                        data={data?.data.works}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
+                </View>
+            )}
         </View>
     )
 }
@@ -97,5 +115,40 @@ function Action(props: Props){
         >
             {props.icon}
         </TouchableOpacity>
+    )
+}
+
+function Item({item}: any){
+
+    return (
+        <View
+            style={dashboardStyle.list}
+        >
+            <View style={[
+                dashboardStyle.item,
+            ]}>
+                <Text style={[
+                    dashboardStyle.itemTitle,
+                ]}>
+                    {item.title}
+                </Text>
+                <Text
+                    style={[
+                        {
+                            opacity: 0.7
+                        }
+                    ]}
+                >
+                    {item.description}
+                </Text>
+                <Text
+                    style={[
+                        dashboardStyle.daysLeft,
+                    ]}
+                >
+                    3 days left
+                </Text>
+            </View>
+        </View>
     )
 }
