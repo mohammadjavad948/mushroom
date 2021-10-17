@@ -59,7 +59,7 @@ export default function SingleWorkGroup(){
                         <View style={workGroupStyle.icons}>
                             <Action
                                 icon={<Icon name={"add"} size={25}/>}
-                                click={() => console.log('add')}
+                                click={add}
                             />
                             <Action
                                 icon={<Icon name={"edit"} size={25}/>}
