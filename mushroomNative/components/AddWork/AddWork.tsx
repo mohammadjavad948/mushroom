@@ -4,8 +4,11 @@ import {addWorkStyle} from "../../styles/AddWork";
 import AddWorkForm from "./AddWorkForm";
 import {FormikHelpers} from "formik";
 import {createWork} from "../../api/work";
+import {useQueryClient} from "react-query";
 
 export default function AddWork(){
+
+    const client = useQueryClient();
 
     async function submit(value: any, helper: FormikHelpers<any>){
         try {
@@ -17,6 +20,7 @@ export default function AddWork(){
                 groupId: null,
                 dueDate: new Date()
             });
+            client.invalidateQueries('workGroup')
         } catch (e){
             console.log(e)
             helper.setSubmitting(false);
