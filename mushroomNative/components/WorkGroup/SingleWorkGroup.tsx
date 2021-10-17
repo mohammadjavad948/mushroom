@@ -152,7 +152,7 @@ function Item({item}: any){
                     <TouchableOpacity
                         style={{padding: 10}}
                     >
-                        <Icon name="delete" size={20} />
+                        <Icon name="delete" color={'red'} size={20} />
                     </TouchableOpacity>
                 </View>
             </View>
