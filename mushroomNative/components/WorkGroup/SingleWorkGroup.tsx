@@ -33,26 +33,28 @@ export default function SingleWorkGroup(){
                 <View
                     style={{
                         width: '100%',
-                        padding: 10
+                        padding: 10,
                     }}
                 >
                     <Text style={{fontSize: 15}}>
                         {data?.data.name}
                     </Text>
-                    <View style={workGroupStyle.icons}>
-                        <Action
-                            icon={<Icon name={"add"} size={25}/>}
-                            click={() => console.log('add')}
-                        />
-                        <Action
-                            icon={<Icon name={"edit"} size={25}/>}
-                            click={() => console.log('edit')}
-                        />
-                        <Action
-                            icon={<Icon name={"delete"} color={'red'} size={25}/>}
-                            click={() => console.log('delete')}
-                        />
-                    </View>
+                    {data?.data.creatorId === userData?.data.id && (
+                        <View style={workGroupStyle.icons}>
+                            <Action
+                                icon={<Icon name={"add"} size={25}/>}
+                                click={() => console.log('add')}
+                            />
+                            <Action
+                                icon={<Icon name={"edit"} size={25}/>}
+                                click={() => console.log('edit')}
+                            />
+                            <Action
+                                icon={<Icon name={"delete"} color={'red'} size={25}/>}
+                                click={() => console.log('delete')}
+                            />
+                        </View>
+                    )}
                 </View>
             )}
         </View>
@@ -70,7 +72,7 @@ function Action(props: Props){
         <TouchableOpacity
             onPress={props.click}
             style={{
-                padding: 5
+                padding: 10
             }}
         >
             {props.icon}
