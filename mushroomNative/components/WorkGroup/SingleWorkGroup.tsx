@@ -1,5 +1,6 @@
 import React from "react";
 import {View} from "react-native";
+import {Text} from "react-native-paper";
 
 export default function SingleWorkGroup(){
 
@@ -9,8 +10,8 @@ export default function SingleWorkGroup(){
         }}>
             <View
                 style={{
-                    height: 30,
-                    width: '100%'
+                    width: '100%',
+                    padding: 10
                 }}
             >
                 <Text>Group</Text>
