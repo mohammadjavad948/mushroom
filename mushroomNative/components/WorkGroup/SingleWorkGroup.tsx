@@ -4,10 +4,13 @@ import {ActivityIndicator, Text} from "react-native-paper";
 import {useQuery} from "react-query";
 import {useParams} from 'react-router-native';
 import {getWorkGroup} from "../../api/workGroup";
+import {info} from "../../api/auth";
 
 export default function SingleWorkGroup(){
 
     const params = useParams<{id: number}>();
+
+    const {data: userData} = useQuery('userInfo', info)
 
     const {data, isLoading} = useQuery(
         ['workGroup', {id: params.id}],
