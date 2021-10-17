@@ -23,6 +23,10 @@ export default function NavBar(){
         history.push('/work/add')
     }
 
+    function search(){
+        history.push('/search')
+    }
+
     function profile(){
         history.push('/profile')
     }
@@ -42,7 +46,7 @@ export default function NavBar(){
                 <Icon name="dashboard" size={25}/>
             </NavbarItem>
             <NavbarItem
-                click={addWork}
+                click={search}
                 route={'/search'}
             >
                 <Icon name="search" size={25}/>
