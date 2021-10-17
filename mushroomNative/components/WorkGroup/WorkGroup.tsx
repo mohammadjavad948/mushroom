@@ -19,6 +19,10 @@ export default function WorkGroup(){
         history.push('/workgroup/add');
     }
 
+    function groupClick(id: number){
+        history.push('/workgroup/' + id);
+    }
+
     return (
         <ScrollView style={workGroupStyle.container}>
             <View
@@ -51,6 +55,7 @@ export default function WorkGroup(){
                         <GroupItem
                             icon={<Icon name={e.isPrivate ? "lock" : "public"} size={25} />}
                             color={e.color}
+                            click={() => groupClick(e.id)}
                             key={i}
                         >
                             {e.name}
