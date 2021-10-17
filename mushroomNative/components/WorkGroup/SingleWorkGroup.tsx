@@ -62,7 +62,7 @@ export default function SingleWorkGroup(){
                         padding: 10,
                     }}
                 >
-                    <Text style={{fontSize: 15}}>
+                    <Text style={{fontSize: 15, marginLeft: 15}}>
                         {data?.data.name}
                     </Text>
                     {data?.data.creatorId === userData?.data.id && (
