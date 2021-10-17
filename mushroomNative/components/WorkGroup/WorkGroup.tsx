@@ -11,7 +11,7 @@ import Icon from "../Icon/Icon";
 
 export default function WorkGroup(){
 
-    const {isFetching, data} = useQuery(['workGroups'], allWorkGroups)
+    const {isFetching, data} = useQuery(['workGroup'], allWorkGroups)
 
     const history = useHistory();
 
