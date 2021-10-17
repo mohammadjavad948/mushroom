@@ -10,6 +10,7 @@ import {View} from "react-native";
 import {useSpring, a} from "@react-spring/native";
 import CreateWorkGroup from "../WorkGroup/CreateWorkGroup";
 import {useThemeStore} from "../../stores/themeStore";
+import SingleWorkGroup from "../WorkGroup/SingleWorkGroup";
 
 export default function Main(){
 
@@ -48,6 +49,12 @@ export default function Main(){
                 exact={true}
             >
                 <CreateWorkGroup />
+            </Route>
+            <Route
+                path="/workgroup/:id"
+                exact={true}
+            >
+                <SingleWorkGroup />
             </Route>
             <Route
                 path="/workgroup"
