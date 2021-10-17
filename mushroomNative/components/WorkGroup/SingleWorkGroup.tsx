@@ -19,8 +19,6 @@ export default function SingleWorkGroup(){
         () => getWorkGroup(params.id)
     )
 
-    console.log(data?.data)
-
     return (
         <View style={{
             flex: 1,
