@@ -1,6 +1,6 @@
 ## mushroom
 
-mushroom is a simple app that can remind yor works to do
+mushroom is a simple app that can remind your works to do
 
 ## features
 
