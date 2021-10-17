@@ -73,7 +73,7 @@ export default function AddWorkForm(props: Props){
                         is24Hour={true}
                         display="default"
                         onChange={(e, date) => {
-                            setFieldValue('dueDate', date)
+                            setFieldValue('dueDate', date || values.date)
                         }}
                     />
 
