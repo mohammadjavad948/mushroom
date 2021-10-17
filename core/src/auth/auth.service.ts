@@ -1,82 +1,85 @@
-import {HttpException, Injectable} from '@nestjs/common';
-import {DatabaseService} from "../database/database.service";
-import {sign, verify} from "jsonwebtoken";
-import {ConfigService} from "@nestjs/config";
-import {TokenPayloadI} from "../types/token";
-import {compare, hash} from "bcrypt";
+import { HttpException, Injectable } from '@nestjs/common';
+import { DatabaseService } from '../database/database.service';
+import { sign, verify } from 'jsonwebtoken';
+import { ConfigService } from '@nestjs/config';
+import { TokenPayloadI } from '../types/token';
+import { compare, hash } from 'bcrypt';
 
 @Injectable()
 export class AuthService {
-    constructor(private database: DatabaseService,  private config: ConfigService) { }
+  constructor(
+    private database: DatabaseService,
+    private config: ConfigService,
+  ) {}
 
-    async login(username: string, password: string){
-        const user = await this.database.user.findFirst({
-            where: {
-                username: username,
-            },
-        });
+  async login(username: string, password: string) {
+    const user = await this.database.user.findFirst({
+      where: {
+        username: username,
+      },
+    });
 
-        if (!user){
-            throw new HttpException('username or password not correct', 404);
-        }
-
-        await this.checkPassword(password, user.password);
-
-        return {
-            token: this.generateToken({id: user.id})
-        }
+    if (!user) {
+      throw new HttpException('username or password not correct', 404);
     }
 
-    async signUp(username: string, password: string){
-        const user = await this.database.user.findFirst({
-            where: {
-                username: username,
-            },
-        });
+    await this.checkPassword(password, user.password);
 
-        if (user){
-            throw new HttpException('username exists', 403);
-        }
+    return {
+      token: this.generateToken({ id: user.id }),
+    };
+  }
 
-        const hashed = await hash(password, 10);
+  async signUp(username: string, password: string) {
+    const user = await this.database.user.findFirst({
+      where: {
+        username: username,
+      },
+    });
 
-        return this.database.user.create({
-            data: {
-                username: username,
-                password: hashed,
-            }
-        });
+    if (user) {
+      throw new HttpException('username exists', 403);
     }
 
-    async checkPassword(password: string, hashedPassword: string){
-        try {
-            return await compare(password, hashedPassword)
-        } catch (e){
-            throw new HttpException('username or password not correct', 404);
-        }
-    }
+    const hashed = await hash(password, 10);
 
-    generateToken(payload: TokenPayloadI){
-        return sign(payload, this.config.get('SECRET'))
-    }
+    return this.database.user.create({
+      data: {
+        username: username,
+        password: hashed,
+      },
+    });
+  }
 
-    checkToken(token: string): Promise<TokenPayloadI>{
-        return new Promise<TokenPayloadI>((resolve, reject) => {
-            try {
-                const user = verify(token, this.config.get('SECRET')) as TokenPayloadI
-
-                resolve(user);
-            } catch (e){
-                reject(e)
-            }
-        })
+  async checkPassword(password: string, hashedPassword: string) {
+    try {
+      return await compare(password, hashedPassword);
+    } catch (e) {
+      throw new HttpException('username or password not correct', 404);
     }
+  }
 
-    userInfo(userId: number){
-        return this.database.user.findFirst({
-            where: {
-                id: userId,
-            }
-        })
-    }
+  generateToken(payload: TokenPayloadI) {
+    return sign(payload, this.config.get('SECRET'));
+  }
+
+  checkToken(token: string): Promise<TokenPayloadI> {
+    return new Promise<TokenPayloadI>((resolve, reject) => {
+      try {
+        const user = verify(token, this.config.get('SECRET')) as TokenPayloadI;
+
+        resolve(user);
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
+  userInfo(userId: number) {
+    return this.database.user.findFirst({
+      where: {
+        id: userId,
+      },
+    });
+  }
 }

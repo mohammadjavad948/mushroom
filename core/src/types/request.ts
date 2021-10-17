@@ -1,5 +1,4 @@
-
 export interface Request {
-    userId: number
-    headers: any
+  userId: number;
+  headers: any;
 }
