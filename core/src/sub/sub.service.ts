@@ -39,4 +39,19 @@ export class SubService {
             }
         })
     }
+
+    async unsub(userId: number, groupId: number){
+        const isSubbed = await this.helper.isSubbed(userId, groupId);
+
+        if (!isSubbed){
+            throw new HttpException('not subbed', 403);
+        }
+
+        return this.database.subscription.deleteMany({
+            where: {
+                userId: userId,
+                groupId: groupId
+            }
+        })
+    }
 }
