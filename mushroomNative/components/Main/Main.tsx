@@ -12,6 +12,7 @@ import CreateWorkGroup from "../WorkGroup/CreateWorkGroup";
 import {useThemeStore} from "../../stores/themeStore";
 import SingleWorkGroup from "../WorkGroup/SingleWorkGroup";
 import EditWorkGroup from "../WorkGroup/EditWorkGroup";
+import Search from "../Search/Search";
 
 export default function Main(){
 
@@ -74,6 +75,11 @@ export default function Main(){
                     path="/profile"
                 >
                     <Profile />
+                </Route>
+                <Route
+                    path="/search"
+                >
+                    <Search />
                 </Route>
             </Switch>
             <NavBar />
