@@ -15,6 +15,7 @@ export default function Search(){
                 }}
                 mode={"outlined"}
                 label={"Search"}
+                right={<TextInput.Icon name={"search"} />}
             />
         </View>
     )
