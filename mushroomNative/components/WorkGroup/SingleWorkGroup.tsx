@@ -1,9 +1,9 @@
 import React from "react";
 import {TouchableOpacity, View} from "react-native";
 import {ActivityIndicator, Text} from "react-native-paper";
-import {useQuery} from "react-query";
-import {useParams} from 'react-router-native';
-import {getWorkGroup} from "../../api/workGroup";
+import {useQuery, useQueryClient} from "react-query";
+import {useHistory, useParams} from 'react-router-native';
+import {getWorkGroup, removeWorkGroup} from "../../api/workGroup";
 import {info} from "../../api/auth";
 import {workGroupStyle} from "../../styles/WorkGroup";
 import Icon from "../Icon/Icon";
@@ -11,13 +11,27 @@ import Icon from "../Icon/Icon";
 export default function SingleWorkGroup(){
 
     const params = useParams<{id: number}>();
+    const history = useHistory();
+    const client = useQueryClient();
 
     const {data: userData} = useQuery('userInfo', info)
 
     const {data, isLoading} = useQuery(
         ['workGroup', {id: params.id}],
         () => getWorkGroup(params.id)
-    )
+    );
+
+    async function remove(){
+        try {
+            await removeWorkGroup(data?.data.id);
+
+            client.invalidateQueries('workGroup')
+
+            history.push('/workgroup')
+        } catch (e) {
+
+        }
+    }
 
     return (
         <View style={{
@@ -49,7 +63,7 @@ export default function SingleWorkGroup(){
                             />
                             <Action
                                 icon={<Icon name={"delete"} color={'red'} size={25}/>}
-                                click={() => console.log('delete')}
+                                click={remove}
                             />
                         </View>
                     )}
