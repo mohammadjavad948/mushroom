@@ -22,6 +22,13 @@ export function createWorkGroup(data){
     })
 }
 
+export function updateWorkGroup(id: number, data: any){
+
+    return api.patch('/work-group/' + id, data, {
+        headers: headers()
+    })
+}
+
 export function removeWorkGroup(id: number){
 
     return api.delete('/work-group/' + id, {
