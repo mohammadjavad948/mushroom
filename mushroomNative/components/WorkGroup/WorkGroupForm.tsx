@@ -43,6 +43,7 @@ export default function WorkGroupForm(props: Props){
                         style={{width: '90%'}}
                         label={"name"}
                         mode={"outlined"}
+                        value={values.name}
                         onChangeText={handleChange('name')}
                         onBlur={handleBlur('name')}
                     />
