@@ -1,5 +1,5 @@
-import React from "react";
-import {View} from "react-native";
+import React, {useState} from "react";
+import {TouchableOpacity, View} from "react-native";
 import {Button, Text, TextInput} from "react-native-paper";
 import {Formik} from "formik";
 import {addWorkStyle} from "../../styles/AddWork";
@@ -17,6 +17,8 @@ interface Props{
 export default function AddWorkForm(props: Props){
 
     const {data} = useQuery(['workGroup'], allWorkGroups)
+
+    const [show, setShow] = useState(false)
 
     return (
         <Formik
@@ -66,16 +68,23 @@ export default function AddWorkForm(props: Props){
                             )
                         })}
                     </Picker>
-                    <DateTimePicker
-                        testID="dateTimePicker"
-                        value={values.dueDate}
-                        mode={"date"}
-                        is24Hour={true}
-                        display="default"
-                        onChange={(e, date) => {
-                            setFieldValue('dueDate', date || values.date)
-                        }}
-                    />
+                    <TouchableOpacity onPress={() => setShow(true)}>
+                        <Text>Select Date</Text>
+                    </TouchableOpacity>
+
+                    {show && (
+                        <DateTimePicker
+                            testID="dateTimePicker"
+                            value={values.dueDate}
+                            mode={"date"}
+                            is24Hour={true}
+                            display="default"
+                            onChange={(e, date) => {
+                                setFieldValue('dueDate', date || values.date);
+                                setShow(false)
+                            }}
+                        />
+                    )}
 
                     <Button
                         mode="contained"
