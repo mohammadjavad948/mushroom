@@ -7,7 +7,14 @@ export default function SingleWorkGroup(){
         <View style={{
             flex: 1
         }}>
-
+            <View
+                style={{
+                    height: 30,
+                    width: '100%'
+                }}
+            >
+                <Text>Group</Text>
+            </View>
         </View>
     )
 }
