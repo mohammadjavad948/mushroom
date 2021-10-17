@@ -8,6 +8,13 @@ export function allWorkGroups(){
     })
 }
 
+export function getWorkGroup(id: number){
+
+    return api.get('/work-group/' + id, {
+        headers: headers()
+    })
+}
+
 export function createWorkGroup(data){
 
     return api.post('/work-group', data, {
