@@ -36,7 +36,9 @@ export default function SingleWorkGroup(){
                         padding: 10
                     }}
                 >
-                    <Text>{data?.data.name}</Text>
+                    <Text style={{fontSize: 15}}>
+                        {data?.data.name}
+                    </Text>
                     <View style={workGroupStyle.icons}>
                         <Action
                             icon={<Icon name={"edit"} size={25}/>}
