@@ -1,4 +1,4 @@
-import {Controller, Param, Patch, Req, UseGuards} from '@nestjs/common';
+import {Controller, Get, Param, Patch, Req, UseGuards} from '@nestjs/common';
 import { SubService } from './sub.service';
 import {Request} from "../types/request";
 import {HttpAuthGuard} from "../auth/http-auth.guard";
@@ -7,6 +7,11 @@ import {HttpAuthGuard} from "../auth/http-auth.guard";
 @Controller('sub')
 export class SubController {
   constructor(private readonly subService: SubService) {}
+
+  @Get()
+  async subs(@Req() req: Request){
+
+  }
 
   @Patch('/:id')
   async sub(@Param('id') id: string, @Req() req: Request){
