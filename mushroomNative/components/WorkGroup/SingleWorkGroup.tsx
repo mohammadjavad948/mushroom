@@ -8,6 +8,7 @@ import {info} from "../../api/auth";
 import {workGroupStyle} from "../../styles/WorkGroup";
 import Icon from "../Icon/Icon";
 import {dashboardStyle} from "../../styles/Dashboard";
+import {removeWork} from "../../api/work";
 
 export default function SingleWorkGroup(){
 
@@ -120,6 +121,14 @@ function Action(props: Props){
 
 function Item({item}: any){
 
+    const client = useQueryClient();
+
+    async function remove(){
+        await removeWork(item.id);
+
+        client.invalidateQueries('workGroup')
+    }
+
     return (
         <View
             style={dashboardStyle.list}
@@ -151,6 +160,7 @@ function Item({item}: any){
                 <View>
                     <TouchableOpacity
                         style={{padding: 10}}
+                        onPress={remove}
                     >
                         <Icon name="delete" color={'red'} size={20} />
                     </TouchableOpacity>
