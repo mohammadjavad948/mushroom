@@ -143,7 +143,22 @@ function Item({item}: any){
                 ]}>
                     {item.title}
                 </Text>
-                <Markdown>
+                <Markdown
+                    styles={{
+                        heading: {
+                            color: 'white',
+                        },
+                        link: {
+                            color: 'pink',
+                        },
+                        mailTo: {
+                            color: 'white',
+                        },
+                        text: {
+                            color: 'white',
+                        },
+                    }}
+                >
                     {item.description}
                 </Markdown>
                 <Text
