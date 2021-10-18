@@ -83,7 +83,11 @@ function Item({item}: any){
                 ]}>
                     {item.name}
                 </Text>
-                <Button icon={"check"} />
+                <Button
+                    mode={"contained"}
+                    icon={"check"}
+                    color={"black"}
+                />
             </View>
         </TouchableOpacity>
     )
