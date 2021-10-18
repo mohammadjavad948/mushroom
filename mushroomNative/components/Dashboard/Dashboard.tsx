@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FlatList, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import DashboardItem from "./Item";
 import Splitter from "../Splitter/Splitter";
 import Icon from "../Icon/Icon";
+import {dashboard} from "../../api/dashboard";
 
 const data = [
     {
@@ -48,7 +49,22 @@ const data = [
 
 export default function Dashboard(){
 
-    const [isRefreshing, setIsRefreshing] = useState(false);
+    const [isRefreshing, setIsRefreshing] = useState(true);
+
+    async function fetch(){
+        try {
+            const data = await dashboard();
+            console.log(data.data);
+            setIsRefreshing(false)
+        } catch (e) {
+            setIsRefreshing(false)
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        fetch()
+    }, []);
 
     function renderItem(data: any){
         if (data.item.type === 'splitter'){
@@ -65,9 +81,7 @@ export default function Dashboard(){
     function refresh(){
         setIsRefreshing(true)
 
-        setTimeout(() => {
-            setIsRefreshing(false)
-        }, 5000);
+        fetch();
     }
 
     return (
