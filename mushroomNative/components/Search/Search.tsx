@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import {View} from "react-native";
+import {FlatList, Text, View} from "react-native";
 import {TextInput} from "react-native-paper";
 import {search} from "../../api/search";
+import {dashboardStyle} from "../../styles/Dashboard";
 
 
 export default function Search(){
@@ -19,6 +20,10 @@ export default function Search(){
         }
     }
 
+    function renderItem(data: any){
+        return <Item {...data} />
+    }
+
     return (
         <View
             style={{flex: 1, alignItems: 'center'}}
@@ -33,6 +38,44 @@ export default function Search(){
                 label={"Search"}
                 right={<TextInput.Icon onPress={doSearch} name={"search"} />}
             />
+            <View style={[
+                dashboardStyle.container,
+                {
+                    width: '100%'
+                }
+            ]}>
+                <FlatList
+                    data={data}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
+            </View>
+        </View>
+    )
+}
+
+
+function Item({item}: any){
+
+    return (
+        <View
+            style={dashboardStyle.list}
+        >
+            <View style={[
+                dashboardStyle.item,
+                {
+                    backgroundColor: item.color
+                }
+            ]}>
+                <Text style={[
+                    dashboardStyle.itemTitle,
+                    {
+                        color: "black"
+                    }
+                ]}>
+                    {item.name}
+                </Text>
+            </View>
         </View>
     )
 }
