@@ -40,7 +40,7 @@ export default function DashboardItem({item}: any){
                         }
                     ]}
                 >
-                    3 days left
+                    {new Date(item.dueDate).toDateString()}
                 </Text>
             </View>
         </View>
