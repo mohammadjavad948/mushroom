@@ -9,7 +9,7 @@ export class AppController {
 
   @UseGuards(HttpAuthGuard)
   @Get()
-  getHello(@Req() req: Request): string {
+  getHello(@Req() req: Request) {
     return this.appService.getDashboard(req.userId);
   }
 }
