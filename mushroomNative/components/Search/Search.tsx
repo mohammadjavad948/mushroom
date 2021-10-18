@@ -61,16 +61,19 @@ export default function Search(){
 
 function Item({item}: any){
 
+    const [loading, setLoading] = useState(false);
     const {data: subData} = useQuery(['sub'], allSubs)
     const history = useHistory();
     const client = useQueryClient();
 
     async function doSub(){
+        setLoading(true)
         try {
             await sub(item.id);
-            client.invalidateQueries('sub')
+            client.invalidateQueries('sub');
+            setLoading(false)
         } catch (e){
-            console.log(e)
+            setLoading(false)
         }
     }
 
