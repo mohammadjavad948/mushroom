@@ -18,7 +18,7 @@ export default function SingleWorkGroup(){
     const history = useHistory();
     const client = useQueryClient();
 
-    const {data: userData} = useQuery('userInfo', info)
+    const {data: userData, isLoading: userIsLoading} = useQuery('userInfo', info)
 
     const {data, isLoading} = useQuery(
         ['workGroup', {id: params.id}],
@@ -55,10 +55,10 @@ export default function SingleWorkGroup(){
             flex: 1,
             alignItems: 'center'
         }}>
-            {isLoading && (
+            {isLoading || userIsLoading && (
                 <ActivityIndicator size={25}/>
             )}
-            {!isLoading && (
+            {!isLoading && !userIsLoading && (
                 <View
                     style={{
                         width: '100%',
