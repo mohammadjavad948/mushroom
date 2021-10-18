@@ -4,6 +4,7 @@ import {Button, TextInput} from "react-native-paper";
 import {search} from "../../api/search";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {useHistory} from "react-router-native";
+import {sub} from "../../api/sub";
 
 
 export default function Search(){
@@ -60,6 +61,15 @@ function Item({item}: any){
 
     const history = useHistory();
 
+    async function doSub(){
+        try {
+            await sub(item.id);
+            console.log('subbed')
+        } catch (e){
+            console.log(e)
+        }
+    }
+
     function click(){
         history.push('/workgroup/' + item.id)
     }
@@ -84,6 +94,7 @@ function Item({item}: any){
                     {item.name}
                 </Text>
                 <Button
+                    onPress={doSub}
                     mode={"contained"}
                     icon={"check"}
                     color={"black"}
