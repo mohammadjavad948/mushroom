@@ -8,10 +8,12 @@ export default function Search(){
 
     const [text, setText] = useState('');
 
+    const [data, setData] = useState([]);
+
     async function doSearch(){
         try {
-            const data = await search(text);
-            console.log(data.data);
+            const res = await search(text);
+            setData(res.data as any);
         }catch (e){
             console.log(e)
         }
