@@ -5,8 +5,13 @@ import {DatabaseService} from "./database/database.service";
 export class AppService {
   constructor(private database: DatabaseService) {}
   getDashboard(userId: number) {
+    const date = new Date();
+
     return this.database.work.findMany({
       where: {
+        dueDate: {
+          gte: date
+        },
         OR: [
           {
             creatorId: userId,
@@ -18,9 +23,9 @@ export class AppService {
                   userId: userId,
                 }
               }
-            }
+            },
           }
-        ]
+        ],
       }
     });
   }
