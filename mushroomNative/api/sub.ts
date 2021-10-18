@@ -17,7 +17,7 @@ export function sub(groupId: number){
 
 export function unsub(groupId: number){
 
-    return api.patch('/sub/unsub' + groupId,{}, {
+    return api.patch('/sub/unsub/' + groupId,{}, {
         headers: headers()
     })
 }
