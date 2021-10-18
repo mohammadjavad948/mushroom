@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import {FlatList, Text, View} from "react-native";
+import {FlatList, Text, TouchableOpacity, View} from "react-native";
 import {TextInput} from "react-native-paper";
 import {search} from "../../api/search";
 import {dashboardStyle} from "../../styles/Dashboard";
+import {useHistory} from "react-router-native";
 
 
 export default function Search(){
@@ -57,9 +58,16 @@ export default function Search(){
 
 function Item({item}: any){
 
+    const history = useHistory();
+
+    function click(){
+        history.push('/workgroup/' + item.id)
+    }
+
     return (
-        <View
+        <TouchableOpacity
             style={dashboardStyle.list}
+            onPress={click}
         >
             <View style={[
                 dashboardStyle.item,
@@ -76,6 +84,6 @@ function Item({item}: any){
                     {item.name}
                 </Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
