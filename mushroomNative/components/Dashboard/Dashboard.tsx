@@ -6,55 +6,16 @@ import Splitter from "../Splitter/Splitter";
 import Icon from "../Icon/Icon";
 import {dashboard} from "../../api/dashboard";
 
-const data = [
-    {
-        id: 1,
-        title: 'kshfsf',
-        description: 'skefskjfhjksf',
-        color: '#01fafa',
-        textColor: 'black'
-    },
-    {
-        id: 2,
-        title: 'kshfsf',
-        description: 'skefskjfhjksf',
-        color: '#00fca4',
-        textColor: 'black'
-    },
-    {
-        id: 3,
-        type: 'splitter',
-        title: '2020/02/03'
-    },
-    {
-        id: 4,
-        title: 'ad;oajsdio',
-        description: 'ncxvhbxbvx',
-        color: '#6cff03',
-        textColor: 'black'
-    },
-    {
-        id: 5,
-        type: 'splitter',
-        title: '2020/03/03'
-    },
-    {
-        id: 6,
-        title: 'weriuwwqoeiwq',
-        description: 'skefskjfhjksf',
-        color: '#00a4fd',
-        textColor: 'black'
-    }
-]
-
 export default function Dashboard(){
 
+    const [data, setData] = useState([]);
     const [isRefreshing, setIsRefreshing] = useState(true);
 
     async function fetch(){
         try {
             const data = await dashboard();
-            console.log(data.data);
+
+            setData(data.data as any);
             setIsRefreshing(false)
         } catch (e) {
             setIsRefreshing(false)
