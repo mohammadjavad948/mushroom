@@ -1,54 +1,31 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FlatList, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import DashboardItem from "./Item";
 import Splitter from "../Splitter/Splitter";
 import Icon from "../Icon/Icon";
-
-const data = [
-    {
-        id: 1,
-        title: 'kshfsf',
-        description: 'skefskjfhjksf',
-        color: '#01fafa',
-        textColor: 'black'
-    },
-    {
-        id: 2,
-        title: 'kshfsf',
-        description: 'skefskjfhjksf',
-        color: '#00fca4',
-        textColor: 'black'
-    },
-    {
-        id: 3,
-        type: 'splitter',
-        title: '2020/02/03'
-    },
-    {
-        id: 4,
-        title: 'ad;oajsdio',
-        description: 'ncxvhbxbvx',
-        color: '#6cff03',
-        textColor: 'black'
-    },
-    {
-        id: 5,
-        type: 'splitter',
-        title: '2020/03/03'
-    },
-    {
-        id: 6,
-        title: 'weriuwwqoeiwq',
-        description: 'skefskjfhjksf',
-        color: '#00a4fd',
-        textColor: 'black'
-    }
-]
+import {dashboard} from "../../api/dashboard";
 
 export default function Dashboard(){
 
-    const [isRefreshing, setIsRefreshing] = useState(false);
+    const [data, setData] = useState([]);
+    const [isRefreshing, setIsRefreshing] = useState(true);
+
+    async function fetch(){
+        try {
+            const data = await dashboard();
+
+            setData(data.data as any);
+            setIsRefreshing(false)
+        } catch (e) {
+            setIsRefreshing(false)
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        fetch()
+    }, []);
 
     function renderItem(data: any){
         if (data.item.type === 'splitter'){
@@ -65,9 +42,7 @@ export default function Dashboard(){
     function refresh(){
         setIsRefreshing(true)
 
-        setTimeout(() => {
-            setIsRefreshing(false)
-        }, 5000);
+        fetch();
     }
 
     return (

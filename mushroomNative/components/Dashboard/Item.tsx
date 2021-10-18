@@ -11,13 +11,13 @@ export default function DashboardItem({item}: any){
             <View style={[
                 dashboardStyle.item,
                 {
-                    backgroundColor: item.color
+                    backgroundColor: item.group?.color
                 }
             ]}>
                 <Text style={[
                     dashboardStyle.itemTitle,
                     {
-                        color: item.textColor
+                        color: "black"
                     }
                 ]}>
                     {item.title}
@@ -25,7 +25,7 @@ export default function DashboardItem({item}: any){
                 <Text
                     style={[
                         {
-                            color: item.textColor,
+                            color: "black",
                             opacity: 0.7
                         }
                     ]}
@@ -36,11 +36,21 @@ export default function DashboardItem({item}: any){
                     style={[
                         dashboardStyle.daysLeft,
                         {
-                            color: item.textColor,
+                            color: "black",
                         }
                     ]}
                 >
-                    3 days left
+                    {new Date(item.dueDate).toDateString()}
+                </Text>
+                <Text
+                    style={[
+                        dashboardStyle.daysLeft,
+                        {
+                            color: "black",
+                        }
+                    ]}
+                >
+                    from {item.group.name}
                 </Text>
             </View>
         </View>
