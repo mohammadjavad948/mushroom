@@ -102,7 +102,7 @@ function Item({item}: any){
                         mode={"contained"}
                         icon={"check"}
                         color={"black"}
-                    />
+                    >Join</Button>
                 )}
             </View>
         </TouchableOpacity>
