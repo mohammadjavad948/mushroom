@@ -48,7 +48,6 @@ export default function Search(){
                 dashboardStyle.container,
                 {
                     width: '100%',
-                    alignItems: 'center'
                 }
             ]}>
                 {loading && <ActivityIndicator size={20}/>}
