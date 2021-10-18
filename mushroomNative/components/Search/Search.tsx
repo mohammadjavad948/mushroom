@@ -5,6 +5,7 @@ import {search} from "../../api/search";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {useHistory} from "react-router-native";
 import {sub} from "../../api/sub";
+import {useQueryClient} from "react-query";
 
 
 export default function Search(){
@@ -60,11 +61,12 @@ export default function Search(){
 function Item({item}: any){
 
     const history = useHistory();
+    const client = useQueryClient();
 
     async function doSub(){
         try {
             await sub(item.id);
-            console.log('subbed')
+            client.invalidateQueries('sub')
         } catch (e){
             console.log(e)
         }
