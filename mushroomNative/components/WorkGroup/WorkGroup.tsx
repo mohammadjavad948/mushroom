@@ -4,17 +4,18 @@ import {workGroupStyle} from "../../styles/WorkGroup";
 import Splitter from "../Splitter/Splitter";
 import GroupItem from "./GroupItem";
 import {useHistory} from "react-router-native";
-import {useQuery} from "react-query";
+import {useQuery, useQueryClient} from "react-query";
 import {allWorkGroups} from "../../api/workGroup";
 import {ActivityIndicator} from "react-native-paper";
 import Icon from "../Icon/Icon";
-import {allSubs} from "../../api/sub";
+import {allSubs, unsub} from "../../api/sub";
 
 export default function WorkGroup(){
 
     const {isFetching, data} = useQuery(['workGroup'], allWorkGroups)
     const {isFetching: subFetch, data: subData} = useQuery(['sub'], allSubs)
 
+    const client = useQueryClient();
     const history = useHistory();
 
     function accountGroup(){
@@ -25,8 +26,13 @@ export default function WorkGroup(){
         history.push('/workgroup/' + id);
     }
 
-    async function unsub(id: number){
-
+    async function doUnsub(id: number){
+        try {
+            await unsub(id);
+            client.invalidateQueries('sub');
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     return (
