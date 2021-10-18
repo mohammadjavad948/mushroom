@@ -1,6 +1,7 @@
 import React from "react";
 import {Text, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
+import getTextColor from "../../helper/textColor";
 
 export default function DashboardItem({item}: any){
 
@@ -17,7 +18,7 @@ export default function DashboardItem({item}: any){
                 <Text style={[
                     dashboardStyle.itemTitle,
                     {
-                        color: "black"
+                        color: getTextColor(item.group?.color)
                     }
                 ]}>
                     {item.title}
@@ -25,7 +26,7 @@ export default function DashboardItem({item}: any){
                 <Text
                     style={[
                         {
-                            color: "black",
+                            color: getTextColor(item.group?.color),
                             opacity: 0.7
                         }
                     ]}
@@ -36,7 +37,7 @@ export default function DashboardItem({item}: any){
                     style={[
                         dashboardStyle.daysLeft,
                         {
-                            color: "black",
+                            color: getTextColor(item.group?.color),
                         }
                     ]}
                 >
@@ -46,7 +47,7 @@ export default function DashboardItem({item}: any){
                     style={[
                         dashboardStyle.daysLeft,
                         {
-                            color: "black",
+                            color: getTextColor(item.group?.color),
                         }
                     ]}
                 >
