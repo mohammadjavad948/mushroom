@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {FlatList, Text, TouchableOpacity, View} from "react-native";
-import {TextInput} from "react-native-paper";
+import {Button, TextInput} from "react-native-paper";
 import {search} from "../../api/search";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {useHistory} from "react-router-native";
@@ -83,6 +83,7 @@ function Item({item}: any){
                 ]}>
                     {item.name}
                 </Text>
+                <Button icon={"check"} />
             </View>
         </TouchableOpacity>
     )
