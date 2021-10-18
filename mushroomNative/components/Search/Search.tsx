@@ -4,8 +4,8 @@ import {Button, TextInput} from "react-native-paper";
 import {search} from "../../api/search";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {useHistory} from "react-router-native";
-import {sub} from "../../api/sub";
-import {useQueryClient} from "react-query";
+import {allSubs, sub} from "../../api/sub";
+import {useQuery, useQueryClient} from "react-query";
 
 
 export default function Search(){
@@ -60,6 +60,7 @@ export default function Search(){
 
 function Item({item}: any){
 
+    const {data: subData} = useQuery(['sub'], allSubs)
     const history = useHistory();
     const client = useQueryClient();
 
@@ -95,12 +96,14 @@ function Item({item}: any){
                 ]}>
                     {item.name}
                 </Text>
-                <Button
-                    onPress={doSub}
-                    mode={"contained"}
-                    icon={"check"}
-                    color={"black"}
-                />
+                {subData?.data?.findIndex((e: any) => e.id === item.id) === -1 && (
+                    <Button
+                        onPress={doSub}
+                        mode={"contained"}
+                        icon={"check"}
+                        color={"black"}
+                    />
+                )}
             </View>
         </TouchableOpacity>
     )
