@@ -82,7 +82,7 @@ export default function WorkGroup(){
                             click={() => groupClick(e.id)}
                             actions={[
                                 {
-                                    click: () => console.log('hmm'),
+                                    click: () => doUnsub(e.id),
                                     icon: <Icon size={15} name="close" />
                                 }
                             ]}
