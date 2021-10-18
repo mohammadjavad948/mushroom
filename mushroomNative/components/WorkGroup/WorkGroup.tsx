@@ -25,6 +25,10 @@ export default function WorkGroup(){
         history.push('/workgroup/' + id);
     }
 
+    async function unsub(id: number){
+
+    }
+
     return (
         <ScrollView style={workGroupStyle.container}>
             <View
@@ -70,6 +74,12 @@ export default function WorkGroup(){
                         <GroupItem
                             color={e.color}
                             click={() => groupClick(e.id)}
+                            actions={[
+                                {
+                                    click: () => console.log('hmm'),
+                                    icon: <Icon size={15} name="close" />
+                                }
+                            ]}
                             key={i}
                         >
                             {e.name}
