@@ -8,6 +8,7 @@ export class SearchService {
     async search(query: string){
         return this.database.workGroup.findMany({
             where: {
+                isPrivate: false,
                 name: {
                     contains: query
                 }
