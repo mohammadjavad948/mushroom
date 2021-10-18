@@ -103,6 +103,8 @@ function Item({item}: any){
                 {subData?.data?.findIndex((e: any) => e.id === item.id) === -1 && (
                     <Button
                         onPress={doSub}
+                        loading={loading}
+                        disabled={loading}
                         mode={"contained"}
                         icon={"check"}
                         color={"black"}
