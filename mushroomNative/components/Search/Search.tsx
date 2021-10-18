@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import {View} from "react-native";
 import {TextInput} from "react-native-paper";
 
 
 export default function Search(){
+
+    const [text, setText] = useState('');
 
     return (
         <View
@@ -13,6 +15,8 @@ export default function Search(){
                 style={{
                     width: '95%'
                 }}
+                value={text}
+                onChangeText={(e: string) => setText(e)}
                 mode={"outlined"}
                 label={"Search"}
                 right={<TextInput.Icon name={"search"} />}
