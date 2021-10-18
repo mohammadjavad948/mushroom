@@ -3,7 +3,7 @@ import {headers} from "./auth";
 
 export function search(query: string){
 
-    return api.get('/search/', {
+    return api.get('/search', {
         headers: headers(),
         params: {
             q: query
