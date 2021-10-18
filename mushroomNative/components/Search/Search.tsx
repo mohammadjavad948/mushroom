@@ -1,25 +1,28 @@
 import React, {useState} from "react";
 import {FlatList, Text, TouchableOpacity, View} from "react-native";
-import {Button, TextInput} from "react-native-paper";
+import {ActivityIndicator, Button, TextInput} from "react-native-paper";
 import {search} from "../../api/search";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {useHistory} from "react-router-native";
 import {allSubs, sub} from "../../api/sub";
 import {useQuery, useQueryClient} from "react-query";
+import getTextColor from "../../helper/textColor";
 
 
 export default function Search(){
 
     const [text, setText] = useState('');
-
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
 
     async function doSearch(){
+        setLoading(true)
         try {
             const res = await search(text);
             setData(res.data as any);
+            setLoading(false)
         }catch (e){
-            console.log(e)
+            setLoading(false)
         }
     }
 
@@ -44,14 +47,17 @@ export default function Search(){
             <View style={[
                 dashboardStyle.container,
                 {
-                    width: '100%'
+                    width: '100%',
                 }
             ]}>
-                <FlatList
-                    data={data}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
+                {loading && <ActivityIndicator size={20}/>}
+                {!loading && (
+                    <FlatList
+                        data={data}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
+                )}
             </View>
         </View>
     )
@@ -60,16 +66,19 @@ export default function Search(){
 
 function Item({item}: any){
 
+    const [loading, setLoading] = useState(false);
     const {data: subData} = useQuery(['sub'], allSubs)
     const history = useHistory();
     const client = useQueryClient();
 
     async function doSub(){
+        setLoading(true)
         try {
             await sub(item.id);
-            client.invalidateQueries('sub')
+            client.invalidateQueries('sub');
+            setLoading(false)
         } catch (e){
-            console.log(e)
+            setLoading(false)
         }
     }
 
@@ -91,7 +100,7 @@ function Item({item}: any){
                 <Text style={[
                     dashboardStyle.itemTitle,
                     {
-                        color: "black"
+                        color: getTextColor(item.color)
                     }
                 ]}>
                     {item.name}
@@ -99,6 +108,8 @@ function Item({item}: any){
                 {subData?.data?.findIndex((e: any) => e.id === item.id) === -1 && (
                     <Button
                         onPress={doSub}
+                        loading={loading}
+                        disabled={loading}
                         mode={"contained"}
                         icon={"check"}
                         color={"black"}

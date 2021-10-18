@@ -6,9 +6,11 @@ import {Formik} from 'formik';
 import {login} from "../../api/auth";
 import {useAuthStore} from "../../stores/authStore";
 import {a, useSpring} from '@react-spring/native';
+import {useThemeStore} from "../../stores/themeStore";
 
 export default function Auth(){
 
+    const {theme} = useThemeStore();
     const [loading, setLoading] = useState(false);
     const {setToken} = useAuthStore()
 
@@ -45,7 +47,8 @@ export default function Auth(){
                         mainStyle.main,
                         {
                             alignItems: 'center',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
+                            backgroundColor: theme === 'dark' ? '#2b2b2b' : 'white'
                         },
                         ...animation
                     ]}
