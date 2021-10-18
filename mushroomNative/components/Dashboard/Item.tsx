@@ -42,6 +42,16 @@ export default function DashboardItem({item}: any){
                 >
                     {new Date(item.dueDate).toDateString()}
                 </Text>
+                <Text
+                    style={[
+                        dashboardStyle.daysLeft,
+                        {
+                            color: "black",
+                        }
+                    ]}
+                >
+                    from {item.group.name}
+                </Text>
             </View>
         </View>
     )
