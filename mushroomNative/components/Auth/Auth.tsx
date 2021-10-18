@@ -20,6 +20,7 @@ export default function Auth(){
             console.log('logged in')
             setToken(data.data.token)
         } catch (e) {
+            console.log(e)
             setLoading(false)
         }
     }
