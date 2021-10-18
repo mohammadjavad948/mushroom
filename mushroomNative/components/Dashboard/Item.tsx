@@ -11,7 +11,7 @@ export default function DashboardItem({item}: any){
             <View style={[
                 dashboardStyle.item,
                 {
-                    backgroundColor: item.color
+                    backgroundColor: item.group?.color
                 }
             ]}>
                 <Text style={[
