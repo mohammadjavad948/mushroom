@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {FlatList, Text, TouchableOpacity, View} from "react-native";
-import {Button, TextInput} from "react-native-paper";
+import {ActivityIndicator, Button, TextInput} from "react-native-paper";
 import {search} from "../../api/search";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {useHistory} from "react-router-native";
@@ -12,15 +12,17 @@ import getTextColor from "../../helper/textColor";
 export default function Search(){
 
     const [text, setText] = useState('');
-
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
 
     async function doSearch(){
+        setLoading(true)
         try {
             const res = await search(text);
             setData(res.data as any);
+            setLoading(false)
         }catch (e){
-            console.log(e)
+            setLoading(false)
         }
     }
 
@@ -45,14 +47,18 @@ export default function Search(){
             <View style={[
                 dashboardStyle.container,
                 {
-                    width: '100%'
+                    width: '100%',
+                    alignItems: 'center'
                 }
             ]}>
-                <FlatList
-                    data={data}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
+                {loading && <ActivityIndicator size={20}/>}
+                {!loading && (
+                    <FlatList
+                        data={data}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
+                )}
             </View>
         </View>
     )
