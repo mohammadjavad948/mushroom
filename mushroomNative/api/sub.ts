@@ -1,9 +1,16 @@
 import {api} from "./base";
 import {headers} from "./auth";
 
-export default function AllSubs(){
+export function allSubs(){
 
     return api.get('/sub', {
+        headers: headers()
+    })
+}
+
+export function sub(groupId: number){
+
+    return api.patch('/sub/' + groupId,{}, {
         headers: headers()
     })
 }
