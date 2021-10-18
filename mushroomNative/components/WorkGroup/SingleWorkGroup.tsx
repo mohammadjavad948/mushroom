@@ -84,6 +84,14 @@ export default function SingleWorkGroup(){
                             />
                         </View>
                     )}
+                    {data?.data.creatorId !== userData?.data.id && (
+                        <View style={workGroupStyle.icons}>
+                            <Action
+                                icon={<Icon name={"check"} size={25}/>}
+                                click={add}
+                            />
+                        </View>
+                    )}
                 </View>
             )}
             {!isLoading && (
