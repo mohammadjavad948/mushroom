@@ -6,6 +6,7 @@ import {dashboardStyle} from "../../styles/Dashboard";
 import {useHistory} from "react-router-native";
 import {allSubs, sub} from "../../api/sub";
 import {useQuery, useQueryClient} from "react-query";
+import getTextColor from "../../helper/textColor";
 
 
 export default function Search(){
@@ -91,7 +92,7 @@ function Item({item}: any){
                 <Text style={[
                     dashboardStyle.itemTitle,
                     {
-                        color: "black"
+                        color: getTextColor(item.color)
                     }
                 ]}>
                     {item.name}
