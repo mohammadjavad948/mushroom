@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {FlatList, TouchableOpacity, View} from "react-native";
 import {ActivityIndicator, Text} from "react-native-paper";
 import {useQuery, useQueryClient} from "react-query";
@@ -121,12 +121,19 @@ function Action(props: Props){
 
 function Item({item}: any){
 
+    const [loading, setLoading] = useState(false);
     const client = useQueryClient();
 
     async function remove(){
-        await removeWork(item.id);
+        setLoading(true)
+        try {
+            await removeWork(item.id);
 
-        client.invalidateQueries('workGroup')
+            await client.invalidateQueries('workGroup');
+            setLoading(false)
+        } catch (e){
+            setLoading(false)
+        }
     }
 
     return (
