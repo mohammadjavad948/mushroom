@@ -5,7 +5,7 @@ export interface User {
     password: string
     isVerified: boolean
     canCreatePublicWorkGroup: boolean
-    createdAt: Date
+    createdAt: string
 
     workGroups?: WorkGroup[]
     works?: Work[]
@@ -25,8 +25,8 @@ export interface WorkGroup {
     haveComments: boolean
     isVerified: boolean
     isPrivate: boolean
-    createdAt: Date
-    updatedAt: Date
+    createdAt: string
+    updatedAt: string
 
     works?: Work[]
     subscribers?: Subscription[]
@@ -42,7 +42,7 @@ export interface Subscription {
     user?: User
     groupId: number
     group?: WorkGroup
-    createdAt: Date
+    createdAt: string
 }
 
 /**
@@ -57,8 +57,8 @@ export interface Work {
     creator?: User
     title: string
     description: string
-    dueDate: Date
-    createdAt: Date
-    updatedAt: Date
+    dueDate: string
+    createdAt: string
+    updatedAt: string
 }
 
