@@ -9,8 +9,6 @@ import {workGroupStyle} from "../../styles/WorkGroup";
 import Icon from "../Icon/Icon";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {removeWork} from "../../api/work";
-// @ts-ignore
-import Markdown from 'react-native-simple-markdown'
 
 export default function SingleWorkGroup(){
 
@@ -55,7 +53,7 @@ export default function SingleWorkGroup(){
             flex: 1,
             alignItems: 'center'
         }}>
-            {isLoading || userIsLoading && (
+            {(isLoading || userIsLoading) && (
                 <ActivityIndicator size={25}/>
             )}
             {!isLoading && !userIsLoading && (
