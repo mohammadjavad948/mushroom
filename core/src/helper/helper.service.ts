@@ -96,4 +96,14 @@ export class HelperService {
 
     return count > 0
   }
+
+  async canCreatePublicGroup(userId: number){
+    const user = await this.database.user.findUnique({
+      where: {
+        id: userId,
+      }
+    });
+
+    return user?.canCreatePublicWorkGroup;
+  }
 }
