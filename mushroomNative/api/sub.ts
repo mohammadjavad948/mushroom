@@ -1,10 +1,11 @@
 import {api} from "./base";
 import {headers} from "./auth";
 import {WorkGroup} from "../types";
+import {AxiosResponse} from "axios";
 
 export function allSubs(){
 
-    return api.get<WorkGroup[]>('/sub', {
+    return api.get<WorkGroup[], AxiosResponse<WorkGroup[]>>('/sub', {
         headers: headers()
     })
 }
