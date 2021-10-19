@@ -11,7 +11,13 @@ export class WorkGroupService {
     private helper: HelperService,
   ) {}
 
-  create(createWorkGroupDto: CreateWorkGroupDto, userId: number) {
+  async create(createWorkGroupDto: CreateWorkGroupDto, userId: number) {
+    const can = await this.helper.canCreatePublicGroup(userId);
+
+    if (!can && !createWorkGroupDto.isPrivate){
+      throw new HttpException('you cant.', 403)
+    }
+
     return this.database.workGroup.create({
       data: {
         color: createWorkGroupDto.color,
