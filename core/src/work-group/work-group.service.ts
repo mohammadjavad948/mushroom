@@ -72,6 +72,12 @@ export class WorkGroupService {
       throw new HttpException('nope', 403);
     }
 
+    const canCreate = await this.helper.canCreatePublicGroup(userId);
+
+    if (!canCreate && !updateWorkGroupDto.isPrivate){
+      throw new HttpException('you cant.', 403)
+    }
+
     return this.database.workGroup.update({
       where: {
         id: id,
