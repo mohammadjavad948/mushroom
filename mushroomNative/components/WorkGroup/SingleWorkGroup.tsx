@@ -143,24 +143,9 @@ function Item({item}: any){
                 ]}>
                     {item.title}
                 </Text>
-                <Markdown
-                    styles={{
-                        heading: {
-                            color: 'white',
-                        },
-                        link: {
-                            color: 'pink',
-                        },
-                        mailTo: {
-                            color: 'white',
-                        },
-                        text: {
-                            color: 'white',
-                        },
-                    }}
-                >
+                <Text>
                     {item.description}
-                </Markdown>
+                </Text>
                 <Text
                     style={[
                         dashboardStyle.daysLeft,
