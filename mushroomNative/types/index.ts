@@ -1,5 +1,5 @@
 
-export type User = {
+export interface User {
     id: number
     username: string
     password: string
@@ -16,7 +16,7 @@ export type User = {
  * Model WorkGroup
  */
 
-export type WorkGroup = {
+export interface WorkGroup {
     id: number
     creatorId: number
     name: string
@@ -36,7 +36,7 @@ export type WorkGroup = {
  * Model Subscription
  */
 
-export type Subscription = {
+export interface Subscription {
     id: number
     userId: number
     user?: User
@@ -49,7 +49,7 @@ export type Subscription = {
  * Model Work
  */
 
-export type Work = {
+export interface Work {
     id: number
     groupId: number
     group?: WorkGroup

@@ -1,6 +1,7 @@
 import {api} from "./base";
 import {useAuthStore} from "../stores/authStore";
 import {User} from "../types";
+import {AxiosResponse} from "axios";
 
 export function login(data: any){
 
@@ -9,7 +10,7 @@ export function login(data: any){
 
 export function info(){
 
-    return api.get<User>('/auth/info', {
+    return api.get<User, AxiosResponse<User>>('/auth/info', {
         headers: headers()
     });
 }
