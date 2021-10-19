@@ -39,6 +39,12 @@ export default function Profile(){
                             <Text style={profileStyle.date}>
                                 Created At {new Date(data?.data.createdAt || "").toDateString()}
                             </Text>
+                            <Text>
+                                Abilities
+                            </Text>
+                            <Text>
+                                - Can create public workgroup: {data?.data.canCreatePublicWorkGroup ? "yes": "no"}
+                            </Text>
                             <Button
                                 compact={true}
                                 mode={"contained"}
