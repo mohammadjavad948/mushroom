@@ -16,6 +16,7 @@ model User {
     password String
 
     isVerified Boolean @default(false)
+    canCreatePublicWorkGroup Boolean @default(false)
 
     workGroups WorkGroup[]
     works Work[]
@@ -32,7 +33,9 @@ model WorkGroup {
 
     name String
     color String
+    info String @default("none")
 
+    haveComments Boolean @default(false)
     isVerified Boolean @default(false)
     isPrivate Boolean
 
