@@ -1,9 +1,10 @@
 import {api} from "./base";
 import {headers} from "./auth";
+import {WorkGroup} from "../types";
 
 export function allSubs(){
 
-    return api.get('/sub', {
+    return api.get<WorkGroup[]>('/sub', {
         headers: headers()
     })
 }
