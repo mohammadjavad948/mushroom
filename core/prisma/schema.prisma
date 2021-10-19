@@ -33,6 +33,7 @@ model WorkGroup {
 
     name String
     color String
+    info String @default("none")
 
     isVerified Boolean @default(false)
     isPrivate Boolean
