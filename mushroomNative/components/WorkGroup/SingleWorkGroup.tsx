@@ -135,6 +135,10 @@ function Item({item}: any){
         >
             <View style={[
                 dashboardStyle.item,
+                {
+                    borderColor: 'white',
+                    borderWidth: 1
+                }
             ]}>
                 <Text style={[
                     dashboardStyle.itemTitle,
