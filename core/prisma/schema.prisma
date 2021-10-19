@@ -35,6 +35,7 @@ model WorkGroup {
     color String
     info String @default("none")
 
+    haveComments Boolean @default(false)
     isVerified Boolean @default(false)
     isPrivate Boolean
 
