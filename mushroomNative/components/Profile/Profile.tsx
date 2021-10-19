@@ -39,10 +39,10 @@ export default function Profile(){
                             <Text style={profileStyle.date}>
                                 Created At {new Date(data?.data.createdAt || "").toDateString()}
                             </Text>
-                            <Text>
+                            <Text style={profileStyle.date}>
                                 Abilities
                             </Text>
-                            <Text>
+                            <Text style={profileStyle.date}>
                                 - Can create public workgroup: {data?.data.canCreatePublicWorkGroup ? "yes": "no"}
                             </Text>
                             <Button
