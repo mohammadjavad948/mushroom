@@ -37,7 +37,7 @@ export default function Profile(){
                                 {data?.data.isVerified ?  "(verified)" : ""}
                             </Text>
                             <Text style={profileStyle.date}>
-                                Created At {new Date(data?.data.createdAt).toDateString()}
+                                Created At {new Date(data?.data.createdAt || "").toDateString()}
                             </Text>
                             <Button
                                 compact={true}
