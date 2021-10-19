@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {FlatList, TouchableOpacity, View} from "react-native";
-import {ActivityIndicator, Text} from "react-native-paper";
+import {ActivityIndicator, Button, Text} from "react-native-paper";
 import {useQuery, useQueryClient} from "react-query";
 import {useHistory, useParams} from 'react-router-native';
 import {getWorkGroup, removeWorkGroup} from "../../api/workGroup";
@@ -163,12 +163,13 @@ function Item({item}: any){
                     {new Date(item.dueDate).toDateString()}
                 </Text>
                 <View>
-                    <TouchableOpacity
-                        style={{padding: 10}}
+                    <Button
+                        loading={loading}
+                        disabled={loading}
+                        icon={'delete'}
+                        color={'red'}
                         onPress={remove}
-                    >
-                        <Icon name="delete" color={'red'} size={20} />
-                    </TouchableOpacity>
+                    />
                 </View>
             </View>
         </View>
