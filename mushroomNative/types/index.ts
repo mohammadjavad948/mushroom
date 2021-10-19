@@ -7,9 +7,9 @@ export type User = {
     canCreatePublicWorkGroup: boolean
     createdAt: Date
 
-    workGroups: WorkGroup[]
-    works: Work[]
-    subedGroups: Subscription[]
+    workGroups?: WorkGroup[]
+    works?: Work[]
+    subedGroups?: Subscription[]
 }
 
 /**
@@ -28,8 +28,8 @@ export type WorkGroup = {
     createdAt: Date
     updatedAt: Date
 
-    works: Work[]
-    subscribers: Subscription[]
+    works?: Work[]
+    subscribers?: Subscription[]
 }
 
 /**
@@ -39,9 +39,9 @@ export type WorkGroup = {
 export type Subscription = {
     id: number
     userId: number
-    user: User
+    user?: User
     groupId: number
-    group: WorkGroup
+    group?: WorkGroup
     createdAt: Date
 }
 
@@ -52,9 +52,9 @@ export type Subscription = {
 export type Work = {
     id: number
     groupId: number
-    group: WorkGroup
+    group?: WorkGroup
     creatorId: number
-    creator: User
+    creator?: User
     title: string
     description: string
     dueDate: Date
