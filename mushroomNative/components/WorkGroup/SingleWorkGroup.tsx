@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import {FlatList, TouchableOpacity, View} from "react-native";
-import {ActivityIndicator, Text} from "react-native-paper";
+import {ActivityIndicator, Button, Text} from "react-native-paper";
 import {useQuery, useQueryClient} from "react-query";
 import {useHistory, useParams} from 'react-router-native';
 import {getWorkGroup, removeWorkGroup} from "../../api/workGroup";
@@ -9,8 +9,6 @@ import {workGroupStyle} from "../../styles/WorkGroup";
 import Icon from "../Icon/Icon";
 import {dashboardStyle} from "../../styles/Dashboard";
 import {removeWork} from "../../api/work";
-// @ts-ignore
-import Markdown from 'react-native-simple-markdown'
 
 export default function SingleWorkGroup(){
 
@@ -55,7 +53,7 @@ export default function SingleWorkGroup(){
             flex: 1,
             alignItems: 'center'
         }}>
-            {isLoading || userIsLoading && (
+            {(isLoading || userIsLoading) && (
                 <ActivityIndicator size={25}/>
             )}
             {!isLoading && !userIsLoading && (
@@ -123,12 +121,19 @@ function Action(props: Props){
 
 function Item({item}: any){
 
+    const [loading, setLoading] = useState(false);
     const client = useQueryClient();
 
     async function remove(){
-        await removeWork(item.id);
+        setLoading(true)
+        try {
+            await removeWork(item.id);
 
-        client.invalidateQueries('workGroup')
+            await client.invalidateQueries('workGroup');
+            setLoading(false)
+        } catch (e){
+            setLoading(false)
+        }
     }
 
     return (
@@ -137,30 +142,19 @@ function Item({item}: any){
         >
             <View style={[
                 dashboardStyle.item,
+                {
+                    borderColor: 'white',
+                    borderWidth: 1
+                }
             ]}>
                 <Text style={[
                     dashboardStyle.itemTitle,
                 ]}>
                     {item.title}
                 </Text>
-                <Markdown
-                    styles={{
-                        heading: {
-                            color: 'white',
-                        },
-                        link: {
-                            color: 'pink',
-                        },
-                        mailTo: {
-                            color: 'white',
-                        },
-                        text: {
-                            color: 'white',
-                        },
-                    }}
-                >
+                <Text>
                     {item.description}
-                </Markdown>
+                </Text>
                 <Text
                     style={[
                         dashboardStyle.daysLeft,
@@ -169,12 +163,13 @@ function Item({item}: any){
                     {new Date(item.dueDate).toDateString()}
                 </Text>
                 <View>
-                    <TouchableOpacity
-                        style={{padding: 10}}
+                    <Button
+                        loading={loading}
+                        disabled={loading}
+                        icon={'delete'}
+                        color={'red'}
                         onPress={remove}
-                    >
-                        <Icon name="delete" color={'red'} size={20} />
-                    </TouchableOpacity>
+                    />
                 </View>
             </View>
         </View>
