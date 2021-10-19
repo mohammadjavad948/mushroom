@@ -15,7 +15,7 @@ export class WorkGroupService {
     const can = await this.helper.canCreatePublicGroup(userId);
 
     if (!can && !createWorkGroupDto.isPrivate){
-      throw new HttpException('you cant.', 403)
+      throw new HttpException('you cant create public group.', 403)
     }
 
     return this.database.workGroup.create({
@@ -75,7 +75,7 @@ export class WorkGroupService {
     const canCreate = await this.helper.canCreatePublicGroup(userId);
 
     if (!canCreate && !updateWorkGroupDto.isPrivate){
-      throw new HttpException('you cant.', 403)
+      throw new HttpException('you cant create public group.', 403)
     }
 
     return this.database.workGroup.update({
