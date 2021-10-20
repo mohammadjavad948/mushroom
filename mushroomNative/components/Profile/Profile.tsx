@@ -68,6 +68,9 @@ export default function Profile(){
                         </View>
                     </View>
                 )}
+                <Splitter beforeText={<Icon name="vpn-key" size={20} />}>
+                    Password
+                </Splitter>
                 <Splitter beforeText={<Icon name="brush" size={20} />}>
                     Theme
                 </Splitter>
