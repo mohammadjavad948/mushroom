@@ -128,14 +128,11 @@ interface Props{
 function Action(props: Props){
 
     return (
-        <TouchableOpacity
+        <Button
             onPress={props.click}
-            style={{
-                padding: 10
-            }}
         >
             {props.icon}
-        </TouchableOpacity>
+        </Button>
     )
 }
 

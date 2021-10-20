@@ -16,9 +16,9 @@ export const workGroupStyle = StyleSheet.create({
         marginTop: 10
     },
     icons: {
-        position: 'absolute',
-        top: 10,
-        right: 10,
+        marginTop: 20,
+        width: '100%',
+        justifyContent: 'space-evenly',
         flexDirection: 'row'
     }
 })
