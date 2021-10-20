@@ -24,6 +24,17 @@ export default function Profile(){
                     Account
                 </Splitter>
                 {isLoading && <ActivityIndicator size={25} />}
+                {isLoading && (
+                    <Button
+                        compact={true}
+                        mode={"contained"}
+                        uppercase={false}
+                        style={profileStyle.logout}
+                        onPress={logout}
+                    >
+                        logout
+                    </Button>
+                )}
                 {!isLoading && (
                     <View style={profileStyle.infoContainer}>
                         <Image
