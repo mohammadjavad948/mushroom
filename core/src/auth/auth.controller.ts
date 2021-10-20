@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {Body, Controller, Get, Post, Put, Req, UseGuards} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { HttpAuthGuard } from './http-auth.guard';
@@ -28,7 +28,7 @@ export class AuthController {
   }
 
   @UseGuards(HttpAuthGuard)
-  @Get('password/change')
+  @Put('password/change')
   changePassword(@Body() body: ChangePasswordDto, @Req() req: Request) {
     return this.authService.changePassword(body, req.userId);
   }
