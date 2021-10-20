@@ -92,6 +92,9 @@ export default function SingleWorkGroup(){
                                 <Text>
                                     {data?.data.isPrivate ? "Private" : "Public"}
                                 </Text>
+                                <Text>
+                                    {data?.data.haveComments ? "Have comments" : "Dont have comments"}
+                                </Text>
                             </View>
                         </View>
                         {data?.data.creatorId === userData?.data.id && (
