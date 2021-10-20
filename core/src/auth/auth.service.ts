@@ -4,6 +4,7 @@ import { sign, verify } from 'jsonwebtoken';
 import { ConfigService } from '@nestjs/config';
 import { TokenPayloadI } from '../types/token';
 import { compare, hash } from 'bcrypt';
+import ChangePasswordDto from "./dto/change-password.dto";
 
 @Injectable()
 export class AuthService {
@@ -81,5 +82,9 @@ export class AuthService {
         id: userId,
       },
     });
+  }
+
+  async changePassword(data: ChangePasswordDto){
+
   }
 }

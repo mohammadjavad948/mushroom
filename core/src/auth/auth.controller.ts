@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { HttpAuthGuard } from './http-auth.guard';
 import { Request } from '../types/request';
+import ChangePasswordDto from "./dto/change-password.dto";
 
 @Controller({
   path: 'auth',
@@ -23,6 +24,12 @@ export class AuthController {
   @UseGuards(HttpAuthGuard)
   @Get('info')
   info(@Req() req: Request) {
+    return this.authService.userInfo(req.userId);
+  }
+
+  @UseGuards(HttpAuthGuard)
+  @Get('password/change')
+  changePassword(@Body() body: ChangePasswordDto, @Req() req: Request) {
     return this.authService.userInfo(req.userId);
   }
 }
