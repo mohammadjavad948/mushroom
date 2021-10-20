@@ -30,6 +30,6 @@ export class AuthController {
   @UseGuards(HttpAuthGuard)
   @Get('password/change')
   changePassword(@Body() body: ChangePasswordDto, @Req() req: Request) {
-    return this.authService.userInfo(req.userId);
+    return this.authService.changePassword(body, req.userId);
   }
 }
