@@ -89,6 +89,9 @@ export default function SingleWorkGroup(){
                                 <Text style={{fontSize: 18}}>
                                     {data?.data.name}
                                 </Text>
+                                <Text>
+                                    {data?.data.isPrivate ? "Private" : "Public"}
+                                </Text>
                             </View>
                         </View>
                         {data?.data.creatorId === userData?.data.id && (
