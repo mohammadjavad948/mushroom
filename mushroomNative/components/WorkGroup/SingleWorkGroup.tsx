@@ -146,10 +146,11 @@ function Action(props: Props){
 }
 
 
-function Link(props: {title: string, icon: any}){
+function Link(props: {title: string, icon: any, click?: any}){
 
     return (
         <TouchableOpacity
+            onPress={props.click}
             style={{
                 marginTop: 15,
                 padding: 20,
