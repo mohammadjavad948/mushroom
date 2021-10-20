@@ -107,6 +107,31 @@ export default function SingleWorkGroup(){
                                 />
                             </View>
                         )}
+                        <TouchableOpacity
+                            style={{
+                                marginTop: 15,
+                                padding: 20,
+                                flexDirection: "row",
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                borderColor: 'white',
+                                borderStyle: 'solid',
+                                borderWidth: 1,
+                                borderRadius: 8
+                            }}
+                        >
+                            <Text
+                                style={{
+                                    fontSize: 15
+                                }}
+                            >
+                                Works
+                            </Text>
+                            <Icon
+                                name={"arrow-right"}
+                                size={25}
+                            />
+                        </TouchableOpacity>
                     </View>
                 )}
             </View>
