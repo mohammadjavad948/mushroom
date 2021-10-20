@@ -117,6 +117,7 @@ export default function Profile(){
                 />
                 <Button
                     mode={"contained"}
+                    onPress={update}
                     style={{
                         marginTop: 20
                     }}
