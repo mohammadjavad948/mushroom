@@ -1,6 +1,6 @@
 import React from "react";
 import {Image, ScrollView, View} from "react-native";
-import {ActivityIndicator, Button, Text} from 'react-native-paper';
+import {ActivityIndicator, Button, Text, TextInput} from 'react-native-paper';
 import {profileStyle} from "../../styles/Profile";
 import {useQuery} from "react-query";
 import {info} from "../../api/auth";
@@ -68,9 +68,6 @@ export default function Profile(){
                         </View>
                     </View>
                 )}
-                <Splitter beforeText={<Icon name="vpn-key" size={20} />}>
-                    Password
-                </Splitter>
                 <Splitter beforeText={<Icon name="brush" size={20} />}>
                     Theme
                 </Splitter>
@@ -87,6 +84,32 @@ export default function Profile(){
                     discrete={false}
                 />
                 <Theme />
+
+                <Splitter beforeText={<Icon name="vpn-key" size={20} />}>
+                    Change Password
+                </Splitter>
+                <TextInput
+                    mode={"outlined"}
+                    label={"old password"}
+                    style={{
+                        width: '100%'
+                    }}
+                />
+                <TextInput
+                    mode={"outlined"}
+                    label={"new password"}
+                    style={{
+                        width: '100%'
+                    }}
+                />
+                <Button
+                    mode={"contained"}
+                    style={{
+                        marginTop: 20
+                    }}
+                >
+                    update
+                </Button>
             </View>
         </ScrollView>
     )
