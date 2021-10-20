@@ -20,6 +20,14 @@ export default function Profile(){
     const [old, setOld] = useState('');
     const [newP, setNew] = useState('');
 
+    async function update(){
+        try {
+
+        }catch (e) {
+
+        }
+    }
+
     return (
         <ScrollView style={profileStyle.container}>
             <View style={profileStyle.view}>
