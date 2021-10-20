@@ -84,7 +84,29 @@ export class AuthService {
     });
   }
 
-  async changePassword(data: ChangePasswordDto){
+  async changePassword(data: ChangePasswordDto, userId: number){
+    const user = await this.database.user.findUnique({
+      where: {
+        id: userId,
+      },
+      rejectOnNotFound: true
+    });
 
+    const check = await compare(data.old, user.password);
+
+    if (!check){
+      throw new HttpException('old password does not match', 400);
+    }
+
+    const hashedPassword = await hash(data.new, 10);
+
+    return this.database.user.update({
+      where: {
+        id: userId
+      },
+      data: {
+        password: hashedPassword
+      }
+    })
   }
 }
