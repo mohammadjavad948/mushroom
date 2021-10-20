@@ -43,11 +43,6 @@ export default function SingleWorkGroup(){
         }
     }
 
-    function renderItem(inData: any){
-
-        return <Item {...inData} />
-    }
-
     return (
         <ScrollView
             style={{
@@ -150,62 +145,6 @@ function Action(props: Props){
     )
 }
 
-function Item({item}: any){
-
-    const [loading, setLoading] = useState(false);
-    const client = useQueryClient();
-
-    async function remove(){
-        setLoading(true)
-        try {
-            await removeWork(item.id);
-
-            await client.invalidateQueries('workGroup');
-            setLoading(false)
-        } catch (e){
-            setLoading(false)
-        }
-    }
-
-    return (
-        <View
-            style={dashboardStyle.list}
-        >
-            <View style={[
-                dashboardStyle.item,
-                {
-                    borderColor: 'white',
-                    borderWidth: 1
-                }
-            ]}>
-                <Text style={[
-                    dashboardStyle.itemTitle,
-                ]}>
-                    {item.title}
-                </Text>
-                <Text>
-                    {item.description}
-                </Text>
-                <Text
-                    style={[
-                        dashboardStyle.daysLeft,
-                    ]}
-                >
-                    {new Date(item.dueDate).toDateString()}
-                </Text>
-                <View>
-                    <Button
-                        loading={loading}
-                        disabled={loading}
-                        icon={'delete'}
-                        color={'red'}
-                        onPress={remove}
-                    />
-                </View>
-            </View>
-        </View>
-    )
-}
 
 function Link(props: {title: string, icon: any}){
 
