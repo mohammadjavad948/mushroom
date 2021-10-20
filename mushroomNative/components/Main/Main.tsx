@@ -13,6 +13,7 @@ import {useThemeStore} from "../../stores/themeStore";
 import SingleWorkGroup from "../WorkGroup/SingleWorkGroup";
 import EditWorkGroup from "../WorkGroup/EditWorkGroup";
 import Search from "../Search/Search";
+import WorkGroupWorks from "../WorkGroup/WorkGroupWorks";
 
 export default function Main(){
 
@@ -58,6 +59,12 @@ export default function Main(){
                     exact={true}
                 >
                     <SingleWorkGroup />
+                </Route>
+                <Route
+                    path="/workgroup/:id/works"
+                    exact={true}
+                >
+                    <WorkGroupWorks />
                 </Route>
                 <Route
                     path="/workgroup/:id/edit"
