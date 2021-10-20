@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {Body, Controller, Get, Post, Put, Req, UseGuards} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { HttpAuthGuard } from './http-auth.guard';
 import { Request } from '../types/request';
+import ChangePasswordDto from "./dto/change-password.dto";
 
 @Controller({
   path: 'auth',
@@ -24,5 +25,11 @@ export class AuthController {
   @Get('info')
   info(@Req() req: Request) {
     return this.authService.userInfo(req.userId);
+  }
+
+  @UseGuards(HttpAuthGuard)
+  @Put('password/change')
+  changePassword(@Body() body: ChangePasswordDto, @Req() req: Request) {
+    return this.authService.changePassword(body, req.userId);
   }
 }

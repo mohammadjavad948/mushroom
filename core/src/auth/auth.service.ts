@@ -4,6 +4,7 @@ import { sign, verify } from 'jsonwebtoken';
 import { ConfigService } from '@nestjs/config';
 import { TokenPayloadI } from '../types/token';
 import { compare, hash } from 'bcrypt';
+import ChangePasswordDto from "./dto/change-password.dto";
 
 @Injectable()
 export class AuthService {
@@ -81,5 +82,31 @@ export class AuthService {
         id: userId,
       },
     });
+  }
+
+  async changePassword(data: ChangePasswordDto, userId: number){
+    const user = await this.database.user.findUnique({
+      where: {
+        id: userId,
+      },
+      rejectOnNotFound: true
+    });
+
+    const check = await compare(data.old, user.password);
+
+    if (!check){
+      throw new HttpException('old password does not match', 400);
+    }
+
+    const hashedPassword = await hash(data.new, 10);
+
+    return this.database.user.update({
+      where: {
+        id: userId
+      },
+      data: {
+        password: hashedPassword
+      }
+    })
   }
 }

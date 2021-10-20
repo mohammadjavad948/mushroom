@@ -15,6 +15,13 @@ export function info(){
     });
 }
 
+export function changePassword(data: any){
+
+    return api.put<User, AxiosResponse<User>>('/auth/password/change', data,{
+        headers: headers()
+    });
+}
+
 export function headers(){
     return {
         auth: useAuthStore.getState().token
