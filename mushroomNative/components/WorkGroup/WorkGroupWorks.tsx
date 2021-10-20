@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View} from "react-native";
+import {FlatList, View} from "react-native";
 import {useQuery, useQueryClient} from "react-query";
 import {getWorkGroup} from "../../api/workGroup";
 import {useParams} from "react-router-native";
@@ -24,10 +24,17 @@ export default function WorkGroupWorks(){
     return (
         <View
             style={{
-                flex: 1
+                flex: 1,
+                width: '100%',
             }}
         >
-
+            {!isLoading && (
+                <FlatList
+                    data={data?.data.works}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
+            )}
         </View>
     )
 }
