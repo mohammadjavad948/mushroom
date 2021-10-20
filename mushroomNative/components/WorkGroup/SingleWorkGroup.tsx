@@ -27,6 +27,10 @@ export default function SingleWorkGroup(){
         history.push('/work/add')
     }
 
+    async function works(){
+        history.push(`/workgroup/${data?.data.id}/works`)
+    }
+
     async function edit(){
         history.push(`/workgroup/${data?.data.id}/edit`)
     }
@@ -110,6 +114,7 @@ export default function SingleWorkGroup(){
                         )}
                         <Link
                             title={"Works"}
+                            click={works}
                             icon={<Icon
                                 name={"arrow-right"}
                                 size={25}
