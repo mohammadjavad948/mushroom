@@ -63,9 +63,29 @@ export default function SingleWorkGroup(){
                         padding: 10,
                     }}
                 >
-                    <Text style={{fontSize: 15, marginLeft: 15}}>
-                        {data?.data.name}
-                    </Text>
+                    <View style={{
+                        width: '100%',
+                        flexDirection: "row",
+                        marginTop: 10
+                    }}>
+                        <View
+                            style={{
+                                width: 20,
+                                height: 20,
+                                borderRadius: 8,
+                                backgroundColor: data?.data.color
+                            }}
+                        />
+                        <View
+                            style={{
+                                marginLeft: 15
+                            }}
+                        >
+                            <Text style={{fontSize: 18}}>
+                                {data?.data.name}
+                            </Text>
+                        </View>
+                    </View>
                     {data?.data.creatorId === userData?.data.id && (
                         <View style={workGroupStyle.icons}>
                             <Action
