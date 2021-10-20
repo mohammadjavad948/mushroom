@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Image, ScrollView, View} from "react-native";
 import {ActivityIndicator, Button, Text, TextInput} from 'react-native-paper';
 import {profileStyle} from "../../styles/Profile";
@@ -16,6 +16,9 @@ export default function Profile(){
     const {primary, setPrimary} = useThemeStore();
     const {data, isLoading} = useQuery('userInfo', info)
     const {logout} = useAuthStore();
+
+    const [old, setOld] = useState('');
+    const [newP, setNew] = useState('');
 
     return (
         <ScrollView style={profileStyle.container}>
@@ -91,6 +94,7 @@ export default function Profile(){
                 <TextInput
                     mode={"outlined"}
                     label={"old password"}
+                    onChnageText={e => setOld(e)}
                     style={{
                         width: '100%'
                     }}
@@ -98,6 +102,7 @@ export default function Profile(){
                 <TextInput
                     mode={"outlined"}
                     label={"new password"}
+                    onChnageText={e => setNew(e)}
                     style={{
                         width: '100%'
                     }}
