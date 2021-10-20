@@ -113,31 +113,20 @@ export default function SingleWorkGroup(){
                                 />
                             </View>
                         )}
-                        <TouchableOpacity
-                            style={{
-                                marginTop: 15,
-                                padding: 20,
-                                flexDirection: "row",
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                borderColor: 'white',
-                                borderStyle: 'solid',
-                                borderWidth: 1,
-                                borderRadius: 8
-                            }}
-                        >
-                            <Text
-                                style={{
-                                    fontSize: 15
-                                }}
-                            >
-                                Works
-                            </Text>
-                            <Icon
+                        <Link
+                            title={"Works"}
+                            icon={<Icon
                                 name={"arrow-right"}
                                 size={25}
-                            />
-                        </TouchableOpacity>
+                            />}
+                        />
+                        <Link
+                            title={"Users"}
+                            icon={<Icon
+                                name={"arrow-right"}
+                                size={25}
+                            />}
+                        />
                     </View>
                 )}
             </View>
@@ -215,5 +204,33 @@ function Item({item}: any){
                 </View>
             </View>
         </View>
+    )
+}
+
+function Link(props: {title: string, icon: any}){
+
+    return (
+        <TouchableOpacity
+            style={{
+                marginTop: 15,
+                padding: 20,
+                flexDirection: "row",
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                borderColor: 'white',
+                borderStyle: 'solid',
+                borderWidth: 1,
+                borderRadius: 8
+            }}
+        >
+            <Text
+                style={{
+                    fontSize: 15
+                }}
+            >
+                {props.title}
+            </Text>
+            {props.icon}
+        </TouchableOpacity>
     )
 }
