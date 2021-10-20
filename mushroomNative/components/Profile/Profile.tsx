@@ -19,12 +19,15 @@ export default function Profile(){
 
     const [old, setOld] = useState('');
     const [newP, setNew] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function update(){
+        setLoading(true);
         try {
-            await changePassword({old: old, new: newP})
+            await changePassword({old: old, new: newP});
+            setLoading(false)
         }catch (e) {
-
+            setLoading(false)
         }
     }
 
