@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {FlatList, TouchableOpacity, View} from "react-native";
+import {FlatList, ScrollView, TouchableOpacity, View} from "react-native";
 import {ActivityIndicator, Button, Text} from "react-native-paper";
 import {useQuery, useQueryClient} from "react-query";
 import {useHistory, useParams} from 'react-router-native';
@@ -27,6 +27,10 @@ export default function SingleWorkGroup(){
         history.push('/work/add')
     }
 
+    async function works(){
+        history.push(`/workgroup/${data?.data.id}/works`)
+    }
+
     async function edit(){
         history.push(`/workgroup/${data?.data.id}/edit`)
     }
@@ -43,60 +47,90 @@ export default function SingleWorkGroup(){
         }
     }
 
-    function renderItem(inData: any){
-
-        return <Item {...inData} />
-    }
-
     return (
-        <View style={{
-            flex: 1,
-            alignItems: 'center'
-        }}>
-            {(isLoading || userIsLoading) && (
-                <ActivityIndicator size={25}/>
-            )}
-            {!isLoading && !userIsLoading && (
-                <View
-                    style={{
-                        width: '100%',
-                        padding: 10,
-                    }}
-                >
-                    <Text style={{fontSize: 15, marginLeft: 15}}>
-                        {data?.data.name}
-                    </Text>
-                    {data?.data.creatorId === userData?.data.id && (
-                        <View style={workGroupStyle.icons}>
-                            <Action
-                                icon={<Icon name={"add"} size={25}/>}
-                                click={add}
+        <ScrollView
+            style={{
+                flex: 1
+            }}
+        >
+            <View style={{
+                width: '100%',
+                alignItems: 'center'
+            }}>
+                {(isLoading || userIsLoading) && (
+                    <ActivityIndicator size={25}/>
+                )}
+                {!isLoading && !userIsLoading && (
+                    <View
+                        style={{
+                            width: '100%',
+                            padding: 10,
+                        }}
+                    >
+                        <View style={{
+                            width: '100%',
+                            flexDirection: "row",
+                            marginTop: 10
+                        }}>
+                            <View
+                                style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 8,
+                                    backgroundColor: data?.data.color
+                                }}
                             />
-                            <Action
-                                icon={<Icon name={"edit"} size={25}/>}
-                                click={edit}
-                            />
-                            <Action
-                                icon={<Icon name={"delete"} color={'red'} size={25}/>}
-                                click={remove}
-                            />
+                            <View
+                                style={{
+                                    marginLeft: 15
+                                }}
+                            >
+                                <Text style={{fontSize: 18}}>
+                                    {data?.data.name}
+                                </Text>
+                                <Text>
+                                    {data?.data.isPrivate ? "Private" : "Public"}
+                                </Text>
+                                <Text>
+                                    {data?.data.haveComments ? "Have comments" : "Dont have comments"}
+                                </Text>
+                            </View>
                         </View>
-                    )}
-                </View>
-            )}
-            {!isLoading && (
-                <View style={{
-                    width: '100%',
-                    flex: 1
-                }}>
-                    <FlatList
-                        data={data?.data.works}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                    />
-                </View>
-            )}
-        </View>
+                        {data?.data.creatorId === userData?.data.id && (
+                            <View style={workGroupStyle.icons}>
+                                <Action
+                                    icon={<Icon name={"add"} size={25}/>}
+                                    click={add}
+                                />
+                                <Action
+                                    icon={<Icon name={"edit"} size={25}/>}
+                                    click={edit}
+                                />
+                                <Action
+                                    icon={<Icon name={"delete"} color={'red'} size={25}/>}
+                                    click={remove}
+                                />
+                            </View>
+                        )}
+                        <Link
+                            title={"Works"}
+                            click={works}
+                            icon={<Icon
+                                name={"arrow-right"}
+                                size={25}
+                            />}
+                        />
+                        <Link
+                            title={"Users"}
+                            icon={<Icon
+                                name={"arrow-right"}
+                                size={25}
+                            />}
+                        />
+                    </View>
+                )}
+            </View>
+        </ScrollView>
     )
 }
 
@@ -108,70 +142,40 @@ interface Props{
 function Action(props: Props){
 
     return (
-        <TouchableOpacity
+        <Button
             onPress={props.click}
-            style={{
-                padding: 10
-            }}
         >
             {props.icon}
-        </TouchableOpacity>
+        </Button>
     )
 }
 
-function Item({item}: any){
 
-    const [loading, setLoading] = useState(false);
-    const client = useQueryClient();
-
-    async function remove(){
-        setLoading(true)
-        try {
-            await removeWork(item.id);
-
-            await client.invalidateQueries('workGroup');
-            setLoading(false)
-        } catch (e){
-            setLoading(false)
-        }
-    }
+function Link(props: {title: string, icon: any, click?: any}){
 
     return (
-        <View
-            style={dashboardStyle.list}
+        <TouchableOpacity
+            onPress={props.click}
+            style={{
+                marginTop: 15,
+                padding: 20,
+                flexDirection: "row",
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                borderColor: 'white',
+                borderStyle: 'solid',
+                borderWidth: 1,
+                borderRadius: 8
+            }}
         >
-            <View style={[
-                dashboardStyle.item,
-                {
-                    borderColor: 'white',
-                    borderWidth: 1
-                }
-            ]}>
-                <Text style={[
-                    dashboardStyle.itemTitle,
-                ]}>
-                    {item.title}
-                </Text>
-                <Text>
-                    {item.description}
-                </Text>
-                <Text
-                    style={[
-                        dashboardStyle.daysLeft,
-                    ]}
-                >
-                    {new Date(item.dueDate).toDateString()}
-                </Text>
-                <View>
-                    <Button
-                        loading={loading}
-                        disabled={loading}
-                        icon={'delete'}
-                        color={'red'}
-                        onPress={remove}
-                    />
-                </View>
-            </View>
-        </View>
+            <Text
+                style={{
+                    fontSize: 15
+                }}
+            >
+                {props.title}
+            </Text>
+            {props.icon}
+        </TouchableOpacity>
     )
 }
