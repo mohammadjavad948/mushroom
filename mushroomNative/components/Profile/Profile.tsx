@@ -3,7 +3,7 @@ import {Image, ScrollView, View} from "react-native";
 import {ActivityIndicator, Button, Text, TextInput} from 'react-native-paper';
 import {profileStyle} from "../../styles/Profile";
 import {useQuery} from "react-query";
-import {info} from "../../api/auth";
+import {changePassword, info} from "../../api/auth";
 import {useAuthStore} from "../../stores/authStore";
 import Splitter from "../Splitter/Splitter";
 import ColorPicker from "react-native-wheel-color-picker";
@@ -22,7 +22,7 @@ export default function Profile(){
 
     async function update(){
         try {
-
+            await changePassword({old: old, new: newP})
         }catch (e) {
 
         }
