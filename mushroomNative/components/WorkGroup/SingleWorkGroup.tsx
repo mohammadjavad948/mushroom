@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {FlatList, TouchableOpacity, View} from "react-native";
+import {FlatList, ScrollView, TouchableOpacity, View} from "react-native";
 import {ActivityIndicator, Button, Text} from "react-native-paper";
 import {useQuery, useQueryClient} from "react-query";
 import {useHistory, useParams} from 'react-router-native';
@@ -49,74 +49,68 @@ export default function SingleWorkGroup(){
     }
 
     return (
-        <View style={{
-            flex: 1,
-            alignItems: 'center'
-        }}>
-            {(isLoading || userIsLoading) && (
-                <ActivityIndicator size={25}/>
-            )}
-            {!isLoading && !userIsLoading && (
-                <View
-                    style={{
-                        width: '100%',
-                        padding: 10,
-                    }}
-                >
-                    <View style={{
-                        width: '100%',
-                        flexDirection: "row",
-                        marginTop: 10
-                    }}>
-                        <View
-                            style={{
-                                width: 20,
-                                height: 20,
-                                borderRadius: 8,
-                                backgroundColor: data?.data.color
-                            }}
-                        />
-                        <View
-                            style={{
-                                marginLeft: 15
-                            }}
-                        >
-                            <Text style={{fontSize: 18}}>
-                                {data?.data.name}
-                            </Text>
+        <ScrollView
+            style={{
+                flex: 1
+            }}
+        >
+            <View style={{
+                width: '100%',
+                alignItems: 'center'
+            }}>
+                {(isLoading || userIsLoading) && (
+                    <ActivityIndicator size={25}/>
+                )}
+                {!isLoading && !userIsLoading && (
+                    <View
+                        style={{
+                            width: '100%',
+                            padding: 10,
+                        }}
+                    >
+                        <View style={{
+                            width: '100%',
+                            flexDirection: "row",
+                            marginTop: 10
+                        }}>
+                            <View
+                                style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 8,
+                                    backgroundColor: data?.data.color
+                                }}
+                            />
+                            <View
+                                style={{
+                                    marginLeft: 15
+                                }}
+                            >
+                                <Text style={{fontSize: 18}}>
+                                    {data?.data.name}
+                                </Text>
+                            </View>
                         </View>
+                        {data?.data.creatorId === userData?.data.id && (
+                            <View style={workGroupStyle.icons}>
+                                <Action
+                                    icon={<Icon name={"add"} size={25}/>}
+                                    click={add}
+                                />
+                                <Action
+                                    icon={<Icon name={"edit"} size={25}/>}
+                                    click={edit}
+                                />
+                                <Action
+                                    icon={<Icon name={"delete"} color={'red'} size={25}/>}
+                                    click={remove}
+                                />
+                            </View>
+                        )}
                     </View>
-                    {data?.data.creatorId === userData?.data.id && (
-                        <View style={workGroupStyle.icons}>
-                            <Action
-                                icon={<Icon name={"add"} size={25}/>}
-                                click={add}
-                            />
-                            <Action
-                                icon={<Icon name={"edit"} size={25}/>}
-                                click={edit}
-                            />
-                            <Action
-                                icon={<Icon name={"delete"} color={'red'} size={25}/>}
-                                click={remove}
-                            />
-                        </View>
-                    )}
-                </View>
-            )}
-            {!isLoading && (
-                <View style={{
-                    width: '100%',
-                    flex: 1
-                }}>
-                    <FlatList
-                        data={data?.data.works}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                    />
-                </View>
-            )}
-        </View>
+                )}
+            </View>
+        </ScrollView>
     )
 }
 
