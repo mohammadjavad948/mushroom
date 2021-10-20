@@ -120,6 +120,7 @@ export default function Profile(){
                 />
                 <Button
                     mode={"contained"}
+                    loading={loading}
                     onPress={update}
                     style={{
                         marginTop: 20
