@@ -2,6 +2,7 @@ import {Test, TestingModule} from '@nestjs/testing';
 import {INestApplication, VersioningType} from '@nestjs/common';
 import * as request from 'supertest';
 import {AppModule} from './../src/app.module';
+import {user, version} from "./data";
 
 describe('Auth (e2e)', () => {
     let app: INestApplication;
@@ -23,8 +24,8 @@ describe('Auth (e2e)', () => {
 
     it('signup', () => {
         return request(app.getHttpServer())
-            .post('/v1/auth/signup')
-            .send({username: "test", password: "test"})
+            .post(`/${version}/auth/signup`)
+            .send(user)
             .expect(201)
     });
 });
