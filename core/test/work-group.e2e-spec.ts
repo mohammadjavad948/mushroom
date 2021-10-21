@@ -7,6 +7,7 @@ import {user, version} from "./data";
 describe('work group (e2e)', () => {
     let app: INestApplication;
     let token = "";
+    let id = 1;
 
     beforeEach(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -51,5 +52,24 @@ describe('work group (e2e)', () => {
                 isPrivate: false
             })
             .expect(403)
-    })
+    });
+
+    it('view workgroup', () => {
+        return request(app.getHttpServer())
+            .get(`/${version}/work-group/${id}`)
+            .set('auth', token)
+            .expect(200)
+    });
+
+    it('update workgroup', () => {
+        return request(app.getHttpServer())
+            .patch(`/${version}/work-group/${id}`)
+            .set('auth', token)
+            .send({
+                name: "jhggk",
+                color: "#ffffff",
+                isPrivate: false
+            })
+            .expect(200)
+    });
 });
