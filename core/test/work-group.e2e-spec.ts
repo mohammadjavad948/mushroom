@@ -22,12 +22,13 @@ describe('work group (e2e)', () => {
 
         await app.init();
 
-        request(app.getHttpServer())
+        const data = await request(app.getHttpServer())
             .post(`/${version}/auth/login`)
-            .send(user)
-            .then((data) => {
-                token = data.body.token;
-            })
+            .send(user);
+
+        console.log(data.body)
+
+        token = data.body.token;
     });
 
     it('create workgroup', () => {
