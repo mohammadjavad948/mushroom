@@ -28,4 +28,11 @@ describe('Auth (e2e)', () => {
             .send(user)
             .expect(201)
     });
+
+    it('login', () => {
+        return request(app.getHttpServer())
+            .post(`/${version}/auth/login`)
+            .send(user)
+            .expect(200)
+    });
 });
