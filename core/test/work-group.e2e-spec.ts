@@ -26,13 +26,14 @@ describe('work group (e2e)', () => {
             .post(`/${version}/auth/login`)
             .send(user)
             .then((data) => {
-                token = data.token
+                token = data.body.token;
             })
     });
 
     it('create workgroup', () => {
         return request(app.getHttpServer())
             .post(`/${version}/work-group`)
+            .set('auth', token)
             .send({
                 name: "sukdfjs",
                 color: "#ffffff",

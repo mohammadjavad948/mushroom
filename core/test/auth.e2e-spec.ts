@@ -33,6 +33,6 @@ describe('Auth (e2e)', () => {
         return request(app.getHttpServer())
             .post(`/${version}/auth/login`)
             .send(user)
-            .expect(200)
+            .expect(201)
     });
 });
