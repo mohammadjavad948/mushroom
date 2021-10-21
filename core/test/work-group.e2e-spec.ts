@@ -29,4 +29,15 @@ describe('work group (e2e)', () => {
                 token = data.token
             })
     });
+
+    it('create workgroup', () => {
+        return request(app.getHttpServer())
+            .post(`/${version}/work-group`)
+            .send({
+                name: "sukdfjs",
+                color: "#ffffff",
+                isPrivate: true
+            })
+            .expect(201)
+    })
 });
