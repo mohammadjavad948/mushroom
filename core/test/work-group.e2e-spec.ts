@@ -26,8 +26,6 @@ describe('work group (e2e)', () => {
             .post(`/${version}/auth/login`)
             .send(user);
 
-        console.log(data.body)
-
         token = data.body.token;
     });
 
@@ -41,5 +39,17 @@ describe('work group (e2e)', () => {
                 isPrivate: true
             })
             .expect(201)
+    })
+
+    it('cant create workgroup', () => {
+        return request(app.getHttpServer())
+            .post(`/${version}/work-group`)
+            .set('auth', token)
+            .send({
+                name: "sukdfjs",
+                color: "#ffffff",
+                isPrivate: false
+            })
+            .expect(403)
     })
 });
