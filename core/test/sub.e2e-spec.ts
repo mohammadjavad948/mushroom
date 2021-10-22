@@ -44,4 +44,11 @@ describe('Sub (e2e)', () => {
             .set('auth', token)
             .expect(201)
     })
+
+    it('can view subs', () => {
+        return request(app.getHttpServer())
+            .post(`/${version}/sub`)
+            .set('auth', token)
+            .expect(200)
+    })
 });
