@@ -7,7 +7,7 @@ import {user, version} from "./data";
 describe('work group (e2e)', () => {
     let app: INestApplication;
     let token = "";
-    let id = 2;
+    let id = 4;
 
     beforeEach(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
