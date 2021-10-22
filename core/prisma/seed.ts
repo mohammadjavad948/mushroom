@@ -22,7 +22,17 @@ async function main() {
         }
     });
 
-    console.log({ user })
+    const work = await prisma.work.create({
+        data: {
+            title: "adj",
+            groupId: 1,
+            creatorId: 1,
+            dueDate: new Date(),
+            description: "akjb"
+        }
+    })
+
+    console.log({ user, work })
 }
 
 main()
