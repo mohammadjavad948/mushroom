@@ -33,22 +33,29 @@ describe('Sub (e2e)', () => {
 
     it('cant sub to private group', () => {
         return request(app.getHttpServer())
-            .post(`/${version}/sub/${privateGroupId}`)
+            .patch(`/${version}/sub/${privateGroupId}`)
             .set('auth', token)
             .expect(403)
     })
 
     it('can sub to public group', () => {
         return request(app.getHttpServer())
-            .post(`/${version}/sub/${publicGroupId}`)
+            .patch(`/${version}/sub/${publicGroupId}`)
             .set('auth', token)
             .expect(201)
     })
 
     it('can view subs', () => {
         return request(app.getHttpServer())
-            .post(`/${version}/sub`)
+            .get(`/${version}/sub`)
             .set('auth', token)
             .expect(200)
+    })
+
+    it('can unsub from public group', () => {
+        return request(app.getHttpServer())
+            .patch(`/${version}/unsub/${publicGroupId}`)
+            .set('auth', token)
+            .expect(201)
     })
 });
