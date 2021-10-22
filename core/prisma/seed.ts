@@ -9,7 +9,16 @@ async function main() {
             username: "test",
             password: await hash("test", 10),
             isVerified: true,
-            canCreatePublicWorkGroup: true
+            canCreatePublicWorkGroup: true,
+            workGroups: {
+                create: [
+                    {
+                        color: "#ffffff",
+                        name: "aefa",
+                        isPrivate: true
+                    }
+                ]
+            }
         }
     });
 
