@@ -42,7 +42,7 @@ describe('Sub (e2e)', () => {
         return request(app.getHttpServer())
             .patch(`/${version}/sub/${publicGroupId}`)
             .set('auth', token)
-            .expect(201)
+            .expect(200)
     })
 
     it('can view subs', () => {
