@@ -32,38 +32,39 @@ describe('work (e2e)', () => {
 
     it('create work', () => {
         return request(app.getHttpServer())
-            .post(`/${version}/work-group`)
+            .post(`/${version}/work`)
             .set('auth', token)
             .send({
-                name: "sukdfjs",
-                color: "#ffffff",
-                isPrivate: true
+                title: "sukdfjs",
+                description: "#ffffff",
+                dueDate: new Date(),
+                groupId: 1
             })
             .expect(201)
     })
 
-    it('view workgroup', () => {
+    it('view work', () => {
         return request(app.getHttpServer())
-            .get(`/${version}/work-group/${id}`)
+            .get(`/${version}/work/${id}`)
             .set('auth', token)
             .expect(200)
     });
 
-    it('update workgroup', () => {
+    it('update work', () => {
         return request(app.getHttpServer())
-            .patch(`/${version}/work-group/${id}`)
+            .patch(`/${version}/work/${id}`)
             .set('auth', token)
             .send({
-                name: "jhggk",
-                color: "#ffffff",
-                isPrivate: false
+                title: "sukdfjs",
+                description: "#ffffff",
+                dueDate: new Date(),
             })
             .expect(200)
     });
 
-    it('remove workgroup', () => {
+    it('remove work', () => {
         return request(app.getHttpServer())
-            .delete(`/${version}/work-group/${id}`)
+            .delete(`/${version}/work/${id}`)
             .set('auth', token)
             .expect(200)
     });
