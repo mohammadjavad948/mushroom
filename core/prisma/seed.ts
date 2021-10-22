@@ -22,6 +22,31 @@ async function main() {
         }
     });
 
+    const user2 = await prisma.user.create({
+        data: {
+            username: "test2",
+            password: await hash("test2", 10),
+            isVerified: true,
+            canCreatePublicWorkGroup: true,
+            workGroups: {
+                createMany: {
+                    data: [
+                        {
+                            color: "#ffffff",
+                            name: "sf",
+                            isPrivate: true
+                        },
+                        {
+                            color: "#ffffff",
+                            name: "aefsefa",
+                            isPrivate: false
+                        }
+                    ]
+                }
+            }
+        }
+    });
+
     const work = await prisma.work.create({
         data: {
             title: "adj",
@@ -32,7 +57,7 @@ async function main() {
         }
     })
 
-    console.log({ user, work })
+    console.log({ user, work, user2 })
 }
 
 main()
