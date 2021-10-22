@@ -2,7 +2,7 @@
 on: push
 jobs:
   # label of the container job
-  postgres-job:
+  test-e2e:
     # containers must run in Linux based operating systems
     runs-on: ubuntu-latest
     # Docker Hub image that `postgres-job` executes in
