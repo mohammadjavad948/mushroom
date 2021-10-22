@@ -1,4 +1,4 @@
-name: test core
+name: test-core
 
 on: push
 jobs:
