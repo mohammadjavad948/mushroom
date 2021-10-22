@@ -43,4 +43,4 @@ jobs:
         run: cd core && yarn run test:e2e
         env:
           SECRET: "as'padlawawaodwkpa"
-          DATABASE_URL: "postgresql://prisma:prisma@localhost:5432/prisma?schema=public"
+          DATABASE_URL: "postgresql://prisma:prisma@postgres:5432/prisma?schema=public"
