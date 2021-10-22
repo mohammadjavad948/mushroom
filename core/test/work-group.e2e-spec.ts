@@ -42,18 +42,6 @@ describe('work group (e2e)', () => {
             .expect(201)
     })
 
-    it('cant create workgroup', () => {
-        return request(app.getHttpServer())
-            .post(`/${version}/work-group`)
-            .set('auth', token)
-            .send({
-                name: "sukdfjs",
-                color: "#ffffff",
-                isPrivate: false
-            })
-            .expect(403)
-    });
-
     it('view workgroup', () => {
         return request(app.getHttpServer())
             .get(`/${version}/work-group/${id}`)

@@ -25,7 +25,7 @@ describe('Auth (e2e)', () => {
     it('signup', () => {
         return request(app.getHttpServer())
             .post(`/${version}/auth/signup`)
-            .send(user)
+            .send({username: "sfsef", password: "skfj"})
             .expect(201)
     });
 
