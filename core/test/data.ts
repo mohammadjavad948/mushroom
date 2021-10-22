@@ -1,7 +1,7 @@
 
 export const user = {
-    username: "test1",
-    password: "test1"
+    username: "test",
+    password: "test"
 }
 
 export const version = 'v1'
