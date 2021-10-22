@@ -1,3 +1,5 @@
+name: test core
+
 on: push
 jobs:
   # label of the container job
