@@ -60,4 +60,11 @@ describe('work group (e2e)', () => {
             })
             .expect(200)
     });
+
+    it('remove workgroup', () => {
+        return request(app.getHttpServer())
+            .delete(`/${version}/work-group/${id}`)
+            .set('auth', token)
+            .expect(200)
+    });
 });
