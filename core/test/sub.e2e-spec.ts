@@ -8,7 +8,7 @@ describe('Sub (e2e)', () => {
     let app: INestApplication;
     let token = "";
     let privateGroupId = 2
-    let publicGroupId = 3
+    let publicGroupId = 3;
 
     beforeEach(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
