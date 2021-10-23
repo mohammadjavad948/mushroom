@@ -8,6 +8,11 @@ export function login(data: any){
     return api.post('/auth/login', data);
 }
 
+export function signup(data: any){
+
+    return api.post('/auth/signup', data);
+}
+
 export function info(){
 
     return api.get<User, AxiosResponse<User>>('/auth/info', {
