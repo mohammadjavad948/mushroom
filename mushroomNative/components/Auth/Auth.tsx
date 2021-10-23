@@ -7,6 +7,7 @@ import {login} from "../../api/auth";
 import {useAuthStore} from "../../stores/authStore";
 import {a, useSpring} from '@react-spring/native';
 import {useThemeStore} from "../../stores/themeStore";
+import {View} from "react-native";
 
 export default function Auth(){
     const {theme} = useThemeStore();
@@ -33,12 +34,12 @@ export default function Auth(){
                 ...animation
             ]}
         >
-            {login ? <Login /> : <Signup />}
+            {login ? <Login signup={() => setLogin(false)} /> : <Signup login={() => setLogin(true)} />}
         </a.View>
     )
 }
 
-function Login(){
+function Login(props: {signup: any}){
 
     const [loading, setLoading] = useState(false);
     const {setToken} = useAuthStore()
@@ -63,7 +64,9 @@ function Login(){
         >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <View
-                    style={}
+                    style={{
+                        width: '100%'
+                    }}
                 >
                     <Text style={authStyle.text}>
                         Login
@@ -99,18 +102,16 @@ function Login(){
     )
 }
 
-function Signup(){
+function Signup(props: {login: any}){
 
     const [loading, setLoading] = useState(false);
-    const {setToken} = useAuthStore()
 
     async function submit(value: any) {
         setLoading(true)
         try {
-            const data = await login(value);
+            await login(value);
 
-            console.log('logged in')
-            setToken(data.data.token)
+            props.login();
         } catch (e) {
             console.log(e)
             setLoading(false)
@@ -124,7 +125,9 @@ function Signup(){
         >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <View
-                    style={}
+                    style={{
+                        width: '100%'
+                    }}
                 >
                     <Text style={authStyle.text}>
                         Signup
