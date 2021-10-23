@@ -17,21 +17,29 @@ export class HelperService {
   }
 
   async canViewGroup(userId: number, groupId: number) {
-    const sub = await this.database.subscription.count({
-      where: {
-        userId,
-        groupId,
-      },
-    });
-
-    const group = await this.database.workGroup.count({
+    const count = await this.database.workGroup.count({
       where: {
         id: groupId,
-        creatorId: userId,
-      },
-    });
+        OR: [
+          {
+            creatorId: userId,
+          },
+          {
+            isPrivate: false,
+          },
+          {
+            subscribers: {
+              some: {
+                userId: userId
+              }
+            }
+          }
+        ]
+      }
+    })
 
-    return sub > 0 || group > 0;
+
+    return count > 0;
   }
 
   async canViewWork(userId: number, workId: number) {
