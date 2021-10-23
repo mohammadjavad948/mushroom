@@ -65,7 +65,8 @@ function Login(props: {signup: any}){
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <View
                     style={{
-                        width: '100%'
+                        width: '100%',
+                        alignItems:'center'
                     }}
                 >
                     <Text style={authStyle.text}>
@@ -132,7 +133,8 @@ function Signup(props: {login: any}){
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <View
                     style={{
-                        width: '100%'
+                        width: '100%',
+                        alignItems: 'center'
                     }}
                 >
                     <Text style={authStyle.text}>
