@@ -9,14 +9,37 @@ import {a, useSpring} from '@react-spring/native';
 import {useThemeStore} from "../../stores/themeStore";
 
 export default function Auth(){
+    const {theme} = useThemeStore();
+    const animation = useSpring(() => ({
+        from: {
+            opacity: 0,
+        },
+        to: {
+            opacity: 1
+        }
+    }))
+
     const [login, setLogin] = useState(true);
 
-    return login ? <Login /> : <Signup />
+    return (
+        <a.View
+            style={[
+                mainStyle.main,
+                {
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: theme === 'dark' ? '#2b2b2b' : 'white'
+                },
+                ...animation
+            ]}
+        >
+            {login ? <Login /> : <Signup />}
+        </a.View>
+    )
 }
 
 function Login(){
 
-    const {theme} = useThemeStore();
     const [loading, setLoading] = useState(false);
     const {setToken} = useAuthStore()
 
@@ -33,31 +56,14 @@ function Login(){
         }
     }
 
-    const animation = useSpring(() => ({
-        from: {
-            opacity: 0,
-        },
-        to: {
-            opacity: 1
-        }
-    }))
-
     return (
         <Formik
             initialValues={{ username: '', password: '' }}
             onSubmit={submit}
         >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
-                <a.View
-                    style={[
-                        mainStyle.main,
-                        {
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: theme === 'dark' ? '#2b2b2b' : 'white'
-                        },
-                        ...animation
-                    ]}
+                <View
+                    style={}
                 >
                     <Text style={authStyle.text}>
                         Login
@@ -87,7 +93,7 @@ function Login(){
                     >
                         Login
                     </Button>
-                </a.View>
+                </View>
             )}
         </Formik>
     )
@@ -95,7 +101,6 @@ function Login(){
 
 function Signup(){
 
-    const {theme} = useThemeStore();
     const [loading, setLoading] = useState(false);
     const {setToken} = useAuthStore()
 
@@ -112,31 +117,14 @@ function Signup(){
         }
     }
 
-    const animation = useSpring(() => ({
-        from: {
-            opacity: 0,
-        },
-        to: {
-            opacity: 1
-        }
-    }))
-
     return (
         <Formik
             initialValues={{ username: '', password: '' }}
             onSubmit={submit}
         >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
-                <a.View
-                    style={[
-                        mainStyle.main,
-                        {
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: theme === 'dark' ? '#2b2b2b' : 'white'
-                        },
-                        ...animation
-                    ]}
+                <View
+                    style={}
                 >
                     <Text style={authStyle.text}>
                         Signup
@@ -166,7 +154,7 @@ function Signup(){
                     >
                         Signup
                     </Button>
-                </a.View>
+                </View>
             )}
         </Formik>
     )
