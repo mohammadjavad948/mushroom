@@ -3,7 +3,7 @@ import {mainStyle} from "../../styles/Main";
 import {Button, Text, TextInput} from "react-native-paper";
 import {authStyle} from "../../styles/Auth";
 import {Formik} from 'formik';
-import {login} from "../../api/auth";
+import {login, signup} from "../../api/auth";
 import {useAuthStore} from "../../stores/authStore";
 import {a, useSpring} from '@react-spring/native';
 import {useThemeStore} from "../../stores/themeStore";
@@ -116,7 +116,7 @@ function Signup(props: {login: any}){
     async function submit(value: any) {
         setLoading(true)
         try {
-            await login(value);
+            await signup(value);
 
             props.login();
         } catch (e) {
