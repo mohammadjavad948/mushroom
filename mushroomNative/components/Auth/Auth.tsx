@@ -96,6 +96,12 @@ function Login(props: {signup: any}){
                     >
                         Login
                     </Button>
+                    <Button
+                        compact={true}
+                        onPress={props.signup}
+                    >
+                        Signup
+                    </Button>
                 </View>
             )}
         </Formik>
@@ -156,6 +162,12 @@ function Signup(props: {login: any}){
                         disabled={loading}
                     >
                         Signup
+                    </Button>
+                    <Button
+                        compact={true}
+                        onPress={props.login}
+                    >
+                        Login
                     </Button>
                 </View>
             )}
