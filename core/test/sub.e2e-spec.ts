@@ -54,7 +54,7 @@ describe('Sub (e2e)', () => {
 
     it('can unsub from public group', () => {
         return request(app.getHttpServer())
-            .patch(`/${version}/unsub/${publicGroupId}`)
+            .patch(`/${version}/sub/unsub/${publicGroupId}`)
             .set('auth', token)
             .expect(201)
     })

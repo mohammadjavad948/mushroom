@@ -38,6 +38,8 @@ export class HelperService {
       }
     })
 
+    console.log(count)
+
     return count > 0;
   }
 

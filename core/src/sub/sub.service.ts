@@ -26,7 +26,7 @@ export class SubService {
             throw new HttpException('subbed', 403);
         }
 
-        const canView = this.helper.canViewGroup(userId, groupId);
+        const canView = await this.helper.canViewGroup(userId, groupId);
 
         if (!canView){
             throw new HttpException('nope', 403);
