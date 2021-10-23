@@ -56,6 +56,6 @@ describe('Sub (e2e)', () => {
         return request(app.getHttpServer())
             .patch(`/${version}/sub/unsub/${publicGroupId}`)
             .set('auth', token)
-            .expect(201)
+            .expect(200)
     })
 });
