@@ -21,6 +21,18 @@ model User {
     workGroups WorkGroup[]
     works Work[]
     subedGroups Subscription[]
+    sessions Session[]
+
+    createdAt DateTime @default(now())
+}
+
+model Session {
+    id Int @id @default(autoincrement())
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId Int
+
+    hash String @db.Text
 
     createdAt DateTime @default(now())
 }
