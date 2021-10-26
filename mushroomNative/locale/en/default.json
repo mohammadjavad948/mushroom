@@ -19,5 +19,9 @@
   "oldPassword": "old password",
   "newPassword": "new password",
   "update": "update",
-  "join": "join"
+  "join": "join",
+  "offlineGroup": "Offline Groups",
+  "add": "Add",
+  "joinedGroup": "Joined Groups",
+  "accountGroup": "Account Groups"
 }
