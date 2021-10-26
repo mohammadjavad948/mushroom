@@ -7,5 +7,6 @@
   "title": "title",
   "description": "description",
   "selectDate": "Click To Select Date",
-  "save": "save"
+  "save": "save",
+  "from": "from"
 }

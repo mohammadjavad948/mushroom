@@ -2,8 +2,11 @@ import React from "react";
 import {Text, View} from "react-native";
 import {dashboardStyle} from "../../styles/Dashboard";
 import getTextColor from "../../helper/textColor";
+import {useTranslation} from "react-i18next";
 
 export default function DashboardItem({item}: any){
+
+    const {t} = useTranslation();
 
     return (
         <View
@@ -51,7 +54,7 @@ export default function DashboardItem({item}: any){
                         }
                     ]}
                 >
-                    from {item.group.name}
+                    {t('from')} {item.group.name}
                 </Text>
             </View>
         </View>
