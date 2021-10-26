@@ -14,7 +14,7 @@ import {useTranslation} from "react-i18next";
 
 export default function Profile(){
 
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
 
     const {primary, setPrimary} = useThemeStore();
     const {data, isLoading} = useQuery('userInfo', info)
@@ -101,6 +101,19 @@ export default function Profile(){
                     discrete={false}
                 />
                 <Theme />
+
+                <Splitter beforeText={<Icon name="translate" size={20} />}>
+                    {t('language')}
+                </Splitter>
+
+                <View>
+                    <Button onPress={() => i18n.changeLanguage('en')}>
+                        English
+                    </Button>
+                    <Button onPress={() => i18n.changeLanguage('fa')}>
+                        فارسی
+                    </Button>
+                </View>
 
                 <Splitter beforeText={<Icon name="vpn-key" size={20} />}>
                     {t('changePassword')}
