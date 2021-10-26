@@ -21,6 +21,9 @@ import {QueryClient, QueryClientProvider} from "react-query";
 import {useThemeStore} from "./stores/themeStore";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+// init i18n
+import './locale/init';
+
 const queryClient = new QueryClient()
 
 const App = () => {
