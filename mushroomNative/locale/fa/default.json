@@ -18,5 +18,14 @@
   "changePassword": "تغییر رمز",
   "oldPassword": "رمز فعلی",
   "newPassword": "رمز جدید",
-  "update": "بروزرسانی"
+  "update": "بروزرسانی",
+  "join": "پیوستن",
+  "offlineGroup": "گروه افلاین",
+  "add": "اضافه کردن",
+  "joinedGroup": "گروه پیوسته شده",
+  "accountGroup": "گروه ها",
+  "editWorkGroup": "تغییر گروه",
+  "addWorkGroup": "اضافه کردن گروه",
+  "name": "نام",
+  "isPrivate": "خصوصی"
 }
