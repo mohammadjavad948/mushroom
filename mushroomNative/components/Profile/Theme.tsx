@@ -3,16 +3,19 @@ import {profileStyle} from "../../styles/Profile";
 import {TouchableOpacity, View} from "react-native";
 import {Text} from "react-native-paper";
 import {useThemeStore} from "../../stores/themeStore";
+import {useTranslation} from "react-i18next";
 
 export default function Theme(){
 
+    const {t} = useTranslation();
+
     const themes = [
         {
-            text: 'Dark',
+            text: t('dark'),
             theme: 'dark'
         },
         {
-            text: 'Light',
+            text: t('light'),
             theme: 'light'
         }
     ]
