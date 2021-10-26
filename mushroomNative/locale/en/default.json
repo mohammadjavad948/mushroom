@@ -18,5 +18,6 @@
   "changePassword": "Change Password",
   "oldPassword": "old password",
   "newPassword": "new password",
-  "update": "update"
+  "update": "update",
+  "join": "join"
 }
