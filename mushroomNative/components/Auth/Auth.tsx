@@ -8,6 +8,7 @@ import {useAuthStore} from "../../stores/authStore";
 import {a, useSpring} from '@react-spring/native';
 import {useThemeStore} from "../../stores/themeStore";
 import {View} from "react-native";
+import {useTranslation} from "react-i18next";
 
 export default function Auth(){
     const {theme} = useThemeStore();
@@ -41,6 +42,7 @@ export default function Auth(){
 
 function Login(props: {signup: any}){
 
+    const {t} = useTranslation();
     const [loading, setLoading] = useState(false);
     const {setToken} = useAuthStore()
 
@@ -70,18 +72,18 @@ function Login(props: {signup: any}){
                     }}
                 >
                     <Text style={authStyle.text}>
-                        Login
+                        {t('login')}
                     </Text>
                     <TextInput
                         style={authStyle.input}
-                        label={"username"}
+                        label={t('username')}
                         mode={"outlined"}
                         onChangeText={handleChange('username')}
                         onBlur={handleBlur('username')}
                     />
                     <TextInput
                         style={authStyle.input}
-                        label={"password"}
+                        label={t('password')}
                         mode={"outlined"}
                         type={"password"}
                         secureTextEntry={true}
@@ -95,13 +97,13 @@ function Login(props: {signup: any}){
                         loading={loading}
                         disabled={loading}
                     >
-                        Login
+                        {t('login')}
                     </Button>
                     <Button
                         compact={true}
                         onPress={props.signup}
                     >
-                        Signup
+                        {t('signup')}
                     </Button>
                 </View>
             )}
@@ -111,6 +113,7 @@ function Login(props: {signup: any}){
 
 function Signup(props: {login: any}){
 
+    const {t} = useTranslation();
     const [loading, setLoading] = useState(false);
 
     async function submit(value: any) {
@@ -138,18 +141,18 @@ function Signup(props: {login: any}){
                     }}
                 >
                     <Text style={authStyle.text}>
-                        Signup
+                        {t('signup')}
                     </Text>
                     <TextInput
                         style={authStyle.input}
-                        label={"username"}
+                        label={t('username')}
                         mode={"outlined"}
                         onChangeText={handleChange('username')}
                         onBlur={handleBlur('username')}
                     />
                     <TextInput
                         style={authStyle.input}
-                        label={"password"}
+                        label={t('password')}
                         mode={"outlined"}
                         type={"password"}
                         secureTextEntry={true}
@@ -163,13 +166,13 @@ function Signup(props: {login: any}){
                         loading={loading}
                         disabled={loading}
                     >
-                        Signup
+                        {t('signup')}
                     </Button>
                     <Button
                         compact={true}
                         onPress={props.login}
                     >
-                        Login
+                        {t('login')}
                     </Button>
                 </View>
             )}
