@@ -7,11 +7,11 @@ import {getWorkGroup, removeWorkGroup} from "../../api/workGroup";
 import {info} from "../../api/auth";
 import {workGroupStyle} from "../../styles/WorkGroup";
 import Icon from "../Icon/Icon";
-import {dashboardStyle} from "../../styles/Dashboard";
-import {removeWork} from "../../api/work";
+import {useTranslation} from "react-i18next";
 
 export default function SingleWorkGroup(){
 
+    const {t} = useTranslation();
     const params = useParams<{id: number}>();
     const history = useHistory();
     const client = useQueryClient();
@@ -89,7 +89,7 @@ export default function SingleWorkGroup(){
                                     {data?.data.name}
                                 </Text>
                                 <Text>
-                                    {data?.data.isPrivate ? "Private" : "Public"}
+                                    {data?.data.isPrivate ? t('private') : t('public')}
                                 </Text>
                                 <Text>
                                     {data?.data.haveComments ? "Have comments" : "Dont have comments"}
@@ -113,7 +113,7 @@ export default function SingleWorkGroup(){
                             </View>
                         )}
                         <Link
-                            title={"Works"}
+                            title={t('works')}
                             click={works}
                             icon={<Icon
                                 name={"arrow-right"}
@@ -121,7 +121,7 @@ export default function SingleWorkGroup(){
                             />}
                         />
                         <Link
-                            title={"Users"}
+                            title={t('users')}
                             icon={<Icon
                                 name={"arrow-right"}
                                 size={25}

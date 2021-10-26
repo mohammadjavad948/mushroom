@@ -27,5 +27,9 @@
   "editWorkGroup": "تغییر گروه",
   "addWorkGroup": "اضافه کردن گروه",
   "name": "نام",
-  "isPrivate": "خصوصی"
+  "isPrivate": "شخصی",
+  "private": "شخصی",
+  "public": "عمومی",
+  "works": "مشق ها",
+  "users": "کاربران"
 }

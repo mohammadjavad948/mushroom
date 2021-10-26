@@ -27,5 +27,9 @@
   "editWorkGroup": "Edit Work Group",
   "addWorkGroup": "Add Work Group",
   "name": "name",
-  "isPrivate": "is private"
+  "isPrivate": "is private",
+  "private": "private",
+  "public": "public",
+  "works": "Works",
+  "users": "users"
 }
