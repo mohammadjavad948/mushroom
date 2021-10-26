@@ -2,5 +2,21 @@
   "login": "ورود",
   "username": "نام کاربری",
   "password": "رمز عبور",
-  "signup": "ثبت نام"
+  "signup": "ثبت نام",
+  "addWork": "اضافه کردن مشق",
+  "title": "عنوان",
+  "description": "توضیحات",
+  "selectDate": "تاریخ را انتخاب کنید",
+  "save": "ذخیره",
+  "from": "از",
+  "account": "حساب",
+  "logout": "خروج",
+  "verified": "تایید شده",
+  "createdAt": "ساخته شده در",
+  "abilities": "قابلیت ها",
+  "theme": "تم",
+  "changePassword": "تغییر رمز",
+  "oldPassword": "رمز فعلی",
+  "newPassword": "رمز جدید",
+  "update": "بروزرسانی"
 }
