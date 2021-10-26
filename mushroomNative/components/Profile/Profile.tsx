@@ -10,8 +10,11 @@ import ColorPicker from "react-native-wheel-color-picker";
 import {useThemeStore} from "../../stores/themeStore";
 import Theme from "./Theme";
 import Icon from "../Icon/Icon";
+import {useTranslation} from "react-i18next";
 
 export default function Profile(){
+
+    const {t} = useTranslation();
 
     const {primary, setPrimary} = useThemeStore();
     const {data, isLoading} = useQuery('userInfo', info)
@@ -35,7 +38,7 @@ export default function Profile(){
         <ScrollView style={profileStyle.container}>
             <View style={profileStyle.view}>
                 <Splitter beforeText={<Icon name="person" size={20} />}>
-                    Account
+                    {t('account')}
                 </Splitter>
                 {isLoading && <ActivityIndicator size={25} />}
                 {isLoading && (
@@ -46,7 +49,7 @@ export default function Profile(){
                         style={profileStyle.logout}
                         onPress={logout}
                     >
-                        logout
+                        {t('logout')}
                     </Button>
                 )}
                 {!isLoading && (
@@ -59,13 +62,13 @@ export default function Profile(){
                             <Text style={profileStyle.username}>
                                 {data?.data.username}
                                 #{data?.data.id}
-                                {data?.data.isVerified ?  "(verified)" : ""}
+                                {data?.data.isVerified ?  `(${t('verified')})` : ""}
                             </Text>
                             <Text style={profileStyle.date}>
-                                Created At {new Date(data?.data.createdAt || "").toDateString()}
+                                {t('createdAt')} {new Date(data?.data.createdAt || "").toDateString()}
                             </Text>
                             <Text style={profileStyle.date}>
-                                Abilities
+                                {t('abilities')}
                             </Text>
                             <Text style={profileStyle.date}>
                                 - Can create public workgroup: {data?.data.canCreatePublicWorkGroup ? "yes": "no"}
@@ -77,13 +80,13 @@ export default function Profile(){
                                 style={profileStyle.logout}
                                 onPress={logout}
                             >
-                                logout
+                                {t('logout')}
                             </Button>
                         </View>
                     </View>
                 )}
                 <Splitter beforeText={<Icon name="brush" size={20} />}>
-                    Theme
+                    {t('theme')}
                 </Splitter>
                 <ColorPicker
                     color={primary}
@@ -100,11 +103,11 @@ export default function Profile(){
                 <Theme />
 
                 <Splitter beforeText={<Icon name="vpn-key" size={20} />}>
-                    Change Password
+                    {t('changePassword')}
                 </Splitter>
                 <TextInput
                     mode={"outlined"}
-                    label={"old password"}
+                    label={t('oldPassword')}
                     onChnageText={e => setOld(e)}
                     style={{
                         width: '100%'
@@ -112,7 +115,7 @@ export default function Profile(){
                 />
                 <TextInput
                     mode={"outlined"}
-                    label={"new password"}
+                    label={t('newPassword')}
                     onChnageText={e => setNew(e)}
                     style={{
                         width: '100%'
@@ -126,7 +129,7 @@ export default function Profile(){
                         marginTop: 20
                     }}
                 >
-                    update
+                    {t('update')}
                 </Button>
             </View>
         </ScrollView>

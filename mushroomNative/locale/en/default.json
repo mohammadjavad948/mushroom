@@ -8,5 +8,15 @@
   "description": "description",
   "selectDate": "Click To Select Date",
   "save": "save",
-  "from": "from"
+  "from": "from",
+  "account": "Account",
+  "logout": "logout",
+  "verified": "verified",
+  "createdAt": "Created At",
+  "abilities": "Abilities",
+  "theme": "Theme",
+  "changePassword": "Change Password",
+  "oldPassword": "old password",
+  "newPassword": "new password",
+  "update": "update"
 }
