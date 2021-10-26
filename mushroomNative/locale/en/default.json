@@ -23,5 +23,9 @@
   "offlineGroup": "Offline Groups",
   "add": "Add",
   "joinedGroup": "Joined Groups",
-  "accountGroup": "Account Groups"
+  "accountGroup": "Account Groups",
+  "editWorkGroup": "Edit Work Group",
+  "addWorkGroup": "Add Work Group",
+  "name": "name",
+  "isPrivate": "is private"
 }
