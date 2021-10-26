@@ -2,5 +2,10 @@
   "login": "login",
   "username": "username",
   "password": "password",
-  "signup": "signup"
+  "signup": "signup",
+  "addWork": "Add New Work",
+  "title": "title",
+  "description": "description",
+  "selectDate": "Click To Select Date",
+  "save": "save"
 }
