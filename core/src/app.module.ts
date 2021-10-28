@@ -9,6 +9,7 @@ import { WorkModule } from './work/work.module';
 import { HelperModule } from './helper/helper.module';
 import { SubModule } from './sub/sub.module';
 import { SearchModule } from './search/search.module';
+import { PinsModule } from './pins/pins.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SearchModule } from './search/search.module';
     HelperModule,
     SubModule,
     SearchModule,
+    PinsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
