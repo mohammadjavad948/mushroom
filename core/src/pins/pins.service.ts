@@ -32,4 +32,24 @@ export class PinsService {
             }
         })
     }
+
+    async unpin(workId: number, userId: number){
+        const can = await this.helper.canManageWork(userId, workId);
+
+        if (!can){
+            throw new HttpException('you cant', 403)
+        }
+
+        const isPinned = await this.helper.isPinned(workId)
+
+        if (!isPinned){
+            throw new HttpException('is not pinned', 403)
+        }
+
+        return this.database.pin.deleteMany({
+            where: {
+                workId: workId,
+            }
+        })
+    }
 }
