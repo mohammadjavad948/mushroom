@@ -105,6 +105,16 @@ export class HelperService {
     return count > 0
   }
 
+  async isPinned(workId: number){
+    const count = await this.database.pin.count({
+      where: {
+        workId: workId,
+      }
+    });
+
+    return count > 0
+  }
+
   async canCreatePublicGroup(userId: number){
     const user = await this.database.user.findUnique({
       where: {
