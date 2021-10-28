@@ -26,6 +26,63 @@ import './locale/init';
 
 const queryClient = new QueryClient()
 
+const fontConfig = {
+    web: {
+        regular: {
+            fontFamily: 'IRANYekanWebRegular',
+            fontWeight: 'normal',
+        },
+        medium: {
+            fontFamily: 'IRANYekanWebMedium',
+            fontWeight: 'normal',
+        },
+        light: {
+            fontFamily: 'IRANYekanWebLight',
+            fontWeight: 'normal',
+        },
+        thin: {
+            fontFamily: 'IRANYekanWebThin',
+            fontWeight: 'normal',
+        },
+    },
+    ios: {
+        regular: {
+            fontFamily: 'IRANYekanWebRegular',
+            fontWeight: 'normal',
+        },
+        medium: {
+            fontFamily: 'IRANYekanWebMedium',
+            fontWeight: 'normal',
+        },
+        light: {
+            fontFamily: 'IRANYekanWebLight',
+            fontWeight: 'normal',
+        },
+        thin: {
+            fontFamily: 'IRANYekanWebThin',
+            fontWeight: 'normal',
+        },
+    },
+    android: {
+        regular: {
+            fontFamily: 'IRANYekanWebRegular',
+            fontWeight: 'normal',
+        },
+        medium: {
+            fontFamily: 'IRANYekanWebMedium',
+            fontWeight: 'normal',
+        },
+        light: {
+            fontFamily: 'IRANYekanWebLight',
+            fontWeight: 'normal',
+        },
+        thin: {
+            fontFamily: 'IRANYekanWebThin',
+            fontWeight: 'normal',
+        },
+    }
+};
+
 const App = () => {
   const {theme, primary} = useThemeStore();
   const {token} = useAuthStore();
