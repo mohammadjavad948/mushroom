@@ -21,6 +21,18 @@ model User {
     workGroups WorkGroup[]
     works Work[]
     subedGroups Subscription[]
+    sessions Session[]
+
+    createdAt DateTime @default(now())
+}
+
+model Session {
+    id Int @id @default(autoincrement())
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId Int
+
+    hash String @db.Text
 
     createdAt DateTime @default(now())
 }
@@ -41,6 +53,7 @@ model WorkGroup {
 
     works Work[]
     subscribers Subscription[]
+    pins Pin[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -70,7 +83,21 @@ model Work {
     title String
     description String @db.Text
 
+    pins Pin[]
+
     dueDate DateTime
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
+
+model Pin {
+    id Int @id @default(autoincrement())
+
+    work Work @relation(fields: [workId], references: [id], onDelete: Cascade)
+    workId Int
+
+    workGroup WorkGroup @relation(fields: [workGroupId], references: [id], onDelete: Cascade)
+    workGroupId Int
+
+    createdAt DateTime @default(now())
 }

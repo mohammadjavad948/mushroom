@@ -9,8 +9,11 @@ import {allWorkGroups} from "../../api/workGroup";
 import {ActivityIndicator} from "react-native-paper";
 import Icon from "../Icon/Icon";
 import {allSubs, unsub} from "../../api/sub";
+import {useTranslation} from "react-i18next";
 
 export default function WorkGroup(){
+
+    const {t} = useTranslation();
 
     const {isFetching, data} = useQuery(['workGroup'], allWorkGroups)
     const {isFetching: subFetch, data: subData} = useQuery(['sub'], allSubs)
@@ -43,19 +46,19 @@ export default function WorkGroup(){
                 }}
             >
                 <Splitter>
-                    Offline Groups
+                    {t('offlineGroup')}
                 </Splitter>
 
                 <GroupItem icon={<Icon name="add" size={25} />}>
-                    Add (Soon...)
+                    {t('add')} (Soon...)
                 </GroupItem>
 
                 <Splitter beforeText={isFetching && <ActivityIndicator size={15} />}>
-                    Account Groups
+                    {t('accountGroup')}
                 </Splitter>
 
                 <GroupItem click={accountGroup} icon={<Icon name="add" size={25} />}>
-                    Add
+                    {t('add')}
                 </GroupItem>
 
                 {data?.data.map((e: any, i: number) => {
@@ -72,7 +75,7 @@ export default function WorkGroup(){
                 })}
 
                 <Splitter beforeText={subFetch && <ActivityIndicator size={15} />}>
-                    Joined Groups
+                    {t('joinedGroup')}
                 </Splitter>
 
                 {subData?.data.map((e: any, i: number) => {

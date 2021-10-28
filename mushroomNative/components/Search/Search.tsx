@@ -7,6 +7,7 @@ import {useHistory} from "react-router-native";
 import {allSubs, sub} from "../../api/sub";
 import {useQuery, useQueryClient} from "react-query";
 import getTextColor from "../../helper/textColor";
+import {useTranslation} from "react-i18next";
 
 
 export default function Search(){
@@ -71,6 +72,8 @@ function Item({item}: any){
     const history = useHistory();
     const client = useQueryClient();
 
+    const {t} = useTranslation();
+
     async function doSub(){
         setLoading(true)
         try {
@@ -113,7 +116,7 @@ function Item({item}: any){
                         mode={"contained"}
                         icon={"check"}
                         color={"black"}
-                    >Join</Button>
+                    >{t('join')}</Button>
                 )}
             </View>
         </TouchableOpacity>

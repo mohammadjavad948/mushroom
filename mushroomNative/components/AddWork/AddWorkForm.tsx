@@ -8,6 +8,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import {useQuery} from "react-query";
 import {allWorkGroups} from "../../api/workGroup";
 import Icon from "../Icon/Icon";
+import {useTranslation} from "react-i18next";
 
 interface Props{
     submit: any
@@ -17,6 +18,7 @@ interface Props{
 
 export default function AddWorkForm(props: Props){
 
+    const {t} = useTranslation();
     const {data} = useQuery(['workGroup'], allWorkGroups)
 
     const [show, setShow] = useState(false)
@@ -37,11 +39,11 @@ export default function AddWorkForm(props: Props){
                     style={addWorkStyle.view}
                 >
                     <Text style={addWorkStyle.title}>
-                        Add New Work
+                        {t('addWork')}
                     </Text>
                     <TextInput
                         style={addWorkStyle.input}
-                        label={"Title"}
+                        label={t('title')}
                         value={values.title}
                         onChangeText={handleChange('title')}
                         onBlur={handleBlur('title')}
@@ -49,7 +51,7 @@ export default function AddWorkForm(props: Props){
                     />
                     <TextInput
                         style={addWorkStyle.input}
-                        label={"Description"}
+                        label={t('description')}
                         value={values.description}
                         onChangeText={handleChange('description')}
                         onBlur={handleBlur('description')}
@@ -80,7 +82,7 @@ export default function AddWorkForm(props: Props){
                     >
                         <Icon name={'event'} size={20}/>
                         <Text style={{marginLeft: 10}}>
-                            Click to Select Date
+                            {t('selectDate')}
                         </Text>
                     </TouchableOpacity>
 
@@ -105,7 +107,7 @@ export default function AddWorkForm(props: Props){
                         loading={isSubmitting}
                         disabled={isSubmitting}
                     >
-                        save
+                        {t('save')}
                     </Button>
                 </View>
             )}

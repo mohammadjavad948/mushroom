@@ -29,6 +29,9 @@ export class AppService {
       },
       include: {
         group: true
+      },
+      orderBy: {
+        dueDate: 'asc'
       }
     });
   }

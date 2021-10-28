@@ -3,6 +3,7 @@ import {Formik} from "formik";
 import {ScrollView, View} from "react-native";
 import {Button, Checkbox, Text, TextInput} from "react-native-paper";
 import ColorPicker from "react-native-wheel-color-picker";
+import {useTranslation} from "react-i18next";
 
 interface Props{
     submit: any
@@ -11,6 +12,8 @@ interface Props{
 }
 
 export default function WorkGroupForm(props: Props){
+
+    const {t} = useTranslation();
 
     return (
         <Formik
@@ -38,11 +41,11 @@ export default function WorkGroupForm(props: Props){
                             marginBottom: 10,
                         }}
                     >
-                        {props.isEdit ? 'Edit Work Group' : 'Add Work Group'}
+                        {props.isEdit ? t('editWorkGroup') : t('addWorkGroup')}
                     </Text>
                     <TextInput
                         style={{width: '90%'}}
-                        label={"name"}
+                        label={t('name')}
                         mode={"outlined"}
                         value={values.name}
                         onChangeText={handleChange('name')}
@@ -58,7 +61,7 @@ export default function WorkGroupForm(props: Props){
                         }}
                     >
                         <Text>
-                            Is Private
+                            {t('isPrivate')}
                         </Text>
                         <Checkbox
                             status={values.isPrivate ? 'checked' : 'unchecked'}
@@ -91,7 +94,7 @@ export default function WorkGroupForm(props: Props){
                         loading={isSubmitting}
                         disabled={isSubmitting}
                     >
-                        save
+                        {t('save')}
                     </Button>
                 </View>
             )}
