@@ -14,7 +14,7 @@ export class PinsController {
   }
 
   @Delete(':id')
-  async unpin(){
-
+  async unpin(@Req() req: Request, @Param('id') id: string){
+    return this.pinsService.unpin(+id, req.userId);
   }
 }
