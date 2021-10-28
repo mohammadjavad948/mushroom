@@ -13,7 +13,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {BackButton, NativeRouter} from "react-router-native";
-import { Provider as PaperProvider, DefaultTheme, DarkTheme } from 'react-native-paper';
+import { Provider as PaperProvider, DefaultTheme, DarkTheme, configureFonts } from 'react-native-paper';
 import Main from "./components/Main/Main";
 import {useAuthStore} from "./stores/authStore";
 import Auth from "./components/Auth/Auth";
@@ -27,42 +27,6 @@ import './locale/init';
 const queryClient = new QueryClient()
 
 const fontConfig = {
-    web: {
-        regular: {
-            fontFamily: 'IRANYekanWebRegular',
-            fontWeight: 'normal',
-        },
-        medium: {
-            fontFamily: 'IRANYekanWebMedium',
-            fontWeight: 'normal',
-        },
-        light: {
-            fontFamily: 'IRANYekanWebLight',
-            fontWeight: 'normal',
-        },
-        thin: {
-            fontFamily: 'IRANYekanWebThin',
-            fontWeight: 'normal',
-        },
-    },
-    ios: {
-        regular: {
-            fontFamily: 'IRANYekanWebRegular',
-            fontWeight: 'normal',
-        },
-        medium: {
-            fontFamily: 'IRANYekanWebMedium',
-            fontWeight: 'normal',
-        },
-        light: {
-            fontFamily: 'IRANYekanWebLight',
-            fontWeight: 'normal',
-        },
-        thin: {
-            fontFamily: 'IRANYekanWebThin',
-            fontWeight: 'normal',
-        },
-    },
     android: {
         regular: {
             fontFamily: 'IRANYekanWebRegular',
@@ -90,6 +54,8 @@ const App = () => {
   const darkTheme = {
       ...DarkTheme,
       dark: true,
+      // @ts-ignore
+      fonts: configureFonts(fontConfig),
       colors: {
           ...DarkTheme.colors,
           primary: primary
@@ -99,6 +65,8 @@ const App = () => {
   const lightTheme = {
         ...DefaultTheme,
         dark: false,
+      // @ts-ignore
+        fonts: configureFonts(fontConfig),
         colors: {
             ...DefaultTheme.colors,
             primary: primary
