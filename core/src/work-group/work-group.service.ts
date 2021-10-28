@@ -50,6 +50,11 @@ export class WorkGroupService {
         id: id,
       },
       include: {
+        pins: {
+          include: {
+            work: true,
+          },
+        },
         works: {
           orderBy: [
             {
