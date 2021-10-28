@@ -1,9 +1,17 @@
-import {Body, Controller, Get, Post, Put, Req, UseGuards} from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Put,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { HttpAuthGuard } from './http-auth.guard';
 import { Request } from '../types/request';
-import ChangePasswordDto from "./dto/change-password.dto";
+import ChangePasswordDto from './dto/change-password.dto';
 
 @Controller({
   path: 'auth',

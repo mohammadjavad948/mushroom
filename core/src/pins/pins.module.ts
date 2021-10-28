@@ -4,6 +4,6 @@ import { PinsController } from './pins.controller';
 
 @Module({
   controllers: [PinsController],
-  providers: [PinsService]
+  providers: [PinsService],
 })
 export class PinsModule {}

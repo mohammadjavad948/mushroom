@@ -1,7 +1,6 @@
-
 export const user = {
-    username: "test",
-    password: "test"
-}
+  username: 'test',
+  password: 'test',
+};
 
-export const version = 'v1'
+export const version = 'v1';

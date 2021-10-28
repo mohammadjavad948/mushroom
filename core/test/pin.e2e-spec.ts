@@ -1,46 +1,46 @@
-import {Test, TestingModule} from '@nestjs/testing';
-import {INestApplication, VersioningType} from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
+import { INestApplication, VersioningType } from '@nestjs/common';
 import * as request from 'supertest';
-import {AppModule} from './../src/app.module';
-import {user, version} from "./data";
+import { AppModule } from './../src/app.module';
+import { user, version } from './data';
 
 describe('pins (e2e)', () => {
-    let app: INestApplication;
-    let token = "";
-    let workId = 1;
+  let app: INestApplication;
+  let token = '';
+  const workId = 1;
 
-    beforeEach(async () => {
-        const moduleFixture: TestingModule = await Test.createTestingModule({
-            imports: [AppModule],
-        }).compile();
+  beforeEach(async () => {
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
+    }).compile();
 
-        app = moduleFixture.createNestApplication();
+    app = moduleFixture.createNestApplication();
 
-        app.enableVersioning({
-            type: VersioningType.URI,
-            defaultVersion: '1',
-        });
-
-        await app.init();
-
-        const data = await request(app.getHttpServer())
-            .post(`/${version}/auth/login`)
-            .send(user);
-
-        token = data.body.token;
+    app.enableVersioning({
+      type: VersioningType.URI,
+      defaultVersion: '1',
     });
 
-    it('create pin', () => {
-        return request(app.getHttpServer())
-            .post(`/${version}/pins/${workId}`)
-            .set('auth', token)
-            .expect(201)
-    })
+    await app.init();
 
-    it('remove pins', () => {
-        return request(app.getHttpServer())
-            .delete(`/${version}/pins/${workId}`)
-            .set('auth', token)
-            .expect(200)
-    });
+    const data = await request(app.getHttpServer())
+      .post(`/${version}/auth/login`)
+      .send(user);
+
+    token = data.body.token;
+  });
+
+  it('create pin', () => {
+    return request(app.getHttpServer())
+      .post(`/${version}/pins/${workId}`)
+      .set('auth', token)
+      .expect(201);
+  });
+
+  it('remove pins', () => {
+    return request(app.getHttpServer())
+      .delete(`/${version}/pins/${workId}`)
+      .set('auth', token)
+      .expect(200);
+  });
 });
