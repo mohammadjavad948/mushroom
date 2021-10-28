@@ -1,15 +1,14 @@
-
 export interface User {
-    id: number
-    username: string
-    password: string
-    isVerified: boolean
-    canCreatePublicWorkGroup: boolean
-    createdAt: string
+  id: number;
+  username: string;
+  password: string;
+  isVerified: boolean;
+  canCreatePublicWorkGroup: boolean;
+  createdAt: string;
 
-    workGroups?: WorkGroup[]
-    works?: Work[]
-    subedGroups?: Subscription[]
+  workGroups?: WorkGroup[];
+  works?: Work[];
+  subedGroups?: Subscription[];
 }
 
 /**
@@ -17,19 +16,19 @@ export interface User {
  */
 
 export interface WorkGroup {
-    id: number
-    creatorId: number
-    name: string
-    color: string
-    info: string
-    haveComments: boolean
-    isVerified: boolean
-    isPrivate: boolean
-    createdAt: string
-    updatedAt: string
+  id: number;
+  creatorId: number;
+  name: string;
+  color: string;
+  info: string;
+  haveComments: boolean;
+  isVerified: boolean;
+  isPrivate: boolean;
+  createdAt: string;
+  updatedAt: string;
 
-    works?: Work[]
-    subscribers?: Subscription[]
+  works?: Work[];
+  subscribers?: Subscription[];
 }
 
 /**
@@ -37,12 +36,12 @@ export interface WorkGroup {
  */
 
 export interface Subscription {
-    id: number
-    userId: number
-    user?: User
-    groupId: number
-    group?: WorkGroup
-    createdAt: string
+  id: number;
+  userId: number;
+  user?: User;
+  groupId: number;
+  group?: WorkGroup;
+  createdAt: string;
 }
 
 /**
@@ -50,15 +49,14 @@ export interface Subscription {
  */
 
 export interface Work {
-    id: number
-    groupId: number
-    group?: WorkGroup
-    creatorId: number
-    creator?: User
-    title: string
-    description: string
-    dueDate: string
-    createdAt: string
-    updatedAt: string
+  id: number;
+  groupId: number;
+  group?: WorkGroup;
+  creatorId: number;
+  creator?: User;
+  title: string;
+  description: string;
+  dueDate: string;
+  createdAt: string;
+  updatedAt: string;
 }
-
