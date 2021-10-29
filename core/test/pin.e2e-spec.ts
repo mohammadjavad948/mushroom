@@ -37,6 +37,14 @@ describe('pins (e2e)', () => {
       .expect(201);
   });
 
+  it('all pins', async () => {
+    const data = await request(app.getHttpServer())
+        .get(`/${version}/pins/1`)
+        .send(user);
+
+    expect(data.body.length).toEqual(1);
+  });
+
   it('remove pins', () => {
     return request(app.getHttpServer())
       .delete(`/${version}/pins/${workId}`)
