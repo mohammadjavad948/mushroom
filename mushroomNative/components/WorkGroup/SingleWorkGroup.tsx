@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {FlatList, ScrollView, TouchableOpacity, View} from 'react-native';
-import {ActivityIndicator, Button, Text} from 'react-native-paper';
+import React from 'react';
+import {ScrollView, TouchableOpacity, View} from 'react-native';
+import {ActivityIndicator, Button, Text, Card, Title, Divider, Paragraph} from 'react-native-paper';
 import {useQuery, useQueryClient} from 'react-query';
 import {useHistory, useParams} from 'react-router-native';
 import {getWorkGroup, removeWorkGroup} from '../../api/workGroup';
@@ -8,6 +8,7 @@ import {info} from '../../api/auth';
 import {workGroupStyle} from '../../styles/WorkGroup';
 import Icon from '../Icon/Icon';
 import {useTranslation} from 'react-i18next';
+import {Work} from "../../types";
 
 export default function SingleWorkGroup() {
   const {t} = useTranslation();
@@ -23,10 +24,6 @@ export default function SingleWorkGroup() {
 
   async function add() {
     history.push('/work/add');
-  }
-
-  async function works() {
-    history.push(`/workgroup/${data?.data.id}/works`);
   }
 
   async function edit() {
@@ -92,11 +89,7 @@ export default function SingleWorkGroup() {
                 />
               </View>
             )}
-            <Link
-              title={t('works')}
-              click={works}
-              icon={<Icon name={'arrow-right'} size={25} />}
-            />
+            <Works data={data} items={data?.data.works?.slice(-5) || []} />
             <Link
               title={t('users')}
               icon={<Icon name={'arrow-right'} size={25} />}
@@ -106,6 +99,47 @@ export default function SingleWorkGroup() {
       </View>
     </ScrollView>
   );
+}
+
+function Works(props: {items: Work[], data: any}){
+
+    const {t} = useTranslation();
+    const history = useHistory();
+
+    async function works() {
+        history.push(`/workgroup/${props.data?.data?.id}/works`);
+    }
+
+    return (
+        <Card style={{marginTop: 20}}>
+            <Card.Content>
+                <Title>
+                    {t('works')}
+                </Title>
+                <Divider />
+                {props.items.map((e, i) => {
+                    return (
+                        <View key={i}>
+                            <Text>{e.title}</Text>
+                            <Paragraph>
+                                {e.description}
+                            </Paragraph>
+                            <Divider />
+                        </View>
+                    )
+                })}
+            </Card.Content>
+            <Card.Actions>
+                <Button
+                    onPress={works}
+                    mode={'contained'}
+                    icon={() => <Icon name={'arrow-left'} size={25} />}
+                >
+                    {t('allWorks')}
+                </Button>
+            </Card.Actions>
+        </Card>
+    )
 }
 
 interface Props {
