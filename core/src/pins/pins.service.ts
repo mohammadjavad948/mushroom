@@ -9,6 +9,23 @@ export class PinsService {
     private helper: HelperService,
   ) {}
 
+  async getPins(groupId: number, userId){
+    const can = await this.helper.canViewGroup(userId, groupId);
+
+    if (!can){
+      throw new HttpException('you cant', 403);
+    }
+
+    return this.database.pin.findMany({
+      where: {
+        workGroupId: groupId,
+      },
+      include: {
+        work: true
+      }
+    })
+  }
+
   async pin(workId: number, userId: number) {
     const can = await this.helper.canManageWork(userId, workId);
 
