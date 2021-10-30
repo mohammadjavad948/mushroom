@@ -90,6 +90,7 @@ export default function SingleWorkGroup() {
                 />
               </View>
             )}
+            <Pins />
             <Works data={data} items={data?.data.works?.slice(-5) || []} />
           </View>
         )}
@@ -135,6 +136,19 @@ function Works(props: {items: Work[], data: any}){
             >
                 {t('allWorks')}
             </Button>
+        </>
+    )
+}
+
+function Pins(){
+
+    const {t} = useTranslation();
+
+    return (
+        <>
+            <Splitter beforeText={<Icon name={'push-pin'} size={20}/>}>
+                {t('pins')}
+            </Splitter>
         </>
     )
 }
