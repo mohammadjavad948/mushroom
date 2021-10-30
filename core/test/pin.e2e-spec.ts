@@ -40,7 +40,7 @@ describe('pins (e2e)', () => {
   it('all pins', async () => {
     const data = await request(app.getHttpServer())
         .get(`/${version}/pins/1`)
-        .send(user);
+        .set('auth', token)
 
     expect(data.statusCode).toEqual(200);
     expect(data.body.length).toEqual(1);
