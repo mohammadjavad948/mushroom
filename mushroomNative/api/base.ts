@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:3000/v1',
+  baseURL: 'https://big-mushroom.herokuapp.com/v1',
 });
