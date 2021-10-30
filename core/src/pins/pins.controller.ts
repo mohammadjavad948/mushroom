@@ -1,6 +1,6 @@
 import {
   Controller,
-  Delete,
+  Delete, Get,
   Param,
   Post,
   Req,
@@ -14,6 +14,11 @@ import { Request } from '../types/request';
 @UseGuards(HttpAuthGuard)
 export class PinsController {
   constructor(private readonly pinsService: PinsService) {}
+
+  @Get(':id')
+  async getPins(@Req() req: Request, @Param('id') id: string){
+    return this.pinsService.getPins(+id, req.userId);
+  }
 
   @Post(':id')
   async pin(@Req() req: Request, @Param('id') id: string) {
