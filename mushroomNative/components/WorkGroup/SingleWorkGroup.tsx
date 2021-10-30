@@ -9,6 +9,7 @@ import {workGroupStyle} from '../../styles/WorkGroup';
 import Icon from '../Icon/Icon';
 import {useTranslation} from 'react-i18next';
 import {Work} from "../../types";
+import Splitter from "../Splitter/Splitter";
 
 export default function SingleWorkGroup() {
   const {t} = useTranslation();
@@ -107,34 +108,34 @@ function Works(props: {items: Work[], data: any}){
     }
 
     return (
-        <Card style={{marginTop: 20}}>
-            <Card.Content>
-                <Title>
-                    {t('works')}
-                </Title>
-                <Divider />
-                {props.items.map((e, i) => {
-                    return (
-                        <View key={i}>
-                            <Text>{e.title}</Text>
+        <>
+            <Splitter beforeText={<Icon name={'article'} size={20}/>}>
+                {t('works')}
+            </Splitter>
+            {props.items.map((e, i) => {
+                return (
+                    <Card style={{marginTop: 10}} key={i}>
+                        <Card.Content>
+                            <Title>
+                                {e.title}
+                            </Title>
                             <Paragraph>
                                 {e.description}
                             </Paragraph>
-                            <Divider />
-                        </View>
-                    )
-                })}
-            </Card.Content>
-            <Card.Actions>
-                <Button
-                    onPress={works}
-                    mode={'contained'}
-                    icon={() => <Icon name={'arrow-left'} size={25} />}
-                >
-                    {t('allWorks')}
-                </Button>
-            </Card.Actions>
-        </Card>
+                        </Card.Content>
+                    </Card>
+                )
+            })}
+            <Button
+                compact={true}
+                onPress={works}
+                style={{marginTop: 10}}
+                mode={'contained'}
+                icon={() => <Icon name={'arrow-left'} size={25} />}
+            >
+                {t('allWorks')}
+            </Button>
+        </>
     )
 }
 
