@@ -30,14 +30,13 @@ export class HelperService {
           {
             subscribers: {
               some: {
-                userId: userId
-              }
-            }
-          }
-        ]
-      }
-    })
-
+                userId: userId,
+              },
+            },
+          },
+        ],
+      },
+    });
 
     return count > 0;
   }
@@ -90,26 +89,36 @@ export class HelperService {
     return count > 0;
   }
 
-  async isSubbed(userId: number, groupId: number){
+  async isSubbed(userId: number, groupId: number) {
     const count = await this.database.workGroup.count({
       where: {
         subscribers: {
           some: {
-            userId: userId
-          }
+            userId: userId,
+          },
         },
         id: groupId,
-      }
+      },
     });
 
-    return count > 0
+    return count > 0;
   }
 
-  async canCreatePublicGroup(userId: number){
+  async isPinned(workId: number) {
+    const count = await this.database.pin.count({
+      where: {
+        workId: workId,
+      },
+    });
+
+    return count > 0;
+  }
+
+  async canCreatePublicGroup(userId: number) {
     const user = await this.database.user.findUnique({
       where: {
         id: userId,
-      }
+      },
     });
 
     return user?.canCreatePublicWorkGroup;

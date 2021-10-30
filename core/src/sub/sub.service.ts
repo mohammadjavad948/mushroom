@@ -1,57 +1,59 @@
-import {HttpException, Injectable} from '@nestjs/common';
-import {DatabaseService} from "../database/database.service";
-import {HelperService} from "../helper/helper.service";
+import { HttpException, Injectable } from '@nestjs/common';
+import { DatabaseService } from '../database/database.service';
+import { HelperService } from '../helper/helper.service';
 
 @Injectable()
 export class SubService {
-    constructor(private database: DatabaseService, private helper: HelperService) {}
+  constructor(
+    private database: DatabaseService,
+    private helper: HelperService,
+  ) {}
 
-    async allSubs(userId: number){
+  async allSubs(userId: number) {
+    return this.database.workGroup.findMany({
+      where: {
+        subscribers: {
+          some: {
+            userId: userId,
+          },
+        },
+      },
+    });
+  }
 
-        return this.database.workGroup.findMany({
-            where: {
-                subscribers: {
-                    some: {
-                        userId: userId,
-                    }
-                }
-            }
-        })
+  async sub(userId: number, groupId: number) {
+    const isSubbed = await this.helper.isSubbed(userId, groupId);
+
+    if (isSubbed) {
+      throw new HttpException('subbed', 403);
     }
 
-    async sub(userId: number, groupId: number){
-        const isSubbed = await this.helper.isSubbed(userId, groupId);
+    const canView = await this.helper.canViewGroup(userId, groupId);
 
-        if (isSubbed){
-            throw new HttpException('subbed', 403);
-        }
-
-        const canView = await this.helper.canViewGroup(userId, groupId);
-
-        if (!canView){
-            throw new HttpException('nope', 403);
-        }
-
-        return this.database.subscription.create({
-            data: {
-                groupId: groupId,
-                userId: userId,
-            }
-        })
+    if (!canView) {
+      throw new HttpException('nope', 403);
     }
 
-    async unsub(userId: number, groupId: number){
-        const isSubbed = await this.helper.isSubbed(userId, groupId);
+    return this.database.subscription.create({
+      data: {
+        groupId: groupId,
+        userId: userId,
+      },
+    });
+  }
 
-        if (!isSubbed){
-            throw new HttpException('not subbed', 403);
-        }
+  async unsub(userId: number, groupId: number) {
+    const isSubbed = await this.helper.isSubbed(userId, groupId);
 
-        return this.database.subscription.deleteMany({
-            where: {
-                userId: userId,
-                groupId: groupId
-            }
-        })
+    if (!isSubbed) {
+      throw new HttpException('not subbed', 403);
     }
+
+    return this.database.subscription.deleteMany({
+      where: {
+        userId: userId,
+        groupId: groupId,
+      },
+    });
+  }
 }

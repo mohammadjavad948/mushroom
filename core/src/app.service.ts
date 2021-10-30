@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {DatabaseService} from "./database/database.service";
+import { DatabaseService } from './database/database.service';
 
 @Injectable()
 export class AppService {
@@ -10,7 +10,7 @@ export class AppService {
     return this.database.work.findMany({
       where: {
         dueDate: {
-          gte: date
+          gte: date,
         },
         OR: [
           {
@@ -21,18 +21,18 @@ export class AppService {
               subscribers: {
                 some: {
                   userId: userId,
-                }
-              }
+                },
+              },
             },
-          }
+          },
         ],
       },
       include: {
-        group: true
+        group: true,
       },
       orderBy: {
-        dueDate: 'asc'
-      }
+        dueDate: 'asc',
+      },
     });
   }
 }

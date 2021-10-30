@@ -4,10 +4,10 @@ import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { user, version } from './data';
 
-describe('work (e2e)', () => {
+describe('pins (e2e)', () => {
   let app: INestApplication;
   let token = '';
-  const id = 2;
+  const workId = 1;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -30,41 +30,25 @@ describe('work (e2e)', () => {
     token = data.body.token;
   });
 
-  it('create work', () => {
+  it('create pin', () => {
     return request(app.getHttpServer())
-      .post(`/${version}/work`)
+      .post(`/${version}/pins/${workId}`)
       .set('auth', token)
-      .send({
-        title: 'sukdfjs',
-        description: '#ffffff',
-        dueDate: new Date(),
-        groupId: 1,
-      })
       .expect(201);
   });
 
-  it('view work', () => {
-    return request(app.getHttpServer())
-      .get(`/${version}/work/${id}`)
-      .set('auth', token)
-      .expect(200);
+  it('all pins', async () => {
+    const data = await request(app.getHttpServer())
+        .get(`/${version}/pins/1`)
+        .send(user);
+
+    expect(data.statusCode).toEqual(200);
+    expect(data.body.length).toEqual(1);
   });
 
-  it('update work', () => {
+  it('remove pins', () => {
     return request(app.getHttpServer())
-      .patch(`/${version}/work/${id}`)
-      .set('auth', token)
-      .send({
-        title: 'sukdfjs',
-        description: '#ffffff',
-        dueDate: new Date(),
-      })
-      .expect(200);
-  });
-
-  it('remove work', () => {
-    return request(app.getHttpServer())
-      .delete(`/${version}/work/${id}`)
+      .delete(`/${version}/pins/${workId}`)
       .set('auth', token)
       .expect(200);
   });

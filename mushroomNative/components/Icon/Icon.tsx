@@ -1,12 +1,9 @@
-import React from "react";
+import React from 'react';
 import IC from 'react-native-vector-icons/MaterialIcons';
-import {useThemeStore} from "../../stores/themeStore";
+import {useThemeStore} from '../../stores/themeStore';
 
-export default function Icon(props: any){
+export default function Icon(props: any) {
+  const {theme} = useThemeStore();
 
-    const {theme} = useThemeStore();
-
-    return (
-        <IC color={theme === 'dark' ? 'white' : 'black'} {...props}/>
-    )
+  return <IC color={theme === 'dark' ? 'white' : 'black'} {...props} />;
 }
