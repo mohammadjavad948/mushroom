@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://tranquil-everglades-36236.herokuapp.com/v1',
+  baseURL: 'http://localhost:3000/v1',
 });

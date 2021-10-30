@@ -5,7 +5,9 @@ import {getWorkGroup} from '../../api/workGroup';
 import {useParams} from 'react-router-native';
 import {removeWork} from '../../api/work';
 import {dashboardStyle} from '../../styles/Dashboard';
-import {Button, Text} from 'react-native-paper';
+import {Text} from 'react-native-paper';
+import { Button, Card, Title, Paragraph } from 'react-native-paper';
+import {useTranslation} from "react-i18next";
 
 export default function WorkGroupWorks() {
   const params = useParams<{id: number}>();
@@ -36,6 +38,7 @@ export default function WorkGroupWorks() {
 }
 
 function Item({item}: any) {
+    const {t} = useTranslation();
   const [loading, setLoading] = useState(false);
   const client = useQueryClient();
 
@@ -53,33 +56,24 @@ function Item({item}: any) {
 
   return (
     <View style={dashboardStyle.list}>
-      <View
-        style={[
-          dashboardStyle.item,
-          {
-            borderColor: 'white',
-            borderWidth: 1,
-          },
-        ]}>
-        <Text style={[dashboardStyle.itemTitle]}>{item.title}</Text>
-        <Text>{item.description}</Text>
-        <Text style={[dashboardStyle.daysLeft]}>
-          {new Date(item.dueDate).toDateString()}
-        </Text>
-        <View
-          style={{
-            marginTop: 10,
-            justifyContent: 'center',
-          }}>
-          <Button
-            loading={loading}
-            disabled={loading}
-            icon={'delete'}
-            color={'red'}
-            onPress={remove}
-          />
-        </View>
-      </View>
+        <Card style={{width: '95%'}}>
+            <Card.Content>
+                <Title>{item.title}</Title>
+                <Paragraph>{item.description}</Paragraph>
+                <Text>{new Date(item.dueDate).toDateString()}</Text>
+            </Card.Content>
+            <Card.Actions>
+                <Button
+                    loading={loading}
+                    disabled={loading}
+                    icon={'delete'}
+                    color={'red'}
+                    onPress={remove}
+                >
+                    {t('remove')}
+                </Button>
+            </Card.Actions>
+        </Card>
     </View>
   );
 }
