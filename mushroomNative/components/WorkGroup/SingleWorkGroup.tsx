@@ -90,10 +90,6 @@ export default function SingleWorkGroup() {
               </View>
             )}
             <Works data={data} items={data?.data.works?.slice(-5) || []} />
-            <Link
-              title={t('users')}
-              icon={<Icon name={'arrow-right'} size={25} />}
-            />
           </View>
         )}
       </View>
@@ -149,30 +145,4 @@ interface Props {
 
 function Action(props: Props) {
   return <Button onPress={props.click}>{props.icon}</Button>;
-}
-
-function Link(props: {title: string; icon: any; click?: any}) {
-  return (
-    <TouchableOpacity
-      onPress={props.click}
-      style={{
-        marginTop: 15,
-        padding: 20,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        borderColor: 'white',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderRadius: 8,
-      }}>
-      <Text
-        style={{
-          fontSize: 15,
-        }}>
-        {props.title}
-      </Text>
-      {props.icon}
-    </TouchableOpacity>
-  );
 }
