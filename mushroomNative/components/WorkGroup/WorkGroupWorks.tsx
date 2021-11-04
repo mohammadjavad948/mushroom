@@ -6,9 +6,9 @@ import {useParams} from 'react-router-native';
 import {removeWork} from '../../api/work';
 import {dashboardStyle} from '../../styles/Dashboard';
 import {Text} from 'react-native-paper';
-import { Button, Card, Title, Paragraph } from 'react-native-paper';
-import {useTranslation} from "react-i18next";
-import {allPins} from "../../api/pins";
+import {Button, Card, Title, Paragraph} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
+import {allPins} from '../../api/pins';
 
 export default function WorkGroupWorks() {
   const params = useParams<{id: number}>();
@@ -39,7 +39,7 @@ export default function WorkGroupWorks() {
 }
 
 function Item({item}: any) {
-    const {t} = useTranslation();
+  const {t} = useTranslation();
   const [loading, setLoading] = useState(false);
 
   const client = useQueryClient();
@@ -58,31 +58,26 @@ function Item({item}: any) {
 
   return (
     <View style={dashboardStyle.list}>
-        <Card style={{width: '95%'}}>
-            <Card.Content>
-                <Title>{item.title}</Title>
-                <Paragraph>{item.description}</Paragraph>
-                <Text>{new Date(item.dueDate).toDateString()}</Text>
-            </Card.Content>
-            <Card.Actions>
-                <Button
-                    loading={loading}
-                    disabled={loading}
-                    icon={'delete'}
-                    color={'red'}
-                    onPress={remove}
-                >
-                    {t('remove')}
-                </Button>
-                <Button
-                    loading={loading}
-                    disabled={loading}
-                    icon={'push-pin'}
-                >
-                    {t('unpin')}
-                </Button>
-            </Card.Actions>
-        </Card>
+      <Card style={{width: '95%'}}>
+        <Card.Content>
+          <Title>{item.title}</Title>
+          <Paragraph>{item.description}</Paragraph>
+          <Text>{new Date(item.dueDate).toDateString()}</Text>
+        </Card.Content>
+        <Card.Actions>
+          <Button
+            loading={loading}
+            disabled={loading}
+            icon={'delete'}
+            color={'red'}
+            onPress={remove}>
+            {t('remove')}
+          </Button>
+          <Button loading={loading} disabled={loading} icon={'push-pin'}>
+            {t('unpin')}
+          </Button>
+        </Card.Actions>
+      </Card>
     </View>
   );
 }

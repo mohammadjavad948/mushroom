@@ -10,7 +10,7 @@ import getTextColor from '../../helper/textColor';
 import {useTranslation} from 'react-i18next';
 
 export default function Search() {
-    const {t} = useTranslation();
+  const {t} = useTranslation();
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);

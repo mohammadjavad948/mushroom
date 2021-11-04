@@ -1,6 +1,14 @@
 import React from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
-import {ActivityIndicator, Button, Text, Card, Title, Divider, Paragraph} from 'react-native-paper';
+import {
+  ActivityIndicator,
+  Button,
+  Text,
+  Card,
+  Title,
+  Divider,
+  Paragraph,
+} from 'react-native-paper';
 import {useQuery, useQueryClient} from 'react-query';
 import {useHistory, useParams} from 'react-router-native';
 import {getWorkGroup, removeWorkGroup} from '../../api/workGroup';
@@ -8,8 +16,8 @@ import {info} from '../../api/auth';
 import {workGroupStyle} from '../../styles/WorkGroup';
 import Icon from '../Icon/Icon';
 import {useTranslation} from 'react-i18next';
-import {Work} from "../../types";
-import Splitter from "../Splitter/Splitter";
+import {Work} from '../../types';
+import Splitter from '../Splitter/Splitter';
 
 export default function SingleWorkGroup() {
   const {t} = useTranslation();
@@ -99,58 +107,51 @@ export default function SingleWorkGroup() {
   );
 }
 
-function Works(props: {items: Work[], data: any}){
+function Works(props: {items: Work[]; data: any}) {
+  const {t} = useTranslation();
+  const history = useHistory();
 
-    const {t} = useTranslation();
-    const history = useHistory();
+  async function works() {
+    history.push(`/workgroup/${props.data?.data?.id}/works`);
+  }
 
-    async function works() {
-        history.push(`/workgroup/${props.data?.data?.id}/works`);
-    }
-
-    return (
-        <>
-            <Splitter beforeText={<Icon name={'article'} size={20}/>}>
-                {t('works')}
-            </Splitter>
-            {props.items.map((e, i) => {
-                return (
-                    <Card style={{marginTop: 10}} key={i}>
-                        <Card.Content>
-                            <Title>
-                                {e.title}
-                            </Title>
-                            <Paragraph>
-                                {e.description}
-                            </Paragraph>
-                        </Card.Content>
-                    </Card>
-                )
-            })}
-            <Button
-                compact={true}
-                onPress={works}
-                style={{marginTop: 10}}
-                mode={'contained'}
-                icon={() => <Icon name={'arrow-left'} size={25} />}
-            >
-                {t('allWorks')}
-            </Button>
-        </>
-    )
+  return (
+    <>
+      <Splitter beforeText={<Icon name={'article'} size={20} />}>
+        {t('works')}
+      </Splitter>
+      {props.items.map((e, i) => {
+        return (
+          <Card style={{marginTop: 10}} key={i}>
+            <Card.Content>
+              <Title>{e.title}</Title>
+              <Paragraph>{e.description}</Paragraph>
+            </Card.Content>
+          </Card>
+        );
+      })}
+      <Button
+        compact={true}
+        onPress={works}
+        style={{marginTop: 10}}
+        mode={'contained'}
+        icon={() => <Icon name={'arrow-left'} size={25} />}>
+        {t('allWorks')}
+      </Button>
+    </>
+  );
 }
 
-function Pins(){
+function Pins() {
+  const {t} = useTranslation();
 
-    const {t} = useTranslation();
-
-    return (
-        <>
-            <Splitter beforeText={<Icon name={'push-pin'} size={20}/>}>
-                {t('pins')}
-            </Splitter>
-        </>
-    )
+  return (
+    <>
+      <Splitter beforeText={<Icon name={'push-pin'} size={20} />}>
+        {t('pins')}
+      </Splitter>
+    </>
+  );
 }
 
 interface Props {
