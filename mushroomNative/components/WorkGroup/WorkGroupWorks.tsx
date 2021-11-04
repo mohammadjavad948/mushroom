@@ -73,7 +73,7 @@ function Item({item}: any) {
             onPress={remove}>
             {t('remove')}
           </Button>
-          <Button loading={loading} disabled={loading} icon={'push-pin'}>
+          <Button icon={'push-pin'}>
             {t('unpin')}
           </Button>
         </Card.Actions>
