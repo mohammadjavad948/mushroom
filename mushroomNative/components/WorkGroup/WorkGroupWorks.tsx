@@ -74,7 +74,7 @@ function Item({item}: any) {
             {t('remove')}
           </Button>
           <Button icon={'push-pin'}>
-            {t('unpin')}
+            {item['_count'].pins === 0 ? t('pin') : t('unpin')}
           </Button>
         </Card.Actions>
       </Card>
