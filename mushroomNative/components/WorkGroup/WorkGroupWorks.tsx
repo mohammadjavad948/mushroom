@@ -8,7 +8,7 @@ import {dashboardStyle} from '../../styles/Dashboard';
 import {Text} from 'react-native-paper';
 import {Button, Card, Title, Paragraph} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import {allPins} from '../../api/pins';
+import {allPins, usePinMutate} from '../../api/pins';
 
 export default function WorkGroupWorks() {
   const params = useParams<{id: number}>();
@@ -42,6 +42,8 @@ function Item({item}: any) {
   const {t} = useTranslation();
   const [loading, setLoading] = useState(false);
 
+  const {isLoading, mutate} = usePinMutate();
+
   const client = useQueryClient();
 
   async function remove() {
@@ -73,7 +75,12 @@ function Item({item}: any) {
             onPress={remove}>
             {t('remove')}
           </Button>
-          <Button icon={'push-pin'}>
+          <Button
+              icon={'push-pin'}
+              loading={isLoading}
+              disabled={isLoading}
+              onPress={() => mutate({workId: item.id, count: item['_count'].pins})}
+          >
             {item['_count'].pins === 0 ? t('pin') : t('unpin')}
           </Button>
         </Card.Actions>
