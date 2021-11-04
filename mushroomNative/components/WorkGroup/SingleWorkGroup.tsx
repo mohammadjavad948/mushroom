@@ -1,6 +1,14 @@
-import React, {useState} from 'react';
-import {FlatList, ScrollView, TouchableOpacity, View} from 'react-native';
-import {ActivityIndicator, Button, Text} from 'react-native-paper';
+import React from 'react';
+import {ScrollView, TouchableOpacity, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Button,
+  Text,
+  Card,
+  Title,
+  Divider,
+  Paragraph,
+} from 'react-native-paper';
 import {useQuery, useQueryClient} from 'react-query';
 import {useHistory, useParams} from 'react-router-native';
 import {getWorkGroup, removeWorkGroup} from '../../api/workGroup';
@@ -8,6 +16,8 @@ import {info} from '../../api/auth';
 import {workGroupStyle} from '../../styles/WorkGroup';
 import Icon from '../Icon/Icon';
 import {useTranslation} from 'react-i18next';
+import {Pin, Work} from '../../types';
+import Splitter from '../Splitter/Splitter';
 
 export default function SingleWorkGroup() {
   const {t} = useTranslation();
@@ -23,10 +33,6 @@ export default function SingleWorkGroup() {
 
   async function add() {
     history.push('/work/add');
-  }
-
-  async function works() {
-    history.push(`/workgroup/${data?.data.id}/works`);
   }
 
   async function edit() {
@@ -92,19 +98,69 @@ export default function SingleWorkGroup() {
                 />
               </View>
             )}
-            <Link
-              title={t('works')}
-              click={works}
-              icon={<Icon name={'arrow-right'} size={25} />}
-            />
-            <Link
-              title={t('users')}
-              icon={<Icon name={'arrow-right'} size={25} />}
-            />
+            <Pins pins={data?.data.pins || []} />
+            <Works data={data} items={data?.data.works?.slice(-5) || []} />
           </View>
         )}
       </View>
     </ScrollView>
+  );
+}
+
+function Works(props: {items: Work[]; data: any}) {
+  const {t} = useTranslation();
+  const history = useHistory();
+
+  async function works() {
+    history.push(`/workgroup/${props.data?.data?.id}/works`);
+  }
+
+  return (
+    <>
+      <Splitter beforeText={<Icon name={'article'} size={20} />}>
+        {t('works')}
+      </Splitter>
+      {props.items.map((e, i) => {
+        return (
+          <Card style={{marginTop: 10}} key={i}>
+            <Card.Content>
+              <Title>{e.title}</Title>
+              <Paragraph>{e.description}</Paragraph>
+            </Card.Content>
+          </Card>
+        );
+      })}
+      <Button
+        compact={true}
+        onPress={works}
+        style={{marginTop: 10}}
+        mode={'contained'}
+        icon={() => <Icon name={'arrow-left'} size={25} />}>
+        {t('allWorks')}
+      </Button>
+    </>
+  );
+}
+
+function Pins(props: {pins: Pin[]}) {
+  const {t} = useTranslation();
+
+  return (
+    <>
+      <Splitter beforeText={<Icon name={'push-pin'} size={20} />}>
+        {t('pins')}
+      </Splitter>
+      {props.pins.map((e, i) => {
+        return (
+          <Card style={{marginTop: 10}} key={i}>
+            <Card.Content>
+              <Title>{e.work?.title}</Title>
+              <Paragraph>{e.work?.description}</Paragraph>
+            </Card.Content>
+          </Card>
+        );
+      })}
+    </>
   );
 }
 
@@ -115,30 +171,4 @@ interface Props {
 
 function Action(props: Props) {
   return <Button onPress={props.click}>{props.icon}</Button>;
-}
-
-function Link(props: {title: string; icon: any; click?: any}) {
-  return (
-    <TouchableOpacity
-      onPress={props.click}
-      style={{
-        marginTop: 15,
-        padding: 20,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        borderColor: 'white',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderRadius: 8,
-      }}>
-      <Text
-        style={{
-          fontSize: 15,
-        }}>
-        {props.title}
-      </Text>
-      {props.icon}
-    </TouchableOpacity>
-  );
 }

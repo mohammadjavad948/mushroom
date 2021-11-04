@@ -10,6 +10,7 @@ import getTextColor from '../../helper/textColor';
 import {useTranslation} from 'react-i18next';
 
 export default function Search() {
+  const {t} = useTranslation();
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -38,7 +39,7 @@ export default function Search() {
         value={text}
         onChangeText={(e: string) => setText(e)}
         mode={'outlined'}
-        label={'Search'}
+        label={t('search')}
         right={<TextInput.Icon onPress={doSearch} name={'search'} />}
       />
       <View

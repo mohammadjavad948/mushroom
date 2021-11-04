@@ -35,5 +35,10 @@
   "dark": "تاریک",
   "light": "روشن",
   "language": "زبان",
-  "remove": "حذف"
+  "remove": "حذف",
+  "allWorks": "همه مشق ها",
+  "pins": "پین ها",
+  "search": "جستجو",
+  "pin": "پین",
+  "unpin": "حذف پین"
 }

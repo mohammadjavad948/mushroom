@@ -35,5 +35,10 @@
   "dark": "Dark",
   "light": "Light",
   "language": "Language",
-  "remove": "remove"
+  "remove": "remove",
+  "allWorks": "All Works",
+  "pins": "Pins",
+  "search": "Search",
+  "pin": "Pin",
+  "unpin": "Unpin"
 }

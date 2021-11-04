@@ -1,4 +1,8 @@
-export interface User {
+/**
+ * Model User
+ */
+
+export type User = {
   id: number;
   username: string;
   password: string;
@@ -9,13 +13,24 @@ export interface User {
   workGroups?: WorkGroup[];
   works?: Work[];
   subedGroups?: Subscription[];
-}
+};
+
+/**
+ * Model Session
+ */
+
+export type Session = {
+  id: number;
+  userId: number;
+  hash: string;
+  createdAt: string;
+};
 
 /**
  * Model WorkGroup
  */
 
-export interface WorkGroup {
+export type WorkGroup = {
   id: number;
   creatorId: number;
   name: string;
@@ -29,26 +44,27 @@ export interface WorkGroup {
 
   works?: Work[];
   subscribers?: Subscription[];
-}
+  pins?: Pin[];
+};
 
 /**
  * Model Subscription
  */
 
-export interface Subscription {
+export type Subscription = {
   id: number;
   userId: number;
   user?: User;
   groupId: number;
   group?: WorkGroup;
   createdAt: string;
-}
+};
 
 /**
  * Model Work
  */
 
-export interface Work {
+export type Work = {
   id: number;
   groupId: number;
   group?: WorkGroup;
@@ -59,4 +75,19 @@ export interface Work {
   dueDate: string;
   createdAt: string;
   updatedAt: string;
-}
+
+  pins?: Pin[];
+};
+
+/**
+ * Model Pin
+ */
+
+export type Pin = {
+  id: number;
+  workId: number;
+  work?: Work;
+  workGroupId: number;
+  workGroup?: WorkGroup;
+  createdAt: string;
+};
