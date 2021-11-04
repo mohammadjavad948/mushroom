@@ -72,6 +72,13 @@ function Item({item}: any) {
                 >
                     {t('remove')}
                 </Button>
+                <Button
+                    loading={loading}
+                    disabled={loading}
+                    icon={'push-pin'}
+                >
+                    {t('unpin')}
+                </Button>
             </Card.Actions>
         </Card>
     </View>
