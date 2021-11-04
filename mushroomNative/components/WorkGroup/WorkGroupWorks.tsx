@@ -58,13 +58,13 @@ function Item({item}: any) {
     }
   }
 
-  async function pin(){
+  async function pin() {
     try {
-      await mutateAsync({workId: item.id, count: item['_count'].pins});
+      await mutateAsync({workId: item.id, count: item._count.pins});
 
       await client.invalidateQueries('workGroup');
-    } catch (e){
-      console.log(e)
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -86,12 +86,11 @@ function Item({item}: any) {
             {t('remove')}
           </Button>
           <Button
-              icon={'push-pin'}
-              loading={isLoading}
-              disabled={isLoading}
-              onPress={pin}
-          >
-            {item['_count'].pins === 0 ? t('pin') : t('unpin')}
+            icon={'push-pin'}
+            loading={isLoading}
+            disabled={isLoading}
+            onPress={pin}>
+            {item._count.pins === 0 ? t('pin') : t('unpin')}
           </Button>
         </Card.Actions>
       </Card>

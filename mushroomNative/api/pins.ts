@@ -2,7 +2,7 @@ import {api} from './base';
 import {headers} from './auth';
 import {Pin} from '../types';
 import {AxiosResponse} from 'axios';
-import {useMutation} from "react-query";
+import {useMutation} from 'react-query';
 
 export function allPins(groupId: number) {
   return api.get<Pin[], AxiosResponse<Pin[]>>(`/pins/${groupId}`, {
@@ -27,7 +27,7 @@ export function unpin(workId: number) {
 }
 
 export const usePinMutate = () => {
-  return useMutation((data: {count: number, workId: number}) => {
-    return data.count === 0 ? pin(data.workId) : unpin(data.workId)
-  })
-}
+  return useMutation((data: {count: number; workId: number}) => {
+    return data.count === 0 ? pin(data.workId) : unpin(data.workId);
+  });
+};

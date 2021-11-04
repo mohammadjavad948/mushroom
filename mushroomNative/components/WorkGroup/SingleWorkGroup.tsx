@@ -150,16 +150,16 @@ function Pins(props: {pins: Pin[]}) {
       <Splitter beforeText={<Icon name={'push-pin'} size={20} />}>
         {t('pins')}
       </Splitter>
-        {props.pins.map((e, i) => {
-            return (
-                <Card style={{marginTop: 10}} key={i}>
-                    <Card.Content>
-                        <Title>{e.work?.title}</Title>
-                        <Paragraph>{e.work?.description}</Paragraph>
-                    </Card.Content>
-                </Card>
-            );
-        })}
+      {props.pins.map((e, i) => {
+        return (
+          <Card style={{marginTop: 10}} key={i}>
+            <Card.Content>
+              <Title>{e.work?.title}</Title>
+              <Paragraph>{e.work?.description}</Paragraph>
+            </Card.Content>
+          </Card>
+        );
+      })}
     </>
   );
 }
