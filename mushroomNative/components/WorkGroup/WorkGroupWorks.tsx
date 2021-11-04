@@ -8,6 +8,7 @@ import {dashboardStyle} from '../../styles/Dashboard';
 import {Text} from 'react-native-paper';
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
 import {useTranslation} from "react-i18next";
+import {allPins} from "../../api/pins";
 
 export default function WorkGroupWorks() {
   const params = useParams<{id: number}>();
@@ -41,6 +42,11 @@ function Item({item}: any) {
     const params = useParams<{id: number}>();
     const {t} = useTranslation();
   const [loading, setLoading] = useState(false);
+
+  const {data: pins} = useQuery(['pins', {groupId: params.id}], () =>
+      allPins(params.id),
+  )
+
   const client = useQueryClient();
 
   async function remove() {
