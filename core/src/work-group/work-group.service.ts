@@ -56,6 +56,13 @@ export class WorkGroupService {
           },
         },
         works: {
+          include: {
+            _count: {
+              select: {
+                pins: true
+              }
+            }
+          },
           orderBy: [
             {
               dueDate: 'asc',
