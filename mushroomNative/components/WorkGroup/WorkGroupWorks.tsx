@@ -38,6 +38,7 @@ export default function WorkGroupWorks() {
 }
 
 function Item({item}: any) {
+    const params = useParams<{id: number}>();
     const {t} = useTranslation();
   const [loading, setLoading] = useState(false);
   const client = useQueryClient();

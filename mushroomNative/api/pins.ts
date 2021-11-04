@@ -7,3 +7,17 @@ export function allPins(groupId: number){
         headers: headers()
     })
 }
+
+export function pin(workId: number){
+
+    return api.post(`/pins/${workId}`,{}, {
+        headers: headers()
+    })
+}
+
+export function unpin(workId: number){
+
+    return api.delete(`/pins/${workId}`, {
+        headers: headers()
+    })
+}
