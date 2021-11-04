@@ -39,13 +39,8 @@ export default function WorkGroupWorks() {
 }
 
 function Item({item}: any) {
-    const params = useParams<{id: number}>();
     const {t} = useTranslation();
   const [loading, setLoading] = useState(false);
-
-  const {data: pins} = useQuery(['pins', {groupId: params.id}], () =>
-      allPins(params.id),
-  )
 
   const client = useQueryClient();
 
