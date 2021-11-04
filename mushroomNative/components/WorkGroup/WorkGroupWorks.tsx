@@ -42,7 +42,7 @@ function Item({item}: any) {
   const {t} = useTranslation();
   const [loading, setLoading] = useState(false);
 
-  const {isLoading, mutate} = usePinMutate();
+  const {isLoading, mutateAsync} = usePinMutate();
 
   const client = useQueryClient();
 
@@ -55,6 +55,16 @@ function Item({item}: any) {
       setLoading(false);
     } catch (e) {
       setLoading(false);
+    }
+  }
+
+  async function pin(){
+    try {
+      await mutateAsync({workId: item.id, count: item['_count'].pins});
+
+      await client.invalidateQueries('workGroup');
+    } catch (e){
+      console.log(e)
     }
   }
 
@@ -79,7 +89,7 @@ function Item({item}: any) {
               icon={'push-pin'}
               loading={isLoading}
               disabled={isLoading}
-              onPress={() => mutate({workId: item.id, count: item['_count'].pins})}
+              onPress={pin}
           >
             {item['_count'].pins === 0 ? t('pin') : t('unpin')}
           </Button>
