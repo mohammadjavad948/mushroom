@@ -16,7 +16,7 @@ import {info} from '../../api/auth';
 import {workGroupStyle} from '../../styles/WorkGroup';
 import Icon from '../Icon/Icon';
 import {useTranslation} from 'react-i18next';
-import {Work} from '../../types';
+import {Pin, Work} from '../../types';
 import Splitter from '../Splitter/Splitter';
 
 export default function SingleWorkGroup() {
@@ -98,7 +98,7 @@ export default function SingleWorkGroup() {
                 />
               </View>
             )}
-            <Pins />
+            <Pins pins={data?.data.pins || []} />
             <Works data={data} items={data?.data.works?.slice(-5) || []} />
           </View>
         )}
@@ -142,7 +142,7 @@ function Works(props: {items: Work[]; data: any}) {
   );
 }
 
-function Pins() {
+function Pins(props: {pins: Pin[]}) {
   const {t} = useTranslation();
 
   return (
@@ -150,6 +150,16 @@ function Pins() {
       <Splitter beforeText={<Icon name={'push-pin'} size={20} />}>
         {t('pins')}
       </Splitter>
+        {props.pins.map((e, i) => {
+            return (
+                <Card style={{marginTop: 10}} key={i}>
+                    <Card.Content>
+                        <Title>{e.work?.title}</Title>
+                        <Paragraph>{e.work?.description}</Paragraph>
+                    </Card.Content>
+                </Card>
+            );
+        })}
     </>
   );
 }
