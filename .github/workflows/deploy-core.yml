@@ -2,6 +2,8 @@ name: deploy-core
 
 on:
   push:
+    paths:
+      - "core/**"
     branches:
       - main
 

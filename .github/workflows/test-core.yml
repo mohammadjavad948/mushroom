@@ -1,6 +1,10 @@
 name: test-core
 
-on: push
+on:
+  push:
+    paths:
+      - "core/**"
+
 jobs:
   # label of the container job
   test-e2e:
