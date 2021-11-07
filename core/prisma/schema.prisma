@@ -49,6 +49,7 @@ model WorkGroup {
     info String @default("none")
 
     haveComments Boolean @default(false)
+    waitForAdminAccept Boolean @default(false)
     isVerified Boolean @default(false)
     isPrivate Boolean
 
