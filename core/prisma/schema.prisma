@@ -69,6 +69,8 @@ model Subscription {
     group WorkGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
     groupId Int
 
+    state String @default('accepted')
+
     createdAt DateTime @default(now())
 }
 
