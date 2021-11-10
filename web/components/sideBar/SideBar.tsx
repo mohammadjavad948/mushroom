@@ -9,6 +9,9 @@ export default function SideBar(){
             <SideBarIcon>
                 <MdDashboard size={25} />
             </SideBarIcon>
+            <SideBarIcon>
+                <MdDashboard size={25} />
+            </SideBarIcon>
         </div>
     )
 }
