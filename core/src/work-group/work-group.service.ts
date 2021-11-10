@@ -24,6 +24,7 @@ export class WorkGroupService {
         isPrivate: createWorkGroupDto.isPrivate,
         name: createWorkGroupDto.name,
         creatorId: userId,
+        waitForAdminAccept: createWorkGroupDto.waitForAdminAccept
       },
     });
   }
@@ -98,6 +99,7 @@ export class WorkGroupService {
         color: updateWorkGroupDto.color,
         isPrivate: updateWorkGroupDto.isPrivate,
         name: updateWorkGroupDto.name,
+        waitForAdminAccept: updateWorkGroupDto.waitForAdminAccept
       },
     });
   }
