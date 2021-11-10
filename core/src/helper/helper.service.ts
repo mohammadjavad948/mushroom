@@ -17,6 +17,17 @@ export class HelperService {
     return group > 0;
   }
 
+  async canSub(userId: number, groupId: number){
+    const count = await this.database.workGroup.count({
+      where: {
+        id: groupId,
+        isPrivate: false,
+      },
+    });
+
+    return count > 0;
+  }
+
   async canViewGroup(userId: number, groupId: number) {
     const count = await this.database.workGroup.count({
       where: {
