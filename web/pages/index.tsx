@@ -1,9 +1,12 @@
+import MainLayout from "../components/layout/Main";
 
 export default function Main(){
 
     return (
-        <div>
-
-        </div>
+        <MainLayout>
+            <div>
+                hmm
+            </div>
+        </MainLayout>
     )
 }
