@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
+import {SubState} from "../types/subState";
 
 @Injectable()
 export class HelperService {
@@ -25,11 +26,9 @@ export class HelperService {
             creatorId: userId,
           },
           {
-            isPrivate: false,
-          },
-          {
             subscribers: {
               some: {
+                state: SubState.accepted,
                 userId: userId,
               },
             },
@@ -60,7 +59,12 @@ export class HelperService {
             },
           },
           {
-            isPrivate: false,
+            subscribers: {
+              some: {
+                userId: userId,
+                state: SubState.accepted,
+              },
+            },
             works: {
               some: {
                 id: workId,
