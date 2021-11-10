@@ -12,4 +12,8 @@ export class CreateWorkGroupDto {
   @IsNotEmpty()
   @IsBoolean()
   isPrivate: boolean;
+
+  @IsNotEmpty()
+  @IsBoolean()
+  waitForAdminAccept: boolean
 }
