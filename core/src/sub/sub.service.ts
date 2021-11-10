@@ -1,6 +1,7 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
-import { HelperService } from '../helper/helper.service';
+import {HttpException, Injectable} from '@nestjs/common';
+import {DatabaseService} from '../database/database.service';
+import {HelperService} from '../helper/helper.service';
+import {SubState} from "../types/subState";
 
 @Injectable()
 export class SubService {
@@ -28,16 +29,24 @@ export class SubService {
       throw new HttpException('subbed', 403);
     }
 
-    const canView = await this.helper.canViewGroup(userId, groupId);
+    const canSub = await this.helper.canSub(userId, groupId);
 
-    if (!canView) {
+    if (!canSub) {
       throw new HttpException('nope', 403);
     }
+
+    const workGroup = await this.database.workGroup.findUnique({
+      where: {
+        id: groupId,
+      },
+      rejectOnNotFound: true
+    })
 
     return this.database.subscription.create({
       data: {
         groupId: groupId,
         userId: userId,
+        state: workGroup.waitForAdminAccept ? SubState.waiting : SubState.accepted
       },
     });
   }
