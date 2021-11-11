@@ -9,10 +9,10 @@ export default function SideBar(){
 
     return (
         <div className={style.container}>
-            <SideBarIcon click={() => router.push('/')}>
+            <SideBarIcon isActive={true} click={() => router.push('/')}>
                 <MdDashboard size={25} />
             </SideBarIcon>
-            <SideBarIcon click={() => router.push('/workgroup')}>
+            <SideBarIcon isActive={false} click={() => router.push('/workgroup')}>
                 <MdLayers size={25} />
             </SideBarIcon>
         </div>
