@@ -1,5 +1,4 @@
 import create from 'zustand';
-import {persist, StateStorage} from 'zustand/middleware';
 
 interface OtherInfoStoreI {
     helperPageWidth: number;
@@ -11,7 +10,6 @@ interface OtherInfoStoreI {
 }
 
 export const useOtherInfoStore = create<OtherInfoStoreI>(
-    persist(
         (set, get) => {
             return {
                 helperPageWidth: 400,
@@ -32,9 +30,4 @@ export const useOtherInfoStore = create<OtherInfoStoreI>(
                 },
             };
         },
-        {
-            name: 'other-info-storage',
-            getStorage: () => localStorage,
-        },
-    ),
 );
