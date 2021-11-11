@@ -31,7 +31,7 @@ export default function HelperPage(props: {children: any}){
         <a.div
             className={pageStyle.container}
             style={{
-                width: mainAnimation.width.to((x: any) => `${x}px`)
+                width: mainAnimation.width.to((x: any) => `${x}px`),
             }}
         >
             <a.div

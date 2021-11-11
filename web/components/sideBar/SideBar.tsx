@@ -3,6 +3,7 @@ import SideBarIcon from "./SideBarIcon";
 import {MdDashboard, MdLayers} from 'react-icons/md';
 import {BsLayoutSidebarInsetReverse} from 'react-icons/bs';
 import {useRouter} from "next/router";
+import {useOtherInfoStore} from "../../store/OtherInfoStore";
 
 const ITEMS: {route: string, icon: any, exact?: boolean}[] = [
     {
@@ -18,6 +19,7 @@ const ITEMS: {route: string, icon: any, exact?: boolean}[] = [
 
 export default function SideBar(){
 
+    const {helperPageEnable, toggleHelperPage} = useOtherInfoStore();
     const router = useRouter();
 
     return (
@@ -34,8 +36,8 @@ export default function SideBar(){
                 )
             })}
             <SideBarIcon
-                isActive={true}
-                click={() => console.log('click')}
+                isActive={helperPageEnable}
+                click={() => toggleHelperPage()}
             >
                 <BsLayoutSidebarInsetReverse size={25}/>
             </SideBarIcon>
