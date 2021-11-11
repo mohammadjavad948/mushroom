@@ -1,6 +1,7 @@
 .container{
     border-radius: 10px;
     width: 400px;
+    padding: 15px;
     height: var(--full-height);
     background-color: var(--primary);
 }
