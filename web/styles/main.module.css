@@ -14,6 +14,13 @@
     height: var(--full-height);
 }
 
+.smallContainer{
+    border-radius: 10px;
+    width: 400px;
+    height: var(--full-height);
+    background-color: var(--primary);
+}
+
 @media only screen and (max-width: 600px){
     .container{
         flex-direction: column;
@@ -22,6 +29,11 @@
     .DataContainer{
         flex: 1;
         height: unset;
+        width: 100%;
+    }
+
+    .smallContainer{
+        height: 30vh;
         width: 100%;
     }
 }
