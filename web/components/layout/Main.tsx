@@ -6,7 +6,7 @@ export default function MainLayout(props: {children?: any}){
 
     return (
         <div className={style.container}>
-            <div className={style.DataContainer}>
+            <div style={{direction: 'rtl'}} className={style.DataContainer}>
                 {props.children}
             </div>
             <SideBar />
