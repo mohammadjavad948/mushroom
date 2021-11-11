@@ -3,9 +3,16 @@
 :root{
   --full-height: 100vh;
   --bg: #faf7e2ff;
-  --color: #000000;
+  --color: #2b2b2b;
   --primary: #f9de59ff;
-  --accent: #bbff5bff
+  --accent: #bbff5bff;
+}
+
+.theme1{
+  --bg: #272a27ff;
+  --color: #ffffff;
+  --primary: #40af2cff;
+  --accent: #b0c933ff
 }
 
 html,
