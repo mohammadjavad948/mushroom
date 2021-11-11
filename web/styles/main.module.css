@@ -4,6 +4,7 @@
     height: var(--full-height);
     overflow: hidden;
     display: flex;
+    gap: 5px;
 }
 
 .DataContainer{
