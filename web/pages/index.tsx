@@ -6,9 +6,7 @@ export default function Main(){
     return (
         <MainLayout>
             <div className="row">
-                <PageTitle>
-                    داشبورد
-                </PageTitle>
+                <PageTitle title={"داشبورد"} />
                 <div className="col-12">
                     
                 </div>
