@@ -1,6 +1,7 @@
 import style from './sideBar.module.css';
 import SideBarIcon from "./SideBarIcon";
 import {MdDashboard, MdLayers} from 'react-icons/md';
+import {BsLayoutSidebarInsetReverse} from 'react-icons/bs';
 import {useRouter} from "next/router";
 
 const ITEMS: {route: string, icon: any, exact?: boolean}[] = [
@@ -32,6 +33,12 @@ export default function SideBar(){
                     </SideBarIcon>
                 )
             })}
+            <SideBarIcon
+                isActive={true}
+                click={() => console.log('click')}
+            >
+                <BsLayoutSidebarInsetReverse size={25}/>
+            </SideBarIcon>
         </div>
     )
 }
