@@ -1,5 +1,6 @@
 import style from '../../styles/main.module.css';
 import SideBar from "../sideBar/SideBar";
+import HelperPage from "../helperPage/HelperPage";
 
 
 export default function MainLayout(props: {children?: any}){
@@ -9,9 +10,9 @@ export default function MainLayout(props: {children?: any}){
             <div style={{direction: 'rtl'}} className={style.DataContainer}>
                 {props.children}
             </div>
-            <div className={style.smallContainer}>
-
-            </div>
+            <HelperPage>
+                hmm
+            </HelperPage>
             <SideBar />
         </div>
     )
