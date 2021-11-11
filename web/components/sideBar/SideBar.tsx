@@ -1,6 +1,6 @@
 import style from './sideBar.module.css';
 import SideBarIcon from "./SideBarIcon";
-import {MdDashboard} from 'react-icons/md';
+import {MdDashboard, MdLayers} from 'react-icons/md';
 
 export default function SideBar(){
 
@@ -10,7 +10,7 @@ export default function SideBar(){
                 <MdDashboard size={25} />
             </SideBarIcon>
             <SideBarIcon>
-                <MdDashboard size={25} />
+                <MdLayers size={25} />
             </SideBarIcon>
         </div>
     )
