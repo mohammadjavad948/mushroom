@@ -14,7 +14,7 @@
     width: 7px;
     height: 35px;
     border-radius: 15px;
-    background-color: var(--accent);
+    background-color: var(--color);
     cursor: w-resize;
     touch-action: none;
 }
