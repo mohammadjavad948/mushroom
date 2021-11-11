@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync:api": "cp -r ../mushroomNative/api/** ./api",
+    "sync:type": "cp -r ../mushroomNative/types/** ./types",
+    "sync": "yarn sync:api && yarn sync:type"
   },
   "dependencies": {
     "axios": "^0.24.0",
