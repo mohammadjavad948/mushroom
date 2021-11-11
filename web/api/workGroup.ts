@@ -15,7 +15,7 @@ export function getWorkGroup(id: number) {
   });
 }
 
-export function createWorkGroup(data) {
+export function createWorkGroup(data: any) {
   return api.post<WorkGroup, AxiosResponse<WorkGroup>>('/work-group', data, {
     headers: headers(),
   });

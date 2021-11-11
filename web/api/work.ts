@@ -9,7 +9,7 @@ export function getWork(id: number) {
   });
 }
 
-export function createWork(data) {
+export function createWork(data: any) {
   return api.post<Work, AxiosResponse<Work>>('/work', data, {
     headers: headers(),
   });
