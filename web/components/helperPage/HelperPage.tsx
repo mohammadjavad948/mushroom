@@ -1,7 +1,7 @@
-import style from './helperPage.module.css';
 import {useDrag} from "@use-gesture/react";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
 import {useSpring, a} from "react-spring";
+import pageStyle from './HelperPage.module.css';
 
 export default function HelperPage(props: {children: any}){
 
@@ -19,10 +19,10 @@ export default function HelperPage(props: {children: any}){
 
     return (
         <div
-            className={style.container}
+            className={pageStyle.container}
         >
             <a.div
-                className={style.smallDraggable}
+                className={pageStyle.smallDraggable}
                 style={animation}
                 {...bind()}
             />
