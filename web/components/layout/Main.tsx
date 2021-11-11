@@ -6,7 +6,7 @@ import {useMediaQuery} from "@react-hook/media-query";
 
 export default function MainLayout(props: {children?: any}){
 
-    const match = useMediaQuery('only screen and (max-width: 600px)')
+    const match = useMediaQuery('only screen and (min-width: 601px)')
 
     return (
         <div className={style.container}>
