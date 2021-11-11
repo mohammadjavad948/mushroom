@@ -11,9 +11,9 @@ export default function HelperPage(props: {children: any}){
         }
     })
 
-    const bind = useDrag(({offset}) => {
+    const bind = useDrag(({movement: [mx, my], down}) => {
         api.start({
-            x: offset[0]
+            x: down ? mx : 0
         })
     }) as any;
 
