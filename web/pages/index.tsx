@@ -6,7 +6,7 @@ export default function Main(){
         <MainLayout>
             <div className="row">
                 <div className="col-12">
-                    hmm?
+                    
                 </div>
             </div>
         </MainLayout>
