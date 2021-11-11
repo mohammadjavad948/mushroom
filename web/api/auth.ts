@@ -1,5 +1,5 @@
 import {api} from './base';
-import {useAuthStore} from '../stores/authStore';
+import {useAuthStore} from '../store/authStore';
 import {User} from '../types';
 import {AxiosResponse} from 'axios';
 
