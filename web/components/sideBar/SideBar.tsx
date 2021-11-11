@@ -3,10 +3,11 @@ import SideBarIcon from "./SideBarIcon";
 import {MdDashboard, MdLayers} from 'react-icons/md';
 import {useRouter} from "next/router";
 
-const ITEMS = [
+const ITEMS: {route: string, icon: any, exact?: boolean}[] = [
     {
         route: '/',
         icon: <MdDashboard size={25} />,
+        exact: true
     },
     {
         route: '/workgroup',
@@ -24,7 +25,7 @@ export default function SideBar(){
                 return (
                     <SideBarIcon
                         key={i}
-                        isActive={router.asPath.startsWith(el.route)}
+                        isActive={el.exact ? router.asPath === el.route : router.asPath.startsWith(el.route)}
                         click={() => router.push(el.route)}
                     >
                         {el.icon}
