@@ -1,9 +1,9 @@
 import style from './sideBarIcon.module.css';
 
-export default function SideBarIcon(props: {children: any}){
+export default function SideBarIcon(props: {children: any, click?: any}){
 
     return (
-        <div className={style.container}>
+        <div onClick={props.click} className={style.container}>
             {props.children}
         </div>
     )
