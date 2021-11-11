@@ -1,17 +1,21 @@
 @import "~bootstrap/dist/css/bootstrap-grid.css";
 
+:root{
+  --full-height: 100vh;
+  --bg: #faf7e2ff;
+  --color: #000000;
+  --primary: #f9de59ff;
+  --accent: #bbff5bff
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #212121;
-  color: white;
-}
-
-:root{
-  --full-height: 100vh
+  background-color: var(--bg);
+  color: var(--color);
 }
 
 a {
