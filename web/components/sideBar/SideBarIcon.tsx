@@ -3,7 +3,7 @@ import {useDrag} from "@use-gesture/react";
 import {useSpring, a} from "react-spring";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
 
-export default function SideBarIcon(props: {children: any, click?: any,isActive: boolean, draggable?: boolean}){
+export default function SideBarIcon(props: {children: any, click?: any,isActive: boolean, draggable?: boolean, id?: string}){
 
     const {setDragging} = useOtherInfoStore();
 

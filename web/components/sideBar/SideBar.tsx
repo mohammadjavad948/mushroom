@@ -5,7 +5,7 @@ import {BsLayoutSidebarInsetReverse} from 'react-icons/bs';
 import {useRouter} from "next/router";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
 
-const ITEMS: {route: string, icon: any, exact?: boolean}[] = [
+const ITEMS: {route: string, icon: any, exact?: boolean, id?: string}[] = [
     {
         route: '/',
         icon: <MdDashboard size={25} />,
@@ -30,6 +30,7 @@ export default function SideBar(){
                 return (
                     <SideBarIcon
                         key={i}
+                        id={el.id}
                         draggable={true}
                         isActive={el.exact ? router.asPath === el.route : router.asPath.startsWith(el.route)}
                         click={() => router.push(el.route)}
