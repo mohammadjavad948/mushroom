@@ -33,12 +33,26 @@ function HelperPageRenderer(){
 
     return (
         <HelperPage>
-            <div style={{width: '100%', padding: '5px'}}>
-                <span>بستن</span>
-            </div>
+            {activePageId !== 'drop' && <Close />}
             <div style={{width: '100%', height: '100%', display: 'flex', direction: 'rtl'}}>
                 {renderer(activePageId)}
             </div>
         </HelperPage>
+    )
+}
+
+function Close(){
+
+    const {setHelperPageActivePage} = usePersistableOtherInfo();
+
+    return (
+        <div style={{width: '100%', padding: '5px', direction: 'rtl'}}>
+            <span
+                style={{fontSize: '14px', cursor: "pointer"}}
+                onClick={() => setHelperPageActivePage('drop')}
+            >
+                بستن
+            </span>
+        </div>
     )
 }
