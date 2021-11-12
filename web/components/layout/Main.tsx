@@ -33,6 +33,9 @@ function HelperPageRenderer(){
 
     return (
         <HelperPage>
+            <div style={{width: '100%', padding: '5px'}}>
+                <span>بستن</span>
+            </div>
             {renderer(activePageId)}
         </HelperPage>
     )
