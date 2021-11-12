@@ -1,18 +1,16 @@
 import create from 'zustand';
+import {persist} from "zustand/middleware";
 
 interface OtherInfoStoreI {
-    helperPageWidth: number;
     helperPageEnable: boolean;
     openHelperPage: () => void;
     closeHelperPage: () => void;
     toggleHelperPage: () => void;
-    setHelperPageWidth: (width: number) => void;
 }
 
 export const useOtherInfoStore = create<OtherInfoStoreI>(
         (set, get) => {
             return {
-                helperPageWidth: 400,
                 helperPageEnable: false,
                 openHelperPage: () => {
                   set({helperPageEnable: true})
@@ -25,9 +23,28 @@ export const useOtherInfoStore = create<OtherInfoStoreI>(
 
                   set({helperPageEnable: !state})
                 },
+            };
+        },
+);
+
+interface PersistableOtherInfoStoreI {
+    helperPageWidth: number;
+    setHelperPageWidth: (width: number) => void;
+}
+
+export const usePersistableOtherInfo = create<PersistableOtherInfoStoreI>(
+    persist(
+        (set, get) => {
+            return {
+                helperPageWidth: 400,
                 setHelperPageWidth: width => {
                     set({helperPageWidth: width});
                 },
             };
         },
-);
+        {
+            getStorage: () => localStorage,
+            name: 'other-info'
+        }
+    )
+)
