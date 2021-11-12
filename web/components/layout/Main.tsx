@@ -2,6 +2,7 @@ import style from '../../styles/main.module.css';
 import SideBar from "../sideBar/SideBar";
 import HelperPage from "../helperPage/HelperPage";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
+import DropComponentHere from "../helperPage/DropHere";
 
 
 export default function MainLayout(props: {children?: any}){
@@ -15,7 +16,7 @@ export default function MainLayout(props: {children?: any}){
             </div>
             {helperPageEnable && (
                 <HelperPage>
-                    hmm
+                    <DropComponentHere />
                 </HelperPage>
             )}
             <SideBar />

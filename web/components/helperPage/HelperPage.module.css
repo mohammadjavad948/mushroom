@@ -6,11 +6,11 @@
     border: 3px solid var(--primary);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .smallDraggable{
     position: absolute;
-    top: 48%;
     left: 5px;
     width: 7px;
     height: 35px;
@@ -18,6 +18,16 @@
     background-color: var(--color);
     cursor: w-resize;
     touch-action: none;
+}
+
+.dropHere{
+    width: 100%;
+    height: 100%;
+    border: 3px var(--mute) dashed;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
