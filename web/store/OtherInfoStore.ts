@@ -37,17 +37,23 @@ export const useOtherInfoStore = create<OtherInfoStoreI>(
 
 interface PersistableOtherInfoStoreI {
     helperPageWidth: number;
+    activePageId: string
     setHelperPageWidth: (width: number) => void;
+    setHelperPageActivePage: (page: string) => void;
 }
 
 export const usePersistableOtherInfo = create<PersistableOtherInfoStoreI>(
     persist(
         (set, get) => {
             return {
+                activePageId: 'drop',
                 helperPageWidth: 400,
                 setHelperPageWidth: width => {
                     set({helperPageWidth: width});
                 },
+                setHelperPageActivePage: page => {
+                    set({activePageId: page})
+                }
             };
         },
         {
