@@ -10,10 +10,17 @@ export default function DropComponentHere(){
         backgroundColor: !isDragging ? 'rgba(255, 255, 255, 0)' : 'rgba(21, 255, 255, 0.43)',
     } as any) as any;
 
+    function mouseUp(e: any){
+        e.preventDefault();
+
+        if (isDragging){
+            console.log('drop!')
+        }
+    }
+
     return (
         <a.div
-            onMouseOver={() => console.log('hmm')}
-            onMouseUpCapture={() => console.log('capture')}
+            onMouseUpCapture={mouseUp}
             className={style.dropHere}
             style={animation}
         >
