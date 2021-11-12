@@ -1,5 +1,5 @@
 import style from './sideBarIcon.module.css';
-import {useDrag, useGesture} from "@use-gesture/react";
+import {useDrag} from "@use-gesture/react";
 import {useSpring, a} from "react-spring";
 
 export default function SideBarIcon(props: {children: any, click?: any,isActive: boolean, draggable?: boolean}){
@@ -11,17 +11,15 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
         }
     })
 
-    const bind = useGesture({
-        onDrag: ({movement: [mx, my], down, tap}) => {
-            api.start({
-                x: down ? mx : 0,
-                y: down ? my : 0,
-            });
+    const bind = useDrag(({movement: [mx, my], down, tap}) => {
+        api.start({
+            x: down ? mx : 0,
+            y: down ? my : 0,
+        });
 
-            if (tap){
-                props.click();
-            }
-        },
+        if (tap){
+            props.click();
+        }
     }) as any
 
     return (
