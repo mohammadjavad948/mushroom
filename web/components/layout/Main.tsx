@@ -1,8 +1,9 @@
 import style from '../../styles/main.module.css';
 import SideBar from "../sideBar/SideBar";
 import HelperPage from "../helperPage/HelperPage";
-import {useOtherInfoStore} from "../../store/OtherInfoStore";
+import {useOtherInfoStore, usePersistableOtherInfo} from "../../store/OtherInfoStore";
 import DropComponentHere from "../helperPage/DropHere";
+import {componentInfo} from "../ComponentInfo";
 
 
 export default function MainLayout(props: {children?: any}){
@@ -15,11 +16,24 @@ export default function MainLayout(props: {children?: any}){
                 {props.children}
             </div>
             {helperPageEnable && (
-                <HelperPage>
-                    <DropComponentHere />
-                </HelperPage>
+                <HelperPageRenderer />
             )}
             <SideBar />
         </div>
+    )
+}
+
+function HelperPageRenderer(){
+
+    const {activePageId} = usePersistableOtherInfo();
+
+    function renderer(id: string){
+        return componentInfo[id] || <DropComponentHere />
+    }
+
+    return (
+        <HelperPage>
+            {renderer(activePageId)}
+        </HelperPage>
     )
 }
