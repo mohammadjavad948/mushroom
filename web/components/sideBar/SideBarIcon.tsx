@@ -19,10 +19,10 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
         if (props.draggable){
 
             if (down){
-                setDragging(true);
+                setDragging(true, props.id || '');
             } else {
                 setTimeout(() => {
-                    setDragging(false);
+                    setDragging(false, '');
                 }, 200);
             }
 
