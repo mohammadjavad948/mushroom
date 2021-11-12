@@ -9,11 +9,13 @@ const ITEMS: {route: string, icon: any, exact?: boolean}[] = [
     {
         route: '/',
         icon: <MdDashboard size={25} />,
-        exact: true
+        exact: true,
+        id: 'dashboard'
     },
     {
         route: '/workgroup',
         icon: <MdLayers size={25} />,
+        id: 'workgroups'
     }
 ]
 
