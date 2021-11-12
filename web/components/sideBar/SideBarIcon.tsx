@@ -12,10 +12,12 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
     })
 
     const bind = useDrag(({movement: [mx, my], down, tap}) => {
-        api.start({
-            x: down ? mx : 0,
-            y: down ? my : 0,
-        });
+        if (props.draggable){
+            api.start({
+                x: down ? mx : 0,
+                y: down ? my : 0,
+            });
+        }
 
         if (tap){
             props.click();
