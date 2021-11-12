@@ -1,10 +1,11 @@
 import style from './HelperPage.module.css';
 import {useSpring, a} from "react-spring";
-import {useOtherInfoStore} from "../../store/OtherInfoStore";
+import {useOtherInfoStore, usePersistableOtherInfo} from "../../store/OtherInfoStore";
 
 export default function DropComponentHere(){
 
-    const {isDragging} = useOtherInfoStore();
+    const {isDragging, draggingId} = useOtherInfoStore();
+    const {setHelperPageActivePage} = usePersistableOtherInfo();
 
     const animation = useSpring({
         backgroundColor: !isDragging ? 'rgba(255, 255, 255, 0)' : 'rgba(21, 255, 255, 0.43)',
@@ -14,7 +15,7 @@ export default function DropComponentHere(){
         e.preventDefault();
 
         if (isDragging){
-            console.log('drop!')
+            setHelperPageActivePage(draggingId)
         }
     }
 
