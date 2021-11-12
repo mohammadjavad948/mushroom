@@ -22,6 +22,10 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
         if (tap){
             props.click();
         }
+    }, {
+        pointer: {
+            capture: false
+        }
     }) as any
 
     return (
