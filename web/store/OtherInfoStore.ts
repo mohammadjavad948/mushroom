@@ -2,15 +2,18 @@ import create from 'zustand';
 import {persist} from "zustand/middleware";
 
 interface OtherInfoStoreI {
+    isDragging: boolean
     helperPageEnable: boolean;
     openHelperPage: () => void;
     closeHelperPage: () => void;
     toggleHelperPage: () => void;
+    setDragging: (state: boolean) => void
 }
 
 export const useOtherInfoStore = create<OtherInfoStoreI>(
         (set, get) => {
             return {
+                isDragging: false,
                 helperPageEnable: false,
                 openHelperPage: () => {
                   set({helperPageEnable: true})
@@ -23,6 +26,9 @@ export const useOtherInfoStore = create<OtherInfoStoreI>(
 
                   set({helperPageEnable: !state})
                 },
+                setDragging: state => {
+                    set({isDragging: state})
+                }
             };
         },
 );
