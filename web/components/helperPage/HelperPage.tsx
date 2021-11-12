@@ -1,11 +1,11 @@
 import {useDrag} from "@use-gesture/react";
-import {useOtherInfoStore} from "../../store/OtherInfoStore";
+import {usePersistableOtherInfo} from "../../store/OtherInfoStore";
 import {useSpring, a} from "react-spring";
 import pageStyle from './HelperPage.module.css';
 
 export default function HelperPage(props: {children: any}){
 
-    const {helperPageWidth, setHelperPageWidth} = useOtherInfoStore();
+    const {helperPageWidth, setHelperPageWidth} = usePersistableOtherInfo();
 
     const [animation, api] = useSpring(() => {
         return {
