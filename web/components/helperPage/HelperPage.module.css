@@ -31,9 +31,6 @@
     justify-content: center;
 }
 
-.dropHere:hover{
-    background-color: var(--primary);
-}
 
 @media only screen and (max-width: 600px) {
     .container{
