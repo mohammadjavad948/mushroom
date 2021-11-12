@@ -1,10 +1,36 @@
 import style from './sideBarIcon.module.css';
+import {useDrag, useGesture} from "@use-gesture/react";
+import {useSpring, a} from "react-spring";
 
-export default function SideBarIcon(props: {children: any, click?: any,isActive: boolean}){
+export default function SideBarIcon(props: {children: any, click?: any,isActive: boolean, draggable?: boolean}){
+
+    const [animation, api] = useSpring(() => {
+        return {
+            x: 0,
+            y: 0
+        }
+    })
+
+    const bind = useGesture({
+        onDrag: ({movement: [mx, my], down, tap}) => {
+            api.start({
+                x: down ? mx : 0,
+                y: down ? my : 0,
+            });
+
+            if (tap){
+                props.click();
+            }
+        },
+    }) as any
 
     return (
-        <div onClick={props.click} className={`${style.container} ${props.isActive ? style.active : ''}`}>
+        <a.div
+            {...bind()}
+            style={animation}
+            className={`${style.container} ${props.isActive ? style.active : ''}`}
+        >
             {props.children}
-        </div>
+        </a.div>
     )
 }

@@ -28,6 +28,7 @@ export default function SideBar(){
                 return (
                     <SideBarIcon
                         key={i}
+                        draggable={true}
                         isActive={el.exact ? router.asPath === el.route : router.asPath.startsWith(el.route)}
                         click={() => router.push(el.route)}
                     >
