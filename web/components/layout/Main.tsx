@@ -36,7 +36,9 @@ function HelperPageRenderer(){
             <div style={{width: '100%', padding: '5px'}}>
                 <span>بستن</span>
             </div>
-            {renderer(activePageId)}
+            <div style={{width: '100%', height: '100%', display: 'flex', direction: 'rtl'}}>
+                {renderer(activePageId)}
+            </div>
         </HelperPage>
     )
 }
