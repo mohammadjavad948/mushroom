@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css';
 import {QueryClient, QueryClientProvider} from "react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
 import NextNProgress from 'nextjs-progressbar';
 
 const queryClient = new QueryClient()
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             color={'#bbff5bff'}
         />
         <Component {...pageProps} />
+        <ReactQueryDevtools />
       </QueryClientProvider>
   )
 }
