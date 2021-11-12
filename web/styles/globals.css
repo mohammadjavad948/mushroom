@@ -25,6 +25,7 @@ body {
   font-family: iranyekan;
   background-color: var(--bg);
   color: var(--color);
+  user-select: none;
 }
 
 a {

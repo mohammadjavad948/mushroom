@@ -7,7 +7,8 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
     const [animation, api] = useSpring(() => {
         return {
             x: 0,
-            y: 0
+            y: 0,
+            pointerEvents: 'auto'
         }
     })
 
@@ -16,6 +17,7 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
             api.start({
                 x: down ? mx : 0,
                 y: down ? my : 0,
+                pointerEvents: down ? 'none' : 'auto'
             });
         }
 
