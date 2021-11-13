@@ -1,7 +1,7 @@
 import MainWorkGroup from "./workgroup/main";
 import MainDashboard from "./dashboard";
 
-export const componentInfo = {
+export const componentInfo: any = {
     dashboard: <MainDashboard />,
     workgroups: <MainWorkGroup />
 }

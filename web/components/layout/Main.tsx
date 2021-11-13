@@ -27,7 +27,7 @@ function HelperPageRenderer(){
 
     const {activePageId} = usePersistableOtherInfo();
 
-    function renderer(id: string){
+    function renderer(id: any){
         return componentInfo[id] || <DropComponentHere />
     }
 

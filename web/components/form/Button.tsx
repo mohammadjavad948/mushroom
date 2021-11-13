@@ -6,7 +6,7 @@ export default function Button({className, children, ...rest}: HTMLProps<HTMLBut
     return (
         <button
             className={`${style.button} ${className}`}
-            {...rest}
+            {...rest as any}
         >
             {children}
         </button>
