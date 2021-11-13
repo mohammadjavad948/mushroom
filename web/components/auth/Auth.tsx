@@ -8,7 +8,7 @@ export default function Auth(){
             <div className={style.card}>
                 <h3>ورود</h3>
                 <Input
-                    placeholder={"bah bah"}
+                    placeholder={"نام کاربری"}
                 />
             </div>
         </div>
