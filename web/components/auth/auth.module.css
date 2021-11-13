@@ -8,6 +8,7 @@
 }
 
 .card{
+    min-width: 300px;
     direction: rtl;
     padding: 25px;
     border-radius: 10px;
