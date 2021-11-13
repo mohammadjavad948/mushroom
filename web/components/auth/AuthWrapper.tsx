@@ -11,6 +11,7 @@ export default function AuthWrapper(props: {children: any}){
         if (token === ''){
             router.push('/login')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
 
     return props.children
