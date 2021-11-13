@@ -1,4 +1,7 @@
 
 .input{
-
+    background-color: unset;
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid var(--accent);
 }
