@@ -1,7 +1,7 @@
-import {InputProps} from "react-select";
+import {HTMLProps} from "react";
 import style from './form.module.css';
 
-export default function Input({className, ...rest}?: InputProps<HTMLInputElement>){
+export default function Input({className, ...rest}?: HTMLProps<HTMLInputElement>){
 
     return (
         <input

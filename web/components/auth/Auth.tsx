@@ -1,5 +1,6 @@
 import style from './auth.module.css';
 import Input from "../form/Input";
+import Button from "../form/Button";
 
 export default function Auth(){
 
@@ -10,6 +11,10 @@ export default function Auth(){
                 <Input
                     placeholder={"نام کاربری"}
                 />
+                <Input
+                    placeholder={"رمز عبور"}
+                />
+                <Button />
             </div>
         </div>
     )
