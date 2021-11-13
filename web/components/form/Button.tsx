@@ -4,7 +4,10 @@ import style from './form.module.css';
 export default function Button({className, children, ...rest}: HTMLProps<HTMLButtonElement>){
 
     return (
-        <button>
+        <button
+            className={`${style.button} ${className}`}
+            {...rest}
+        >
             {children}
         </button>
     )

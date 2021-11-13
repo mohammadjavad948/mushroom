@@ -14,7 +14,9 @@ export default function Auth(){
                 <Input
                     placeholder={"رمز عبور"}
                 />
-                <Button />
+                <Button >
+                    ورود
+                </Button>
             </div>
         </div>
     )
