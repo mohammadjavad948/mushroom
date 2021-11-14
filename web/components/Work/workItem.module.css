@@ -3,5 +3,13 @@
     width: 100%;
     padding: 10px;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     border: 1px solid var(--accent);
+}
+
+.title{
+    font-size: 15px;
+    font-weight: 500;
 }
