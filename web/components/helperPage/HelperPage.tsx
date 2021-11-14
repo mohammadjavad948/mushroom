@@ -1,6 +1,6 @@
 import {useDrag} from "@use-gesture/react";
 import {usePersistableOtherInfo} from "../../store/OtherInfoStore";
-import {useSpring, a} from "react-spring";
+import {useSpring, a, config} from "react-spring";
 import pageStyle from './HelperPage.module.css';
 
 export default function HelperPage(props: {children: any}){
@@ -10,11 +10,13 @@ export default function HelperPage(props: {children: any}){
     const [animation, api] = useSpring(() => {
         return {
             x: 0,
+            config: config.gentle
         }
     });
 
     const mainAnimation = useSpring({
-        width: helperPageWidth
+        width: helperPageWidth,
+        config: config.gentle
     } as any) as any;
 
     const bind = useDrag(({movement: [mx, my], down}) => {
