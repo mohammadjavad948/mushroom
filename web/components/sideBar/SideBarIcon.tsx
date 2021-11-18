@@ -2,8 +2,11 @@ import style from './sideBarIcon.module.css';
 import {useDrag} from "@use-gesture/react";
 import {useSpring, a} from "react-spring";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
+import {useState} from "react";
 
 export default function SideBarIcon(props: {children: any, click?: any,isActive: boolean, draggable?: boolean, id?: string}){
+
+    const [hovering, setHover] = useState(false);
 
     const {setDragging} = useOtherInfoStore();
 
@@ -19,6 +22,7 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
         if (props.draggable){
 
             if (down){
+                setHover(false)
                 setDragging(true, props.id || '');
             } else {
                 setTimeout(() => {
@@ -47,8 +51,20 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
             {...bind()}
             style={animation}
             className={`${style.container} ${props.isActive ? style.active : ''}`}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
         >
             {props.children}
+            {hovering && <Label label={"hmmm"} />}
         </a.div>
+    )
+}
+
+function Label(props: {label: string}){
+
+    return (
+        <div className={style.label}>
+            {props.label}
+        </div>
     )
 }

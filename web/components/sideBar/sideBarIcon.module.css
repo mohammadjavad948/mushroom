@@ -9,6 +9,7 @@
     border-radius: 8px;
     cursor: pointer;
     touch-action: none;
+    position: relative;
 }
 
 .active{
@@ -17,4 +18,13 @@
 
 .container:hover{
     background-color: var(--accent);
+}
+
+.label{
+    position: absolute;
+    padding: 10px;
+    background-color: var(--accent);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    right: 55px;
 }
