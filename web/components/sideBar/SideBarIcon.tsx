@@ -1,6 +1,6 @@
 import style from './sideBarIcon.module.css';
 import {useDrag} from "@use-gesture/react";
-import {useSpring, a} from "react-spring";
+import {useSpring, a, useTransition, config} from "react-spring";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
 import {useState} from "react";
 
@@ -55,15 +55,47 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
             onMouseLeave={() => setHover(false)}
         >
             {props.children}
-            {hovering && <Label label={props.label} />}
+            <LabelAnimation show={hovering}>
+                <Label label={props.label} />
+            </LabelAnimation>
         </a.div>
     )
+}
+
+function LabelAnimation(props: {show: boolean, children: any}){
+    const transitions = useTransition(props.show, {
+        from: {
+            opacity: 0,
+            scale: 0.8
+        },
+        enter: {
+            opacity: 1,
+            scale: 1
+        },
+        leave: {
+            opacity: 0,
+            scale: 0.8
+        },
+        config: config.gentle
+    } as any) as any;
+
+    return transitions(
+            (styles, item) => item && (
+                <a.div
+                    style={styles}
+                    className={style.label}
+                >
+                    {props.children}
+                </a.div>
+            )
+    )
+
 }
 
 function Label(props: {label: string}){
 
     return (
-        <div className={style.label}>
+        <div>
             {props.label}
         </div>
     )
