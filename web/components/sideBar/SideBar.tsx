@@ -1,6 +1,6 @@
 import style from './sideBar.module.css';
 import SideBarIcon from "./SideBarIcon";
-import {MdDashboard, MdLayers} from 'react-icons/md';
+import {MdDashboard, MdLayers, MdSettings} from 'react-icons/md';
 import {BsLayoutSidebarInsetReverse} from 'react-icons/bs';
 import {useRouter} from "next/router";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
@@ -16,6 +16,11 @@ const ITEMS: {route: string, icon: any, exact?: boolean, id?: string}[] = [
         route: '/workgroup',
         icon: <MdLayers size={25} />,
         id: 'workgroups'
+    },
+    {
+        route: '/setting',
+        icon: <MdSettings size={25} />,
+        id: 'setting'
     }
 ]
 
