@@ -27,4 +27,5 @@
     border: 1px solid var(--primary);
     border-radius: 5px;
     right: 55px;
+    white-space: nowrap;
 }

@@ -5,22 +5,25 @@ import {BsLayoutSidebarInsetReverse} from 'react-icons/bs';
 import {useRouter} from "next/router";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
 
-const ITEMS: {route: string, icon: any, exact?: boolean, id?: string}[] = [
+const ITEMS: {route: string, icon: any, exact?: boolean, id?: string, label: string}[] = [
     {
         route: '/',
         icon: <MdDashboard size={25} />,
         exact: true,
-        id: 'dashboard'
+        id: 'dashboard',
+        label: 'داشبورد'
     },
     {
         route: '/workgroup',
         icon: <MdLayers size={25} />,
-        id: 'workgroups'
+        id: 'workgroups',
+        label: 'گروه'
     },
     {
         route: '/setting',
         icon: <MdSettings size={25} />,
-        id: 'setting'
+        id: 'setting',
+        label: 'تنظیمات'
     }
 ]
 
@@ -36,6 +39,7 @@ export default function SideBar(){
                     <SideBarIcon
                         key={i}
                         id={el.id}
+                        label={el.label}
                         draggable={true}
                         isActive={el.exact ? router.asPath === el.route : router.asPath.startsWith(el.route)}
                         click={() => router.push(el.route)}
@@ -45,6 +49,7 @@ export default function SideBar(){
                 )
             })}
             <SideBarIcon
+                label={'صفحه کمکی'}
                 isActive={helperPageEnable}
                 click={() => toggleHelperPage()}
             >

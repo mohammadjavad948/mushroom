@@ -4,7 +4,7 @@ import {useSpring, a} from "react-spring";
 import {useOtherInfoStore} from "../../store/OtherInfoStore";
 import {useState} from "react";
 
-export default function SideBarIcon(props: {children: any, click?: any,isActive: boolean, draggable?: boolean, id?: string}){
+export default function SideBarIcon(props: {children: any, click?: any,isActive: boolean, draggable?: boolean, id?: string, label: string}){
 
     const [hovering, setHover] = useState(false);
 
@@ -55,7 +55,7 @@ export default function SideBarIcon(props: {children: any, click?: any,isActive:
             onMouseLeave={() => setHover(false)}
         >
             {props.children}
-            {hovering && <Label label={"hmmm"} />}
+            {hovering && <Label label={props.label} />}
         </a.div>
     )
 }
