@@ -4,9 +4,11 @@ import {Formik, Form, FormikHelpers} from 'formik';
 import FormikInput from "../form/formik/FormikInput";
 import {useAuthStore} from "../../store/authStore";
 import {login} from "../../api/auth";
+import {useRouter} from "next/router";
 
 export default function Auth(){
 
+    const router =useRouter();
     const {setToken} = useAuthStore();
 
     async function submit(value: any, helper: FormikHelpers<any>){
@@ -16,6 +18,8 @@ export default function Auth(){
             const data = await login(value);
 
             setToken(data.data.token);
+
+            await router.push('/')
         } catch (e){
             helper.setSubmitting(false);
         }
