@@ -13,6 +13,18 @@ export default function MainWorkGroup(){
             </PageTitle>
             <div style={{width: '100%'}}>
                 <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
+                <WorkGroupItem />
             </div>
         </div>
     )
