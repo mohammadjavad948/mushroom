@@ -8,7 +8,6 @@
 }
 
 .DataContainer{
-    display: flex;
     padding: 15px;
     flex: 1;
     height: var(--full-height);
