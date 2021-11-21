@@ -41,7 +41,9 @@ export default function HelperPage(props: {children: any}){
                 style={animation}
                 {...bind()}
             />
-            {props.children}
+            <div className={pageStyle.main}>
+                {props.children}
+            </div>
         </a.div>
     )
 }
