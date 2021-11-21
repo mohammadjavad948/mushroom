@@ -34,7 +34,7 @@ function HelperPageRenderer(){
     return (
         <HelperPage>
             {activePageId !== 'drop' && <Close />}
-            <div style={{width: '100%', height: '100%', display: 'flex', direction: 'rtl'}}>
+            <div style={{width: '100%', height: '100%', direction: 'rtl'}}>
                 {renderer(activePageId)}
             </div>
         </HelperPage>
