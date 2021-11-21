@@ -1,5 +1,6 @@
 import {useQuery} from "react-query";
 import {info} from "../../api/auth";
+import Button from "../form/Button";
 
 export default function UserInfo(){
 
@@ -19,6 +20,11 @@ export default function UserInfo(){
             <div>
                 ساخته شده در
                 {new Date(data?.data.createdAt || '').toLocaleDateString('fa')}
+            </div>
+            <div>
+                <Button>
+                    خروج
+                </Button>
             </div>
         </div>
     )

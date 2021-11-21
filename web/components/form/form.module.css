@@ -10,7 +10,7 @@
 .button{
     cursor: pointer;
     background-color: var(--accent);
-    padding: 15px 25px;
+    padding: 12px 28px;
     border-radius: 5px;
     border: none;
     font-family: iranyekan;
