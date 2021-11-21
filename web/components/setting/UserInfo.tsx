@@ -3,7 +3,7 @@ import {info} from "../../api/auth";
 
 export default function UserInfo(){
 
-    const {data, isLoading} = useQuery(['userInfo'], info)
+    const {data} = useQuery(['userInfo'], info)
 
     return (
         <div className="col-12">
