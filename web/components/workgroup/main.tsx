@@ -11,7 +11,7 @@ export default function MainWorkGroup(){
                     گروه جدید
                 </Button>
             </PageTitle>
-            <div style={{width: '100%'}}>
+            <div style={{width: '100%', gap: '10px', display: 'flex', flexDirection: 'column'}}>
                 <WorkGroupItem />
                 <WorkGroupItem />
                 <WorkGroupItem />
