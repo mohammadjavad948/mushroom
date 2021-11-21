@@ -1,12 +1,24 @@
 import style from './auth.module.css';
 import Button from "../form/Button";
-import {Formik, Form} from 'formik';
+import {Formik, Form, FormikHelpers} from 'formik';
 import FormikInput from "../form/formik/FormikInput";
+import {useAuthStore} from "../../store/authStore";
+import {login} from "../../api/auth";
 
 export default function Auth(){
 
-    function submit(value: any){
-        console.log(value)
+    const {setToken} = useAuthStore();
+
+    async function submit(value: any, helper: FormikHelpers<any>){
+        helper.setSubmitting(true);
+
+        try {
+            const data = await login(value);
+
+            setToken(data.data.token);
+        } catch (e){
+            helper.setSubmitting(false);
+        }
     }
 
     return (
