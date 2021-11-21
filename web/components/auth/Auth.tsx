@@ -22,6 +22,7 @@ export default function Auth(){
                         placeholder={"نام کاربری"}
                     />
                     <FormikInput
+                        type={'password'}
                         name={'password'}
                         placeholder={"رمز عبور"}
                     />
