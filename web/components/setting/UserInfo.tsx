@@ -1,9 +1,11 @@
 import {useQuery} from "react-query";
 import {info} from "../../api/auth";
 import Button from "../form/Button";
+import {useAuthStore} from "../../store/authStore";
 
 export default function UserInfo(){
 
+    const {logout} = useAuthStore();
     const {data} = useQuery(['userInfo'], info)
 
     return (
@@ -22,7 +24,7 @@ export default function UserInfo(){
                 {new Date(data?.data.createdAt || '').toLocaleDateString('fa')}
             </div>
             <div>
-                <Button>
+                <Button onClick={() => logout()}>
                     خروج
                 </Button>
             </div>
