@@ -7,7 +7,19 @@ export default function UserInfo(){
 
     return (
         <div className="col-12">
-            {data?.data.username}
+            <div className="pb-2">
+                اطلاعات حساب کاربری:
+            </div>
+            <div>
+                {data?.data.username}
+            </div>
+            <div>
+                {data?.data.isVerified ? 'تایید شده' : 'تایید نشده'}
+            </div>
+            <div>
+                ساخته شده در
+                {new Date(data?.data.createdAt || '').toLocaleDateString('fa')}
+            </div>
         </div>
     )
 }
