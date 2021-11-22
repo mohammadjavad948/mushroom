@@ -20,7 +20,7 @@ export default function MainWorkGroup(){
             </PageTitle>
             <div style={{width: '100%', gap: '10px', display: 'flex', flexDirection: 'column'}}>
                 {data?.data.map((el, i) => {
-                    return <WorkGroupItem key={i}/>
+                    return <WorkGroupItem data={el} key={i}/>
                 })}
             </div>
         </div>

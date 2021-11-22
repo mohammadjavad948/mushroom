@@ -1,10 +1,11 @@
 import style from './workGroupItem.module.css';
+import {WorkGroup} from "../../types";
 
-export default function WorkGroupItem(){
+export default function WorkGroupItem(props: {data: WorkGroup}){
 
     return (
         <div className={style.main}>
-            زبان
+            {props.data.name}
         </div>
     )
 }
