@@ -7,7 +7,6 @@ export default function MainDashboard(){
         <div className="d-flex" style={{flexWrap: 'wrap'}}>
             <div style={{width: '100%'}}>
                 <PageTitle title={"داشبورد"} />
-                <WorkItem />
             </div>
         </div>
     )

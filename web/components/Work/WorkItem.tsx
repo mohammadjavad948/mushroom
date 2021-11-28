@@ -1,14 +1,15 @@
 import style from './workItem.module.css';
+import {Work} from "../../types";
 
-export default function WorkItem(){
+export default function WorkItem(props: {data: Work}){
 
     return (
         <div className={style.container}>
             <div className={style.title}>
-                عنوان
+                {props.data.title}
             </div>
             <div>
-                توضیح
+                {props.data.description}
             </div>
         </div>
     )

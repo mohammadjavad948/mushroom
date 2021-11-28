@@ -24,7 +24,7 @@ export default function WorkGroup(){
                     <div style={{width: '100%', display: 'flex', flexWrap: 'wrap'}}>
                         {data?.data.works?.map((e, i) => {
                             return (
-                                <WorkItem key={i}/>
+                                <WorkItem data={e} key={i}/>
                             )
                         })}
                     </div>
